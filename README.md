@@ -1,124 +1,215 @@
 # Zypher Mega RAG Database
 
-A **$1000+ premium RAG dataset** and retrieval engine. Original synthetic documents, vector-ready chunks, embeddings, graph relationships, metadata, benchmarks, and evaluation — nothing else.
+Enterprise-grade retrieval-augmented generation (RAG) dataset and indexing engine. Zypher delivers curated knowledge artifacts—vector-ready chunks, embeddings, graph relationships, metadata, benchmarks, and compliance tooling—designed for production RAG pipelines.
 
-No chatbot. No LLM hosting. No fine-tuning. No REST API. **Database only.**
+This repository contains the **knowledge layer only**: document corpus, export pipeline, and retrieval engine. It does not include chat interfaces, model hosting, fine-tuning workflows, or API servers.
 
-## What this is
+---
+
+## Overview
+
+Zypher Brain is a modular RAG database composed of:
+
+| Layer | Description |
+|-------|-------------|
+| **Knowledge base** | Original synthetic documents with typed metadata and graph links |
+| **Export pipeline** | Chunking, deduplication, embedding generation, and manifest signing |
+| **Retrieval engine** | Vector search, metadata filtering, graph traversal, and re-ranking |
+| **Quality assurance** | Benchmark datasets, evaluation reports, and distribution audits |
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   ZYPHER MEGA RAG DATABASE                    │
-│                                                             │
-│  Knowledge Base · Chunks · Embeddings · Graph · Metadata    │
-│  Catalog · Benchmarks · Evaluation · Distribution Audit     │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│                     ZYPHER MEGA RAG DATABASE                   │
+│                                                                  │
+│   Knowledge Base  →  Chunks  →  Embeddings  →  Vector Index      │
+│        │              │            │              │              │
+│        └──────── Graph Relationships · Metadata · Catalog ──────┘
+└──────────────────────────────────────────────────────────────────┘
 ```
 
-| Artifact | Path |
-|----------|------|
-| Vector-ready chunks | `data/product/chunks/chunks.jsonl` |
-| Document catalog | `data/product/catalog.jsonl` |
-| Embeddings | `data/product/embeddings/embeddings.jsonl` |
-| Graph edges | `data/product/graph/edges.jsonl` |
-| Metadata index | `data/product/metadata/documents.json` |
-| Benchmarks | `benchmarks/*.jsonl` |
-| Manifest | `data/product/manifest.json` |
+---
 
-## Quick start
+## Dataset Deliverables
+
+Each product build exports a versioned, checksum-signed artifact set:
+
+| Artifact | Path | Description |
+|----------|------|-------------|
+| Chunks | `data/product/chunks/chunks.jsonl` | Vector-ready text segments with metadata |
+| Catalog | `data/product/catalog.jsonl` | Per-document index and provenance |
+| Embeddings | `data/product/embeddings/embeddings.jsonl` | Pre-computed sentence-transformer vectors |
+| Graph | `data/product/graph/edges.jsonl` | Typed relationship edges (`depends_on`, `see_also`, …) |
+| Metadata | `data/product/metadata/documents.json` | Document-level schema index |
+| Benchmarks | `benchmarks/*.jsonl` | FAQ pairs, retrieval gold, and RAG evaluation sets |
+| Manifest | `data/product/manifest.json` | SHA-256 checksums, version, and build metadata |
+
+All distributable content is original synthetic material licensed under **Apache-2.0**. See `knowledge-base/PROVENANCE.md` and `NOTICE` for provenance and third-party attribution.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- 4 GB RAM minimum (embedding generation benefits from additional memory)
+
+### Installation
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-
-# Build premium dataset (10K smoke test)
-make product-premium-smoke
-
-# Query the brain index
-make index
-python3 -m brain retrieve "What is RAG for code?" --context
 ```
 
-## Premium tiers ($1000+ dataset)
-
-| Tier | Command | Scale |
-|------|---------|-------|
-| Smoke | `make product-premium-smoke` | 10,000 documents |
-| Premium | `make product-premium` | Config default |
-| **Hyper** | `make product-hyper` | **100B× multiplier — uncapped** |
-
-Hyper tier: `mega_multiplier: 100000000000` — procedural streaming, 604+ trillion unique document combinations.
+### Build a dataset (smoke test)
 
 ```bash
-# Full hyper run (Vast.ai / cluster)
+make product-premium-smoke
+```
+
+This generates 10,000 premium documents with full pipeline validation. Artifacts are written to `data/product/`.
+
+### Index and query
+
+```bash
+make index
+python3 -m brain retrieve "What is retrieval-augmented generation for code?" --context
+```
+
+---
+
+## Product Tiers
+
+Zypher supports three build tiers for the premium RAG dataset. Configuration is defined in `config/product_hyper.yaml`.
+
+| Tier | Command | Scope |
+|------|---------|-------|
+| Smoke | `make product-premium-smoke` | 10,000 documents — local validation |
+| Premium | `make product-premium` | Full premium pipeline per configuration |
+| Hyper | `make product-hyper` | Uncapped streaming generation for cluster deployment |
+
+The hyper tier uses a `mega_multiplier` of 100,000,000,000, enabling procedural expansion to hundreds of trillions of unique document combinations via streaming generation. Hyper builds are intended for distributed execution (e.g., Vast.ai or equivalent compute clusters).
+
+```bash
+# Cluster deployment
 make product-hyper
 ```
 
-## Brain module (retrieval engine)
+---
+
+## Retrieval Engine
+
+The `brain/` package implements the full retrieval stack:
 
 ```
 brain/
-├── brain.py           # ZypherBrain database engine
-├── ingestion/         # Load documents
-├── embeddings/        # Vector encoding
-├── indexing/          # ChromaDB vector store
-├── metadata/          # Filters by doc_type, category, tags
-├── graph/             # Typed relationship traversal
-├── reranking/         # Merge + score results
-└── retrieval/         # Full retrieval pipeline
+├── brain.py           # Orchestrator and public API
+├── ingestion/         # Markdown document loading and parsing
+├── embeddings/        # Sentence-transformer encoding
+├── indexing/          # ChromaDB persistent vector store
+├── metadata/          # doc_type, category, and tag filtering
+├── graph/             # Multi-hop relationship traversal
+├── reranking/         # Source-weighted result merging
+└── retrieval/         # End-to-end retrieval pipeline
 ```
+
+### CLI reference
 
 ```bash
-python3 -m brain index --reindex     # Build vector index
-python3 -m brain stats               # Database statistics
-python3 -m brain retrieve "query"    # Retrieve documents
+python3 -m brain index --reindex     # Rebuild the vector index
+python3 -m brain stats                 # Report document and index counts
+python3 -m brain retrieve "<query>"   # Retrieve ranked documents
+python3 -m brain retrieve "<query>" --context   # Include assembled context window
 ```
 
-## Corpus generation (raw markdown)
+### Retrieval pipeline
 
-| Command | Documents |
-|---------|-----------|
-| `make generate-smoke` | 2,000 |
-| `make generate-mega` | 100,000 |
-| `make generate-ultra` | 1,000,000 |
-| `make generate-hyper` | Billions (uncapped) |
+1. Encode the query embedding
+2. Search the vector index
+3. Apply metadata filters
+4. Expand results via graph relationships
+5. Merge and re-rank by source weight
+6. Assemble the context window for downstream consumption
 
-## Product pipeline
+---
+
+## Corpus Generation
+
+Raw markdown corpus expansion is available for seed document generation prior to product export:
+
+| Command | Approximate output |
+|---------|-------------------|
+| `make generate-smoke` | 2,000 documents |
+| `make generate-mega` | 100,000 documents |
+| `make generate-ultra` | 1,000,000 documents |
+| `make generate-hyper` | Uncapped (streaming) |
+
+Generated markdown under `knowledge-base/generated/` is excluded from commercial distribution builds.
+
+---
+
+## Quality and Compliance
+
+The product pipeline enforces quality gates and distribution audits on every build:
 
 ```bash
-make product                 # Seed CHUNK corpus package
-make product-premium-smoke   # Premium smoke build
-make audit-distribution      # Commercial compliance check
-make evaluate                # Retrieval benchmarks + evidence
+make validate-product      # Metadata, chunk size, and duplication checks
+make audit-distribution    # License files, provenance, and content compliance
+make evaluate              # Retrieval recall@k and benchmark evidence report
 ```
+
+| Gate | Threshold |
+|------|-----------|
+| Maximum duplicate chunk ratio | ≤ 5% |
+| Metadata accuracy | ≥ 90% |
+| Retrieval recall@8 | ≥ 45–50% (tier-dependent) |
+| Third-party content | None (`third_party_docs_copied: false`) |
+
+Reports are written to `benchmarks/evaluation_report.json` and `benchmarks/distribution_audit.json`.
+
+---
 
 ## Configuration
 
 | File | Purpose |
 |------|---------|
-| `config/product_hyper.yaml` | $1000+ premium hyper dataset |
+| `config/product_hyper.yaml` | Premium hyper-tier dataset build |
+| `config/product_hyper_smoke.yaml` | Local smoke-test configuration |
 | `config/product.yaml` | Seed corpus product build |
-| `config/brain.yaml` | Brain index + retrieval |
-| `config/corpus_mega.yaml` | Mega corpus generation |
+| `config/brain.yaml` | Vector index and retrieval settings |
+| `config/corpus_mega.yaml` | Mega-scale corpus generation |
 
-## Project structure
+---
+
+## Repository Structure
 
 ```
 .
-├── brain/                  # RAG database engine
-├── knowledge-base/         # Seed documents + distributable samples
-├── data/product/           # Exported dataset artifacts
-├── benchmarks/             # Evaluation datasets
+├── brain/                  # Retrieval engine and CLI
+├── knowledge-base/         # Source documents and audit samples
+├── data/product/           # Exported dataset artifacts (build output)
+├── benchmarks/             # Evaluation and compliance reports
 ├── scripts/
-│   ├── product/            # Dataset build pipeline
-│   ├── generate_corpus.py  # Corpus expansion
-│   └── mega_scale.py       # Hyper-scale topic expansion
-├── docs/                   # Setup, quality, licensing guides
-└── examples/               # Retrieval examples
+│   ├── product/            # Dataset build, audit, and export pipeline
+│   ├── generate_corpus.py  # Markdown corpus generator
+│   └── mega_scale.py       # Hyper-scale procedural topic expansion
+├── docs/                   # Setup, quality, evaluation, and licensing guides
+└── examples/               # Retrieval usage examples
 ```
+
+---
+
+## Documentation
+
+- [Product setup](docs/product-setup.md)
+- [Quality standards](docs/product-quality.md)
+- [Evaluation guide](docs/product-evaluation.md)
+- [Licensing](docs/product-licensing.md)
+- [Content provenance](knowledge-base/PROVENANCE.md)
+
+---
 
 ## License
 
-Apache-2.0. See `LICENSE`, `NOTICE`, and `knowledge-base/PROVENANCE.md`.
-
-Original synthetic content only — `third_party_docs_copied: false`.
+Licensed under the [Apache License 2.0](LICENSE). Third-party dependencies are listed in [NOTICE](NOTICE).
