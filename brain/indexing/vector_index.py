@@ -72,6 +72,30 @@ class VectorIndex:
         self._collection.add(ids=ids, documents=texts, embeddings=embeddings, metadatas=metas)
         return len(ids)
 
+    def index_document(self, doc: Document) -> None:
+        """Index a single new document (no full rebuild)."""
+        self._connect()
+        used: set[str] = set()
+        if self._collection.count() > 0:
+            existing = self._collection.get(include=[])
+            used = set(existing["ids"])
+        doc_id = self._unique_id(doc, used)
+        text = f"{doc.title}\n{doc.doc_type}\n{doc.content}"[:8000]
+        embedding = self.encoder.encode([text])
+        self._collection.add(
+            ids=[doc_id],
+            documents=[text],
+            embeddings=embedding,
+            metadatas=[{
+                "title": doc.title,
+                "path": doc.path,
+                "category": doc.category,
+                "doc_type": doc.doc_type,
+                "hub": doc.hub,
+                "original_id": doc.doc_id,
+            }],
+        )
+
     def search(self, query: str, top_k: int = 10) -> list[ScoredDocument]:
         self._connect()
         if self._collection.count() == 0:
