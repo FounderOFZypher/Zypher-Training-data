@@ -165,6 +165,44 @@ https://colab.research.google.com/github/FOUNDEROF-AIRIES-AGENT/Zypher-Training-
 
 The notebook clones the repo from GitHub, prepares data, trains tokenizer → pretrain → SFT, and lets you download checkpoints before the session ends.
 
+## Fine-tune Laguna XS 2.1 (Hugging Face + QLoRA)
+
+Use [poolside/Laguna-XS-2.1](https://huggingface.co/poolside/Laguna-XS-2.1) — Poolside's open coding MoE model (33B total, 3B active/token, 262k context).
+
+### Google Colab (recommended)
+
+1. Accept the model license on Hugging Face
+2. Open **[notebooks/finetune_laguna_colab.ipynb](notebooks/finetune_laguna_colab.ipynb)**
+3. Runtime → **A100** or **L4** (24 GB+ VRAM)
+4. Run all cells (includes HF login, data prep, QLoRA training)
+
+Direct link:
+
+```
+https://colab.research.google.com/github/FOUNDEROF-AIRIES-AGENT/Zypher-Training-data/blob/cursor/llm-finetune-ready-da1e/notebooks/finetune_laguna_colab.ipynb
+```
+
+### Command line
+
+```bash
+pip install -r requirements.txt
+huggingface-cli login          # accept Laguna license on HF first
+
+make generate-smoke
+make prepare-advanced
+make train-laguna              # → outputs/laguna-xs-2.1-sft/final
+
+make infer-laguna
+```
+
+Config: `config/training_laguna.yaml` (QLoRA, 4k context, MoE-safe LoRA targets).
+
+| GPU | Notes |
+|-----|-------|
+| A100 40GB | Recommended |
+| L4 / T4 24GB | Use `max_seq_length: 2048` in config |
+| < 20 GB | Not recommended for Laguna full QLoRA |
+
 ## Quick start — full pipeline (local or cloud VM)
 
 ```bash
