@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit commercial distribution rights compliance for the Zypher Product."""
+"""Audit commercial distribution rights compliance for the Coltex Product."""
 
 from __future__ import annotations
 

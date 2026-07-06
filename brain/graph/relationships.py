@@ -1,4 +1,4 @@
-"""Graph relationship traversal for Zypher."""
+"""Graph relationship traversal for Coltex."""
 
 from __future__ import annotations
 

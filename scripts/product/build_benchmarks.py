@@ -26,7 +26,7 @@ def _answer_keywords(doc) -> list[str]:
     words = re.findall(r"[a-z]{5,}", text)
     freq: dict[str, int] = {}
     for w in words:
-        if w in ("zypher", "retrieval", "graphrag", "chunking", "embedding", "vector", "knowledge"):
+        if w in ("coltex", "retrieval", "graphrag", "chunking", "embedding", "vector", "knowledge"):
             freq[w] = freq.get(w, 0) + 3
         else:
             freq[w] = freq.get(w, 0) + 1
@@ -65,7 +65,7 @@ def build_faq_benchmark(kb, min_pairs: int) -> list[dict]:
             title = doc.title.strip()
             if len(title) < 15 or title.lower().startswith("chunk "):
                 continue
-            question = title if title.endswith("?") else f"What does Zypher document about {title}?"
+            question = title if title.endswith("?") else f"What does Coltex document about {title}?"
             seen_ids.add(doc.doc_id)
             pairs.append({
                 "id": f"faq-{doc.doc_id}",

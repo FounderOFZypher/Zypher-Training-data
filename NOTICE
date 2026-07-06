@@ -1,5 +1,5 @@
-Zypher
-Copyright 2026 Zypher / FOUNDEROF-AIRIES-AGENT
+Coltex
+Copyright 2026 Coltex / FOUNDEROF-AIRIES-AGENT
 
 Third-party open-source dependencies used by the RAG database engine:
 
@@ -13,7 +13,7 @@ Apache License 2.0
 - Embedding model: sentence-transformers/all-MiniLM-L6-v2 (Apache-2.0)
 
 ================================================================================
-Zypher knowledge base content
+Coltex knowledge base content
 ================================================================================
 Original synthetic documentation under knowledge-base/ (excluding
 _excluded_from_distribution/ and generated/) is licensed Apache-2.0.

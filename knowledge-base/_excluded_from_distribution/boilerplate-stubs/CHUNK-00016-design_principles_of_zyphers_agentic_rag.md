@@ -1,6 +1,6 @@
-id: CHUNK-00016-DESIGN-PRINCIPLES-OF-ZYPHERS-AGENTIC-RAG
-title: Chunk 00016 Design Principles Of Zyphers Agentic Rag
-category: CHUNK-00016-design_principles_of_zyphers_agentic_rag.md
+id: CHUNK-00016-DESIGN-PRINCIPLES-OF-COLTEXS-AGENTIC-RAG
+title: Chunk 00016 Design Principles Of Coltex's Agentic Rag
+category: CHUNK-00016-design_principles_of_coltexs_agentic_rag.md
 tags:
 - agentic
 - chunk
@@ -8,22 +8,22 @@ tags:
 - of
 - principles
 - rag
-- zyphers
+- coltexs
 difficulty: intermediate
 related:
 - CHUNK-00000-WHAT-IS-RETRIEVAL-AUGMENTED-GENERATION-RAG-FOR-CODE
-- CHUNK-00001-HOW-DOES-ZYPHER-USE-GRAPHRAG-FOR-ARCHITECTURAL-REASONING
-- CHUNK-00002-WHAT-ARE-THE-BENEFITS-OF-AGENTIC-RAG-WORKFLOWS-IN-ZYPHER
-- CHUNK-00003-HOW-DOES-ZYPHER-ENSURE-DATA-QUALITY-AND-CLEANING-FOR-CODE-RAG
-- CHUNK-00004-WHAT-ARE-ZYPHERS-ADVANCED-CODE-CHUNKING-STRATEGIES
-- CHUNK-00005-DETAILED-EXPLANATION-OF-RAG-PRINCIPLES-IN-ZYPHER
+- CHUNK-00001-HOW-DOES-COLTEX-USE-GRAPHRAG-FOR-ARCHITECTURAL-REASONING
+- CHUNK-00002-WHAT-ARE-THE-BENEFITS-OF-AGENTIC-RAG-WORKFLOWS-IN-COLTEX
+- CHUNK-00003-HOW-DOES-COLTEX-ENSURE-DATA-QUALITY-AND-CLEANING-FOR-CODE-RAG
+- CHUNK-00004-WHAT-ARE-COLTEXS-ADVANCED-CODE-CHUNKING-STRATEGIES
+- CHUNK-00005-DETAILED-EXPLANATION-OF-RAG-PRINCIPLES-IN-COLTEX
 - CHUNK-00006-COMPARISON-OF-RAG-VS-FINE-TUNING-FOR-CODE-LLMS
-- CHUNK-00007-HOW-ZYPHER-INTEGRATES-RAG-WITH-INTERNAL-CODEBASES
-- CHUNK-00008-DATA-FLOW-DIAGRAM-FOR-ZYPHER-RAG
+- CHUNK-00007-HOW-COLTEX-INTEGRATES-RAG-WITH-INTERNAL-CODEBASES
+- CHUNK-00008-DATA-FLOW-DIAGRAM-FOR-COLTEX-RAG
 - CHUNK-00009-SECURITY-CONSIDERATIONS-FOR-RAG-KNOWLEDGE-BASES
 - CHUNK-00010-BUILDING-CODE-KNOWLEDGE-GRAPHS-WITH-ASTS-AND-TREE-SITTER
 - CHUNK-00011-GRAPH-TRAVERSAL-ALGORITHMS-FOR-CODE-DEPENDENCY-ANALYSIS
-- CHUNK-00012-VISUALIZING-CODE-GRAPHS-IN-ZYPHER
+- CHUNK-00012-VISUALIZING-CODE-GRAPHS-IN-COLTEX
 - CHUNK-00013-USE-CASES-FOR-GRAPHRAG-IN-LARGE-MONOREPOS
 - CHUNK-00014-PERFORMANCE-OPTIMIZATION-FOR-GRAPHRAG-QUERIES
 - CHUNK-00015-SCHEMA-DEFINITION-FOR-CODE-GRAPH-NODES-AND-EDGES
@@ -59,10 +59,10 @@ related:
 - CHUNK-00046-GRAPH-LINK-CODEBASE-MODULE-DEPENDENCY-UNIQUE-1
 - CHUNK-00047-GRAPH-LINK-SECURITY-COMPONENT-INTEGRATION-UNIQUE-1
 - CHUNK-00048-DEPLOYING-RAG-COMPONENTS-IN-A-KUBERNETES-CLUSTER
-- CHUNK-00049-SCALING-STRATEGIES-FOR-ZYPHER-RAG-INFRASTRUCTURE
+- CHUNK-00049-SCALING-STRATEGIES-FOR-COLTEX-RAG-INFRASTRUCTURE
 - CHUNK-00050-DEPLOYING-GRAPHRAG-SERVICES
 - CHUNK-00051-SCALING-AGENTIC-RAG-FOR-ENTERPRISE-USE
-- CHUNK-00052-CONFIGURING-CHUNKING-PIPELINES-IN-ZYPHER
+- CHUNK-00052-CONFIGURING-CHUNKING-PIPELINES-IN-COLTEX
 - CHUNK-00053-RAG-CONTEXT-RETRIEVAL-API-REFERENCE
 - CHUNK-00054-GRAPHRAG-QUERY-API-FOR-DEVELOPERS
 - CHUNK-00055-AGENTIC-WORKFLOW-ORCHESTRATION-API
@@ -116,7 +116,7 @@ version: '1.0'
 ---
 
 id: CHUNK-00016
-title: Design Principles of Zypher's Agentic RAG
+title: Design Principles of Coltex's Agentic RAG
 category: chunked
 tags:
 - agentic
@@ -126,16 +126,16 @@ tags:
 - principles
 - rag
 - s
-- zypher
+- coltex
 difficulty: intermediate
 related: []
 last_updated: '2026-07-05'
 version: '1.0'
 ---
 
-# Design Principles of Zypher's Agentic RAG
+# Design Principles of Coltex's Agentic RAG
 
 
-This document provides detailed information on design principles of zypher's agentic rag as it relates to the Zypher Enterprise AI Coding Chatbot and the FAQ: '[What Are The Benefits Of Agentic Rag Workflows In Zypher](../../faq/general/what_are_the_benefits_of_agentic_rag_workflows_in_zypher.md)?'. It covers key concepts, implementation details, and best practices. This is supporting document 1 for FAQ 3.
+This document provides detailed information on design principles of coltex's agentic rag as it relates to the Coltex Enterprise AI Coding Chatbot and the FAQ: '[What Are The Benefits Of Agentic Rag Workflows In Coltex](../../faq/general/what_are_the_benefits_of_agentic_rag_workflows_in_coltex.md)?'. It covers key concepts, implementation details, and best practices. This is supporting document 1 for FAQ 3.
 
-**Related FAQ:** [what_are_the_benefits_of_agentic_rag_workflows_in_zypher.md](knowledge-base/faq/general/what_are_the_benefits_of_agentic_rag_workflows_in_zypher.md)
+**Related FAQ:** [what_are_the_benefits_of_agentic_rag_workflows_in_coltex.md](knowledge-base/faq/general/what_are_the_benefits_of_agentic_rag_workflows_in_coltex.md)

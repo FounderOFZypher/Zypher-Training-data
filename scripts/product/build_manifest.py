@@ -108,7 +108,7 @@ def main() -> None:
     }
 
     manifest = {
-        "name": cfg.get("name", "Zypher Product"),
+        "name": cfg.get("name", "Coltex Product"),
         "version": str(cfg.get("version", "1.0.0")),
         "tier": cfg.get("tier", "standard"),
         "price_usd": cfg.get("price_usd"),

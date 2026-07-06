@@ -1,4 +1,4 @@
-# Zypher configuration
+# Coltex configuration
 
 knowledge_base:
   paths:
@@ -15,7 +15,7 @@ embeddings:
 
 vector_store:
   persist_dir: data/brain/vector_store
-  collection_name: zypher
+  collection_name: coltex
 
 graph:
   enabled: true

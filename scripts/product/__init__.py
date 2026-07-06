@@ -1,1 +1,1 @@
-"""Zypher product build tools — quality-first knowledge packaging."""
+"""Coltex product build tools — quality-first knowledge packaging."""

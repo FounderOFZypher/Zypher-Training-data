@@ -1,4 +1,4 @@
-"""Shared utilities for Zypher Product builds."""
+"""Shared utilities for Coltex Product builds."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 """
-Zypher RAG database engine.
+Coltex RAG database engine.
 
 Knowledge base · vector index · metadata · graph relationships · retrieval pipeline.
 """
@@ -21,9 +21,9 @@ from brain.retrieval.pipeline import RetrievalPipeline
 from brain.types import RetrievalResult
 
 
-class Zypher:
+class Coltex:
     """
-    Zypher RAG database engine:
+    Coltex RAG database engine:
     - Knowledge Base (documents)
     - Vector Database (embeddings)
     - Metadata Index
@@ -56,7 +56,7 @@ class Zypher:
             self.kb,
             self.encoder,
             persist_dir=vs_cfg.get("persist_dir", "data/brain/vector_store"),
-            collection_name=vs_cfg.get("collection_name", "zypher"),
+            collection_name=vs_cfg.get("collection_name", "coltex"),
         )
 
         self.metadata_index = MetadataIndex(self.kb)

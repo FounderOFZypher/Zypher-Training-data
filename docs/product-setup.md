@@ -1,4 +1,4 @@
-# Zypher — Setup Guide
+# Coltex — Setup Guide
 
 Build and export the premium RAG dataset artifacts.
 

@@ -1,6 +1,6 @@
 # Premium Distributable Corpus
 
-Streaming-generated original synthetic documents for the **$1000+ Zypher Premium RAG Dataset**.
+Streaming-generated original synthetic documents for the **$1000+ Coltex Premium RAG Dataset**.
 
 | Path | Purpose |
 |------|---------|

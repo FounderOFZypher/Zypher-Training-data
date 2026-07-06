@@ -1,4 +1,4 @@
-"""Zypher schema — document types, categories, relationships, and knowledge hubs."""
+"""Coltex schema — document types, categories, relationships, and knowledge hubs."""
 
 from __future__ import annotations
 

@@ -39,7 +39,7 @@ PREMIUM_SECTIONS: dict[str, list[str]] = {
 }
 
 OPENERS = (
-    "In enterprise Zypher deployments,",
+    "In enterprise Coltex deployments,",
     "For production-grade RAG systems,",
     "When scaling to multi-tenant workloads,",
     "Under strict latency and compliance requirements,",
@@ -101,8 +101,8 @@ def _section_body(section: str, topic: Topic, doc_type: str, variant: int) -> st
         f"- Add structured logging, distributed tracing, and audit trails for all write paths\n"
         f"- Version schemas; use feature flags for rollout; document rollback procedures\n"
         f"- Validate with integration tests and chaos drills before production promotion\n\n"
-        f"**Zypher note:** Ground all agent responses in indexed context; never rely on uncited model knowledge.\n"
-        f"**License:** Apache-2.0 · **Origin:** Zypher premium synthetic corpus · **Type:** {doc_type}"
+        f"**Coltex note:** Ground all agent responses in indexed context; never rely on uncited model knowledge.\n"
+        f"**License:** Apache-2.0 · **Origin:** Coltex premium synthetic corpus · **Type:** {doc_type}"
     )
 
 
@@ -116,7 +116,7 @@ def build_premium_body(topic: Topic, doc_type: str, variant: int) -> str:
         parts.append(f"\n## Reference Implementation\n\n```\n{_render_code(topic, variant)}\n```")
     if doc_type == "faq":
         parts.append(
-            f"\n\n**Answer:** {topic.title} in Zypher requires rigorous indexing, graph linking, "
+            f"\n\n**Answer:** {topic.title} in Coltex requires rigorous indexing, graph linking, "
             f"and evaluation. Variant {variant} targets {topic.hub or topic.category} with "
             f"measurable recall and faithfulness thresholds."
         )
@@ -148,7 +148,7 @@ def build_premium_metadata(
         "difficulty": topic.difficulty,
         "related": related_ids or [],
         "license": "Apache-2.0",
-        "origin": "zypher_premium_synthetic",
+        "origin": "coltex_premium_synthetic",
         "variant": variant,
     }
 

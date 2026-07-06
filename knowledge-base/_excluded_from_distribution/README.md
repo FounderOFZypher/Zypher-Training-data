@@ -1,6 +1,6 @@
 # Excluded from Commercial Distribution
 
-Files in this directory are **not** included in the Zypher Product package
+Files in this directory are **not** included in the Coltex Product package
 (`make product`) and must not be shipped in commercial releases.
 
 ## Why excluded
@@ -12,7 +12,7 @@ original documentation suitable for commercial distribution.
 Example marker:
 
 > "This document provides detailed information on … as it relates to the
-> Zypher Enterprise AI Coding Chatbot …"
+> Coltex Enterprise AI Coding Chatbot …"
 
 ## License status
 

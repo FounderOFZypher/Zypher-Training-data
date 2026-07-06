@@ -1,6 +1,13 @@
 # Changelog
 
-All notable changes to the Zypher product package are documented here.
+All notable changes to the Coltex product package are documented here.
+
+## [3.1.0] - 2026-07-06
+
+### Changed
+
+- Rebranded **Zypher** → **Coltex** across codebase, docs, and knowledge base
+- Renamed `Zypher` class to `Coltex`; vector collection `zypher` → `coltex`
 
 ## [3.0.0] - 2026-07-06
 

@@ -16,7 +16,7 @@ class VectorIndex:
         kb: KnowledgeBase,
         encoder: EmbeddingEncoder,
         persist_dir: str = "data/brain/vector_store",
-        collection_name: str = "zypher",
+        collection_name: str = "coltex",
     ):
         self.kb = kb
         self.encoder = encoder

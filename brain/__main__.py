@@ -1,4 +1,4 @@
-"""Zypher CLI."""
+"""Coltex CLI."""
 
 from __future__ import annotations
 
@@ -6,17 +6,17 @@ import argparse
 import json
 import sys
 
-from brain.brain import Zypher
+from brain.brain import Coltex
 
 
 def cmd_index(args: argparse.Namespace) -> None:
-    brain = Zypher(config_path=args.config)
+    brain = Coltex(config_path=args.config)
     count = brain.index(force=args.reindex)
     print(json.dumps({"indexed": count, **brain.stats()}, indent=2))
 
 
 def cmd_retrieve(args: argparse.Namespace) -> None:
-    brain = Zypher(config_path=args.config)
+    brain = Coltex(config_path=args.config)
     brain.index(force=False)
     result = brain.retrieve(args.query)
     print(f"Query: {args.query}\n")
@@ -29,12 +29,12 @@ def cmd_retrieve(args: argparse.Namespace) -> None:
 
 
 def cmd_stats(args: argparse.Namespace) -> None:
-    brain = Zypher(config_path=args.config)
+    brain = Coltex(config_path=args.config)
     print(json.dumps(brain.stats(), indent=2))
 
 
 def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="Zypher")
+    parser = argparse.ArgumentParser(description="Coltex")
     parser.add_argument("--config", default="config/brain.yaml")
     sub = parser.add_subparsers(dest="command", required=True)
 

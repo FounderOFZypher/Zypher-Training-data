@@ -1,11 +1,11 @@
-# Zypher Brain Dataset End User License Agreement (EULA)
+# Coltex Dataset End User License Agreement (EULA)
 
 **Version 1.0**
 **Last Updated:** July 6, 2026
 
 ## 1. Agreement
 
-This End User License Agreement ("Agreement") is a legal agreement between you ("Licensee") and **Zypher AI** ("Licensor") governing the use of the Zypher Brain Dataset, including all associated documentation, metadata, training data, RAG datasets, JSONL files, Markdown files, examples, schemas, software scripts, and future updates (collectively, the "Dataset").
+This End User License Agreement ("Agreement") is a legal agreement between you ("Licensee") and **Coltex AI** ("Licensor") governing the use of the Coltex Dataset, including all associated documentation, metadata, training data, RAG datasets, JSONL files, Markdown files, examples, schemas, software scripts, and future updates (collectively, the "Dataset").
 
 By downloading, installing, accessing, or using the Dataset, you agree to be bound by this Agreement.
 
@@ -32,7 +32,7 @@ Ownership of the Dataset is not transferred.
 
 The Dataset is licensed, not sold.
 
-All intellectual property rights in the Dataset remain the exclusive property of Zypher AI.
+All intellectual property rights in the Dataset remain the exclusive property of Coltex AI.
 
 No ownership rights are transferred to the Licensee.
 
@@ -176,11 +176,11 @@ This Agreement constitutes the entire agreement between Licensor and Licensee re
 
 # 17. Contact
 
-**Zypher AI**
+**Coltex AI**
 
 Licensing and Commercial Inquiries:
 
-Email: [licensing@zypher.ai](mailto:licensing@zypher.ai)
+Email: [licensing@coltex.ai](mailto:licensing@coltex.ai)
 
-Website: https://zypher.ai
+Website: https://coltex.ai
 

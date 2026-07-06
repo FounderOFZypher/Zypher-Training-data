@@ -1,7 +1,7 @@
-# Zypher Premium RAG Dataset — local smoke test
+# Coltex Premium RAG Dataset — local smoke test
 # Generates 10,000 premium documents for validation before Vast.ai hyper run
 
-name: Zypher Premium RAG Dataset (Smoke)
+name: Coltex Premium RAG Dataset (Smoke)
 version: 2.0.0-smoke
 tier: premium-smoke
 price_usd: 1000

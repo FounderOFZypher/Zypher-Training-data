@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Orchestrate full Zypher Product build pipeline."""
+"""Orchestrate full Coltex Product build pipeline."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ def run_step(script: str, config: Path, extra: list[str] | None = None) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build Zypher Product package")
+    parser = argparse.ArgumentParser(description="Build Coltex Product package")
     parser.add_argument("--config", type=Path, default=Path("config/product.yaml"))
     parser.add_argument("--skip-embeddings", action="store_true", help="Skip embedding generation")
     parser.add_argument("--skip-eval", action="store_true", help="Skip RAG evaluation")

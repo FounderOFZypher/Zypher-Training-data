@@ -1,4 +1,4 @@
-"""Mega-scale topic expansion for Zypher corpus generation."""
+"""Mega-scale topic expansion for Coltex corpus generation."""
 
 from __future__ import annotations
 

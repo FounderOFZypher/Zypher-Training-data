@@ -137,7 +137,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: zypher/{service_name}:{variant}
+          image: coltex/{service_name}:{variant}
           env:
             - name: TOPIC
               value: "{topic}"

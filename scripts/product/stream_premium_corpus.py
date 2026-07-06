@@ -102,7 +102,7 @@ def main() -> None:
                 "path": doc.path,
                 "char_count": len(doc.content),
                 "license": license_name,
-                "origin": "zypher_premium_synthetic",
+                "origin": "coltex_premium_synthetic",
             }
             catf.write(json.dumps(catalog_entry, ensure_ascii=False) + "\n")
 
@@ -144,7 +144,7 @@ def main() -> None:
         "duplicate_ratio": round(dup_ratio, 6),
         "sample_md_files": min(doc_count, sample_md),
         "price_tier_usd": cfg.get("price_usd", 1000),
-        "content_origin": "zypher_premium_synthetic",
+        "content_origin": "coltex_premium_synthetic",
         "third_party_docs_copied": False,
     }
     with stats_path.open("w", encoding="utf-8") as f:

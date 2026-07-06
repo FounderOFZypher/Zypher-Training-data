@@ -1,4 +1,4 @@
-"""Shared types for Zypher."""
+"""Shared types for Coltex."""
 
 from __future__ import annotations
 

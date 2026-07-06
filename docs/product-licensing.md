@@ -1,9 +1,9 @@
-# Zypher Product Licensing
+# Coltex Product Licensing
 
 ## Knowledge base content
 
 All distributable knowledge base content is **original synthetic documentation**
-authored for Zypher. It was **not** copied from third-party documentation,
+authored for Coltex. It was **not** copied from third-party documentation,
 web scraping, or proprietary sources.
 
 | Content | License | Included in product? |
@@ -17,7 +17,7 @@ See `knowledge-base/PROVENANCE.md` for full content origin documentation.
 
 ## Project license
 
-The Zypher product package is released under the **Apache License 2.0**.
+The Coltex product package is released under the **Apache License 2.0**.
 See the root [`LICENSE`](../LICENSE) file for the full legal text.
 
 ## NOTICE file
@@ -87,7 +87,7 @@ You must:
 
 - Include the Apache-2.0 license notice and `NOTICE` file
 - State significant changes in derivative works
-- Not use Zypher trademarks without permission
+- Not use Coltex trademarks without permission
 - Not redistribute quarantined or generated corpus as curated knowledge
 
 ## Disclaimer

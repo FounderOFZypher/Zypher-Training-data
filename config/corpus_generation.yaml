@@ -1,4 +1,4 @@
-# Zypher — corpus generation settings
+# Coltex — corpus generation settings
 # Generates connected documents with rich relationship graphs
 
 seed_dir: knowledge-base

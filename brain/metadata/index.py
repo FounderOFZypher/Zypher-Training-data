@@ -1,4 +1,4 @@
-"""Metadata filter search over Zypher documents."""
+"""Metadata filter search over Coltex documents."""
 
 from __future__ import annotations
 

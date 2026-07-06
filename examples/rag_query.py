@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Example: retrieve from Zypher."""
+"""Example: retrieve from Coltex."""
 
 from __future__ import annotations
 
@@ -8,12 +8,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from brain.brain import Zypher
+from brain.brain import Coltex
 
 
 def main() -> None:
     query = sys.argv[1] if len(sys.argv) > 1 else "What is RAG for code?"
-    brain = Zypher(config_path="config/brain.yaml")
+    brain = Coltex(config_path="config/brain.yaml")
     brain.index(force=False)
 
     result = brain.retrieve(query)

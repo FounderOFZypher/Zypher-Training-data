@@ -1,13 +1,13 @@
 # Knowledge Base Provenance
 
-This document records the origin of content in the Zypher knowledge base for
+This document records the origin of content in the Coltex knowledge base for
 commercial distribution compliance.
 
 ## Content origin
 
 | Category | Origin | Third-party sources |
 |----------|--------|---------------------|
-| FAQ documents (`CHUNK-00000`–`00004`) | Originally authored for Zypher | None |
+| FAQ documents (`CHUNK-00000`–`00004`) | Originally authored for Coltex | None |
 | Graph relationship nodes | Synthetically generated fictional architecture | None |
 | Architecture decision records (ADRs) | Synthetically generated | None |
 | Incident reports & runbooks | Synthetically generated | None |

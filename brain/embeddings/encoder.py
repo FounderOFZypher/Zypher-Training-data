@@ -1,4 +1,4 @@
-"""Embedding generation for Zypher."""
+"""Embedding generation for Coltex."""
 
 from __future__ import annotations
 

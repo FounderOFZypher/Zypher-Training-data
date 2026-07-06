@@ -11,7 +11,7 @@ clean:
 	rm -rf data/brain data/vector_store knowledge-base/generated data/product \
 		__pycache__ scripts/__pycache__ brain/__pycache__ scripts/product/__pycache__
 
-# Zypher — index and query the RAG database
+# Coltex — index and query the RAG database
 index:
 	python3 -m brain index --reindex
 

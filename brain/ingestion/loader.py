@@ -1,4 +1,4 @@
-"""Load markdown documents into Zypher."""
+"""Load markdown documents into Coltex."""
 
 from __future__ import annotations
 
@@ -112,7 +112,7 @@ def parse_markdown(path: Path) -> Document:
 
 
 class KnowledgeBase:
-    """Primary document store for Zypher."""
+    """Primary document store for Coltex."""
 
     def __init__(
         self,

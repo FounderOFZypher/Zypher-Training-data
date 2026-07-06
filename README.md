@@ -1,6 +1,6 @@
-# Zypher
+# Coltex
 
-Enterprise-grade retrieval-augmented generation (RAG) dataset and indexing engine. Zypher delivers curated knowledge artifacts—vector-ready chunks, embeddings, graph relationships, metadata, benchmarks, and compliance tooling—designed for production RAG pipelines.
+Enterprise-grade retrieval-augmented generation (RAG) dataset and indexing engine. Coltex delivers curated knowledge artifacts—vector-ready chunks, embeddings, graph relationships, metadata, benchmarks, and compliance tooling—designed for production RAG pipelines.
 
 This repository contains the **knowledge layer only**: document corpus, export pipeline, and retrieval engine. It does not include chat interfaces, model hosting, fine-tuning workflows, or API servers.
 
@@ -8,7 +8,7 @@ This repository contains the **knowledge layer only**: document corpus, export p
 
 ## Overview
 
-Zypher is a modular RAG database composed of:
+Coltex is a modular RAG database composed of:
 
 | Layer | Description |
 |-------|-------------|
@@ -19,7 +19,7 @@ Zypher is a modular RAG database composed of:
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                            ZYPHER                                │
+│                            COLTEX                                │
 │                                                                  │
 │   Knowledge Base  →  Chunks  →  Embeddings  →  Vector Index      │
 │        │              │            │              │              │
@@ -81,7 +81,7 @@ python3 -m brain retrieve "What is retrieval-augmented generation for code?" --c
 
 ## Product Tiers
 
-Zypher supports three build tiers for the premium RAG dataset. Configuration is defined in `config/product_hyper.yaml`.
+Coltex supports three build tiers for the premium RAG dataset. Configuration is defined in `config/product_hyper.yaml`.
 
 | Tier | Command | Scope |
 |------|---------|-------|
