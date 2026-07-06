@@ -14,6 +14,24 @@ from chatbot.tokenizer import ChatbotTokenizer
 from chatbot.trainer import Trainer
 
 
+def resolve_checkpoint(path: str | Path) -> Path:
+    """Return a checkpoint directory containing model.pt."""
+    ckpt = Path(path)
+    if (ckpt / "model.pt").exists():
+        return ckpt
+
+    search_dir = ckpt.parent if ckpt.name.startswith("checkpoint") else ckpt
+    candidates = sorted(search_dir.glob("checkpoint-*"), key=lambda p: p.name)
+    for candidate in reversed(candidates):
+        if (candidate / "model.pt").exists():
+            print(f"Using checkpoint: {candidate}")
+            return candidate
+
+    raise FileNotFoundError(
+        f"No model.pt found at {ckpt} or under {search_dir}/checkpoint-*. "
+        "Run pretrain first and confirm it prints 'Saved checkpoint to ... checkpoint-final'."
+    )
+
 def cmd_train_tokenizer(args: argparse.Namespace) -> None:
     cfg = load_config(args.config)
     output = Path(args.output or "outputs/tokenizer")
@@ -42,6 +60,10 @@ def cmd_pretrain(args: argparse.Namespace) -> None:
 
     dataset = PretrainDataset(Path(args.data), tokenizer, cfg.model.max_seq_len)
     print(f"Pretrain samples: {len(dataset):,}")
+    if len(dataset) == 0:
+        raise SystemExit(
+            f"ERROR: No pretrain samples in {args.data}. Run `make prepare-advanced` first."
+        )
 
     train_cfg = cfg.__dict__.get("training", {}) if hasattr(cfg, "training") else {}
     trainer = Trainer(
@@ -70,7 +92,8 @@ def cmd_sft(args: argparse.Namespace) -> None:
     )
 
     if args.checkpoint:
-        state = __import__("torch").load(Path(args.checkpoint) / "model.pt", map_location="cpu")
+        ckpt = resolve_checkpoint(args.checkpoint)
+        state = __import__("torch").load(ckpt / "model.pt", map_location="cpu")
         model.load_state_dict(state)
 
     dataset = SFTDataset(Path(args.data), tokenizer, cfg.model.max_seq_len)
