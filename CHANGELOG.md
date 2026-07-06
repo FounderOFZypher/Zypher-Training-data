@@ -2,6 +2,35 @@
 
 All notable changes to the Zypher Brain product package are documented here.
 
+## [3.0.0] - 2026-07-06
+
+### Removed (database-only focus)
+
+- `zypher/` chatbot CLI and LLM provider
+- `zypher_platform/` REST API, sessions, jobs, agents
+- Fine-tuning scripts (`train.py`, `infer.py`, `prepare_advanced_dataset.py`)
+- `config/llm.yaml`, `platform.yaml`, `zypher_xs.yaml`, `rag.yaml`
+- Notebooks, Kubernetes/Docker hosting configs in knowledge-base
+- Conversation memory module (chat-only)
+
+### Changed
+
+- Repository is now **Mega RAG Database only**
+- `python3 -m brain` CLI for index / retrieve / stats
+- Slimmed `requirements.txt` to RAG dependencies only
+
+## [2.0.0] - 2026-07-06
+
+### Added
+
+- **$1000+ Premium RAG Dataset** — hyper-scale distributable corpus
+- `mega_multiplier: 100000000000` (100 billion× tier)
+- Streaming generation: `scripts/product/stream_premium_corpus.py`
+- Premium content generator with 6+ sections, code examples, graph edges per document
+- `make product-premium-smoke`, `make product-premium`, `make product-hyper`
+- Catalog.jsonl metadata index for billion-scale document tracking
+- Estimated 604+ trillion unique document combinations (procedural)
+
 ## [1.1.0] - 2026-07-06
 
 ### Added
