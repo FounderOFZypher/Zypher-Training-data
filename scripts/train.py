@@ -78,7 +78,7 @@ def main() -> None:
     parser.add_argument(
         "--config",
         type=Path,
-        default=Path("config/training.yaml"),
+        default=Path("config/zypher_xs.yaml"),
         help="Training configuration YAML file",
     )
     parser.add_argument("--train-file", type=Path, default=None)
@@ -93,7 +93,7 @@ def main() -> None:
 
     if not train_file.exists():
         raise FileNotFoundError(
-            f"Training file not found: {train_file}. Run `make prepare-advanced` first."
+            f"Training file not found: {train_file}. Run `make prepare` first."
         )
 
     use_4bit = cfg["model"].get("load_in_4bit", True)
@@ -208,7 +208,8 @@ def main() -> None:
     tokenizer.save_pretrained(str(output_dir / "final"))
 
     print(f"Training complete. Adapter saved to {output_dir / 'final'}")
-    print(f"Inference: python3 scripts/infer.py --base-model {model_name} --adapter {output_dir / 'final'} --question 'Explain GraphRAG'")
+    print(f"Zypher XS saved. Chat with RAG: python3 -m zypher.chat")
+    print(f"Raw inference: make infer")
 
 
 if __name__ == "__main__":
