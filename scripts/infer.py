@@ -25,6 +25,7 @@ def main() -> None:
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--trust-remote-code", action="store_true", default=True)
     args = parser.parse_args()
+    trust = args.trust_remote_code
 
     adapter_path = Path(args.adapter)
     tok_path = adapter_path if (adapter_path / "tokenizer_config.json").exists() else args.base_model
@@ -44,7 +45,7 @@ def main() -> None:
         device_map="auto" if torch.cuda.is_available() else None,
         trust_remote_code=trust,
     )
-    model = PeftModel.from_pretrained(model, args.adapter)
+    model = PeftModel.from_pretrained(model, str(adapter_path))
     model.eval()
 
     messages = [
