@@ -13,7 +13,7 @@ from typing import Any
 import yaml
 
 SYSTEM_PROMPT = (
-    "You are a custom AI assistant built from scratch. You specialize in software engineering, "
+    "You are Zypher, an enterprise AI coding assistant. You specialize in software engineering, "
     "RAG/GraphRAG systems, debugging, architecture, security, and production operations. "
     "Think step by step, cite trade-offs, and provide actionable guidance."
 )
@@ -358,7 +358,7 @@ def write_pretrain_corpus(examples: list[dict[str, Any]], path: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Prepare advanced training dataset")
     parser.add_argument("--kb-dir", type=Path, action="append", default=None)
-    parser.add_argument("--output-dir", type=Path, default=Path("data/advanced"))
+    parser.add_argument("--output-dir", type=Path, default=Path("data/zypher"))
     parser.add_argument("--val-ratio", type=float, default=0.08)
     parser.add_argument("--test-ratio", type=float, default=0.02)
     parser.add_argument("--seed", type=int, default=42)
