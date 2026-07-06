@@ -1,4 +1,4 @@
-# Zypher — Mega RAG Database configuration
+# Zypher configuration
 
 knowledge_base:
   paths:

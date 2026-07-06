@@ -1,5 +1,5 @@
 """
-Zypher — Mega RAG Database engine.
+Zypher RAG database engine.
 
 Knowledge base · vector index · metadata · graph relationships · retrieval pipeline.
 """
@@ -23,7 +23,7 @@ from brain.types import RetrievalResult
 
 class Zypher:
     """
-    Mega RAG Database engine:
+    Zypher RAG database engine:
     - Knowledge Base (documents)
     - Vector Database (embeddings)
     - Metadata Index

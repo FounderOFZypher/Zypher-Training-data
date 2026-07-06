@@ -1,4 +1,4 @@
-"""Zypher — Mega RAG Database CLI."""
+"""Zypher CLI."""
 
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def cmd_stats(args: argparse.Namespace) -> None:
 
 
 def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="Zypher — Mega RAG Database")
+    parser = argparse.ArgumentParser(description="Zypher")
     parser.add_argument("--config", default="config/brain.yaml")
     sub = parser.add_subparsers(dest="command", required=True)
 

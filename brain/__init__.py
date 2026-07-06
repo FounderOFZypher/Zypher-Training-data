@@ -1,4 +1,4 @@
-"""Zypher — Mega RAG Database engine."""
+"""Zypher RAG database engine."""
 
 from brain.brain import Zypher
 from brain.types import Document, RetrievalResult, ScoredDocument

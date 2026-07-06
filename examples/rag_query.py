@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Example: retrieve from the Mega RAG Database."""
+"""Example: retrieve from Zypher."""
 
 from __future__ import annotations
 

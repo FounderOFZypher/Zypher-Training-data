@@ -15,8 +15,9 @@ All notable changes to the Zypher product package are documented here.
 
 ### Changed
 
-- Repository is now **Mega RAG Database only**
+- Repository is now **Zypher** RAG database only (chatbot, API, and fine-tuning removed)
 - Rebranded **Zypher Brain** → **Zypher** (`Zypher` class, `zypher` collection)
+- Dropped **Mega** from product naming (README, NOTICE, CLI, docs)
 - `python3 -m brain` CLI for index / retrieve / stats
 - Slimmed `requirements.txt` to RAG dependencies only
 
