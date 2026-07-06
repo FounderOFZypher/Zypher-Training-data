@@ -1,4 +1,4 @@
-"""Add documents to Zypher Brain without model retraining."""
+"""Add documents to Zypher without model retraining."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from brain.ingestion.loader import parse_markdown
 from brain.types import Document
 
 if TYPE_CHECKING:
-    from brain.brain import ZypherBrain
+    from brain.brain import Zypher
 
 
 def write_document(
@@ -55,8 +55,8 @@ def write_document(
     return parse_markdown(path)
 
 
-def ingest_file(brain: ZypherBrain, path: Path, reindex: bool = True) -> Document:
-    """Load a new file into Zypher Brain and optionally re-index it."""
+def ingest_file(brain: Zypher, path: Path, reindex: bool = True) -> Document:
+    """Load a new file into Zypher and optionally re-index it."""
     doc = parse_markdown(path)
     brain.kb.documents.append(doc)
     brain.kb.by_id[doc.doc_id] = doc
@@ -65,7 +65,7 @@ def ingest_file(brain: ZypherBrain, path: Path, reindex: bool = True) -> Documen
     return doc
 
 
-def ingest_directory(brain: ZypherBrain, directory: Path, reindex: bool = True) -> int:
+def ingest_directory(brain: Zypher, directory: Path, reindex: bool = True) -> int:
     """Ingest all markdown files from a directory."""
     count = 0
     for path in sorted(directory.rglob("*.md")):

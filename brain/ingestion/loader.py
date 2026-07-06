@@ -1,4 +1,4 @@
-"""Load markdown documents into Zypher Brain."""
+"""Load markdown documents into Zypher."""
 
 from __future__ import annotations
 
@@ -112,7 +112,7 @@ def parse_markdown(path: Path) -> Document:
 
 
 class KnowledgeBase:
-    """Primary document store for Zypher Brain."""
+    """Primary document store for Zypher."""
 
     def __init__(
         self,

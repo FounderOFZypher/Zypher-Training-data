@@ -1,4 +1,4 @@
-# Zypher Brain — curated seed documents only
+# Zypher — curated seed documents only
 
 knowledge_base:
   paths:
@@ -15,7 +15,7 @@ embeddings:
 
 vector_store:
   persist_dir: data/brain/vector_store_curated
-  collection_name: zypher_brain_curated
+  collection_name: zypher_curated
 
 graph:
   enabled: true

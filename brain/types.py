@@ -1,4 +1,4 @@
-"""Shared types for Zypher Brain."""
+"""Shared types for Zypher."""
 
 from __future__ import annotations
 

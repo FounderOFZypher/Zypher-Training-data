@@ -49,7 +49,7 @@ Run `make evaluate` to produce `benchmarks/evaluation_report.json`.
 recall@k = |retrieved[:k] ∩ relevant| / |relevant|
 ```
 
-Computed over all queries in `retrieval_gold.jsonl` using the curated Zypher Brain (`config/brain_curated.yaml`).
+Computed over all queries in `retrieval_gold.jsonl` using the curated Zypher index (`config/brain_curated.yaml`).
 
 ### Context keyword overlap
 

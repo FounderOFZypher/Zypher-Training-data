@@ -17,7 +17,7 @@ See `knowledge-base/PROVENANCE.md` for full content origin documentation.
 
 ## Project license
 
-The Zypher Brain product package is released under the **Apache License 2.0**.
+The Zypher product package is released under the **Apache License 2.0**.
 See the root [`LICENSE`](../LICENSE) file for the full legal text.
 
 ## NOTICE file

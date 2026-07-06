@@ -1,6 +1,6 @@
 # Zypher Product Quality Standards
 
-The Zypher Brain product is designed for teams paying for **value, not volume**. Every build enforces quality gates defined in `config/product.yaml`.
+The Zypher product is designed for teams paying for **value, not volume**. Every build enforces quality gates defined in `config/product.yaml`.
 
 ## Core principles
 

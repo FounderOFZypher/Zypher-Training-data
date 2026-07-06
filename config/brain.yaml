@@ -1,4 +1,4 @@
-# Zypher Brain — Mega RAG Database configuration
+# Zypher configuration
 
 knowledge_base:
   paths:
@@ -15,7 +15,7 @@ embeddings:
 
 vector_store:
   persist_dir: data/brain/vector_store
-  collection_name: zypher_brain
+  collection_name: zypher
 
 graph:
   enabled: true

@@ -1,4 +1,4 @@
-"""Zypher brain schema — document types, categories, relationships, and knowledge hubs."""
+"""Zypher schema — document types, categories, relationships, and knowledge hubs."""
 
 from __future__ import annotations
 

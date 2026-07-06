@@ -1,4 +1,4 @@
-# Zypher Mega RAG Database — Setup Guide
+# Zypher — Setup Guide
 
 Build and export the premium RAG dataset artifacts.
 

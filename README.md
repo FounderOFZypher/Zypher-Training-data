@@ -1,4 +1,4 @@
-# Zypher Enterprise-grade RAG Database
+# Zypher
 
 Enterprise-grade retrieval-augmented generation (RAG) dataset and indexing engine. Zypher delivers curated knowledge artifacts—vector-ready chunks, embeddings, graph relationships, metadata, benchmarks, and compliance tooling—designed for production RAG pipelines.
 
@@ -19,7 +19,7 @@ Zypher is a modular RAG database composed of:
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                     ZYPHER MEGA RAG DATABASE                   │
+│                            ZYPHER                                │
 │                                                                  │
 │   Knowledge Base  →  Chunks  →  Embeddings  →  Vector Index      │
 │        │              │            │              │              │
@@ -212,4 +212,4 @@ Reports are written to `benchmarks/evaluation_report.json` and `benchmarks/distr
 
 ## License
 
-Licensed under the EULA are listed in [NOTICE](NOTICE).
+Licensed under the [End User License Agreement](EULA). Third-party dependencies are listed in [NOTICE](NOTICE).

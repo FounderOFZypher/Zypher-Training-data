@@ -1,4 +1,4 @@
-"""Full retrieval pipeline for Zypher Brain."""
+"""Full retrieval pipeline for Zypher."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from brain.types import RetrievalResult, ScoredDocument
 
 def build_context(documents: list[ScoredDocument], max_chars: int = 14000) -> str:
     if not documents:
-        return "No relevant documents found in Zypher Brain."
+        return "No relevant documents found in Zypher."
 
     blocks: list[str] = []
     used = 0
@@ -36,7 +36,7 @@ def build_context(documents: list[ScoredDocument], max_chars: int = 14000) -> st
 
 class RetrievalPipeline:
     """
-    Zypher Brain retrieval flow (steps 2–7):
+    Zypher retrieval flow (steps 2–7):
 
     2. Generate embedding for user query
     3. Search vector database

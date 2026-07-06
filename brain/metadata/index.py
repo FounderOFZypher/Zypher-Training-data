@@ -1,4 +1,4 @@
-"""Metadata filter search over Zypher Brain documents."""
+"""Metadata filter search over Zypher documents."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Graph relationship traversal for Zypher Brain."""
+"""Graph relationship traversal for Zypher."""
 
 from __future__ import annotations
 

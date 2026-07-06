@@ -1,4 +1,4 @@
-"""Embedding generation for Zypher Brain."""
+"""Embedding generation for Zypher."""
 
 from __future__ import annotations
 

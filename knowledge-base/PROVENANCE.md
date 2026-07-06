@@ -1,6 +1,6 @@
 # Knowledge Base Provenance
 
-This document records the origin of content in the Zypher Brain knowledge base for
+This document records the origin of content in the Zypher knowledge base for
 commercial distribution compliance.
 
 ## Content origin

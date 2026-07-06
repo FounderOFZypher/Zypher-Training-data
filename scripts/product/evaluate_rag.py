@@ -108,7 +108,7 @@ def main() -> None:
 
     from common import ensure_workspace_path, load_knowledge_base
     ensure_workspace_path()
-    from brain.brain import ZypherBrain
+    from brain.brain import Zypher
 
     cfg = load_product_config(args.config)
     eval_cfg = cfg["evaluation"]
@@ -116,7 +116,7 @@ def main() -> None:
     top_k = int(eval_cfg.get("top_k", 8))
 
     brain_config = resolve_path(args.brain_config)
-    brain = ZypherBrain(config_path=brain_config)
+    brain = Zypher(config_path=brain_config)
     brain.index(force=True)
 
     kb = load_knowledge_base(cfg)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Example: retrieve from the Mega RAG Database."""
+"""Example: retrieve from Zypher."""
 
 from __future__ import annotations
 
@@ -8,12 +8,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from brain.brain import ZypherBrain
+from brain.brain import Zypher
 
 
 def main() -> None:
     query = sys.argv[1] if len(sys.argv) > 1 else "What is RAG for code?"
-    brain = ZypherBrain(config_path="config/brain.yaml")
+    brain = Zypher(config_path="config/brain.yaml")
     brain.index(force=False)
 
     result = brain.retrieve(query)
