@@ -9,12 +9,26 @@ from brain.types import Document, ScoredDocument
 
 
 class GraphIndex:
-    def __init__(self, kb: KnowledgeBase, max_hops: int = 2, max_extra: int = 8):
+    def __init__(
+        self,
+        kb: KnowledgeBase,
+        max_hops: int = 2,
+        max_extra: int = 8,
+        advanced_routing: bool = False,
+    ):
         self.kb = kb
         self.max_hops = max_hops
         self.max_extra = max_extra
+        self.advanced_routing = advanced_routing
+        self._router = None
+        if advanced_routing:
+            from brain.graph.neural_router import NeuralRouter
+            self._router = NeuralRouter(kb, max_hops=max_hops, max_extra=max_extra)
 
     def expand(self, seeds: list[Document]) -> list[ScoredDocument]:
+        if self._router:
+            return self._router.expand(seeds)
+
         seen = {d.doc_id for d in seeds}
         results: list[ScoredDocument] = []
         queue: deque[tuple[Document, int]] = deque((doc, 0) for doc in seeds)

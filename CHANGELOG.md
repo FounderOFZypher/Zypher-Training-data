@@ -2,6 +2,30 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.2.0] - 2026-07-07
+
+### Added — Hypercortex v2 Advanced Architecture
+
+- **`config/brain_architecture.yaml`** — Master spec: 6 cortical layers, 10 lobes, 4 memory tiers, 18 hubs
+- **`scripts/brain_architecture.py`** — Architecture loader and domain-to-lobe mapping
+- **`brain/graph/neural_router.py`** — Region-aware GraphRAG with pathway/synapse score boosts
+- **10 brain lobes** — frontal, temporal, parietal, occipital, limbic, cerebellum, hippocampus, thalamus, amygdala, brainstem
+- **6 cortical layers** — L1-sensory through L6-meta
+- **4 memory tiers** — working, episodic, semantic, procedural
+- **Inter-lobe pathways** — excitatory, inhibitory, modulatory, associative, commissural
+- **13 new neural hubs** — vector_store_cluster, agent_orchestrator, llm_inference_gateway, etc.
+- **10 advanced GraphRAG edge types** — extends, validates, synthesizes, triggers, etc.
+- **`data/brain/architecture-manifest.json`** — Live architecture registry
+- **`docs/architecture/hypercortex-v2.md`** — Full architecture reference
+- **`make living-brain-advanced`** — Full Hypercortex bootstrap command
+- Enhanced `brain pulse` — reports lobes, pathways, cortex layers, graph density
+
+### Changed
+
+- Graph routing: 4 hops, 16 max chunks, advanced_routing enabled by default
+- `KNOWLEDGE_HUBS` expanded from 5 → 18
+- `RELATIONSHIP_TYPES` expanded from 10 → 20
+
 ## [4.1.0] - 2026-07-07
 
 ### Added — Coltex Living Brain

@@ -1,28 +1,35 @@
-# Coltex Living Brain
+# Coltex Hypercortex — Living Brain v2
 
-The largest connected RAG knowledge brain — domains, hubs, synapses, and graph-linked documents.
+The most advanced connected RAG knowledge architecture: **6 cortical layers**, **10 brain lobes**, **4 memory tiers**, **18 neural hubs**, and **millions of graph edges**.
 
-## Grow the brain
+## Architecture
+```
+living-brain/
+├── cortex/L1-sensory … L6-meta    # 6 cortical layers
+├── lobes/frontal, temporal, …     # 10 functional lobes
+├── domains/                       # 62+ technology domains
+├── hubs/                          # 18 neural clusters
+├── synapses/                      # Hub-to-hub links
+├── pathways/                      # Lobe-to-lobe routes
+├── memory/working|episodic|…      # 4 memory tiers
+├── hippocampus/                   # Long-term consolidation
+├── cerebellum/                    # CI/CD motor coordination
+├── brainstem/                     # Autonomic ops
+├── thalamus/                      # Query relay
+├── amygdala/                      # Priority routing
+└── reflexes/                      # Instant-recall FAQs
+```
+
+## Grow
 ```bash
-make living-brain              # scaffold folders + synapses + neural map
-make living-brain-grow COUNT=500   # add 500 domain documents
-make living-brain-mega         # 10,000 documents across all domains
+make living-brain-advanced         # Full Hypercortex bootstrap
+make living-brain-grow COUNT=1000  # Add domain documents
+make living-brain-mega             # 10,000 documents
 ```
 
 ## Query
 ```bash
 make index
-python3 -m brain retrieve "How does GraphRAG traverse synapses?" --context
 python3 -m brain pulse
-```
-
-## Structure
-```
-living-brain/
-├── domains/     # 30+ technology domains
-├── hubs/        # Neural clusters (auth, GraphRAG, indexing…)
-├── synapses/    # Cross-domain graph links
-├── cortex/      # Brain meta-layer
-├── memory/      # Episodic knowledge
-└── reflexes/    # Fast-path operational docs
+python3 -m brain retrieve "Explain Hypercortex pathway routing" --context
 ```

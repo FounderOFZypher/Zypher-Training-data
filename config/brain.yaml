@@ -1,4 +1,4 @@
-# Coltex configuration — Living Brain
+# Coltex configuration — Advanced Living Brain (Hypercortex v2)
 
 knowledge_base:
   paths:
@@ -20,18 +20,24 @@ vector_store:
 
 graph:
   enabled: true
-  max_hops: 3
-  max_extra_chunks: 12
+  advanced_routing: true
+  max_hops: 4
+  max_extra_chunks: 16
 
 retrieval:
-  vector_top_k: 12
-  metadata_top_k: 10
-  final_top_k: 10
-  max_context_chars: 16000
+  vector_top_k: 15
+  metadata_top_k: 12
+  final_top_k: 12
+  max_context_chars: 20000
   source_weights:
     vector: 1.0
-    metadata: 0.85
-    graph: 0.70
+    metadata: 0.88
+    graph: 0.75
+
+architecture:
+  config_path: config/brain_architecture.yaml
+  codename: hypercortex
+  version: "2.0"
 
 document_types:
   - documentation
@@ -55,6 +61,8 @@ document_types:
   - deep_dive
   - anti_patterns
   - case_study
+  - neural_pathway
+  - synapse_map
 
 relationship_types:
   - depends_on
@@ -66,6 +74,13 @@ relationship_types:
   - fixes
   - replaces
   - see_also
+  - extends
+  - validates
+  - synthesizes
+  - triggers
+  - derived_from
+  - tested_by
+  - deployed_via
 
 knowledge_hubs:
   - auth_service
@@ -73,4 +88,16 @@ knowledge_hubs:
   - graphrag_engine
   - payment_service
   - ci_cd_platform
+  - vector_store_cluster
+  - embedding_service
+  - agent_orchestrator
+  - observability_stack
+  - rag_retrieval_core
+  - security_operations
+  - data_pipeline
+  - llm_inference_gateway
+  - knowledge_graph_store
+  - incident_command
+  - ml_training_pipeline
+  - api_gateway
   - coltex_living_brain

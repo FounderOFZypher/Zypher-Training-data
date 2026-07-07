@@ -21,6 +21,15 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from brain_schema import CATEGORIES, KNOWLEDGE_HUBS
+from brain_architecture import (
+    PATHWAY_TYPES,
+    brain_lobes,
+    cortex_layers,
+    domain_to_lobe,
+    hub_registry,
+    load_architecture,
+    memory_tiers,
+)
 from corpus_templates import TOPICS
 from expand_curated_kb import (
     CURATED_DOC_TYPES,
@@ -34,6 +43,75 @@ from generate_corpus import build_document
 
 LIVING_ROOT = ROOT / "knowledge-base" / "living-brain"
 NEURAL_MAP_PATH = ROOT / "data" / "brain" / "neural-map.json"
+ARCHITECTURE_PATH = ROOT / "data" / "brain" / "architecture-manifest.json"
+
+PATHWAY_TEMPLATE = """---
+id: PATHWAY-{pathway_id}
+title: "Neural Pathway: {source_lobe} → {target_lobe} ({pathway_type})"
+doc_type: neural_pathway
+category: graphrag
+hub: coltex_living_brain
+lobe_source: {source_lobe}
+lobe_target: {target_lobe}
+pathway_type: {pathway_type}
+tags: [pathway, {pathway_type}, {source_lobe}, {target_lobe}]
+related: [{source_anchor}, {target_anchor}]
+see_also: [{source_anchor}, {target_anchor}]
+synthesizes: [{source_anchor}]
+---
+
+# Neural Pathway: {source_lobe} → {target_lobe}
+
+**Type:** `{pathway_type}` · **Tier:** association layer
+
+## Route
+Documents in lobe `{source_lobe}` connect to lobe `{target_lobe}` via this commissural pathway.
+
+## Traversal weight
+| Pathway type | Graph boost |
+|--------------|-------------|
+| excitatory | +15% retrieval score |
+| inhibitory | suppresses conflicts |
+| modulatory | adjusts rerank |
+| associative | default cross-link |
+| commissural | inter-lobe bridge |
+
+## Anchors
+- Source: `{source_anchor}` ({source_lobe})
+- Target: `{target_anchor}` ({target_lobe})
+
+## Coltex Hypercortex
+Advanced neural routing (`NeuralRouter`) boosts documents in `/pathways/` during GraphRAG expansion.
+"""
+
+HUB_ANCHOR_TEMPLATE = """---
+id: HUB-{hub_slug_upper}
+title: "Neural Hub: {hub_title}"
+doc_type: architecture_decision
+category: {category}
+hub: {hub_slug}
+lobe: {lobe}
+tags: [hub, neural-cluster, {hub_slug}]
+see_also: [CORTEX-00001]
+---
+
+# {hub_title}
+
+Central neural hub for the Coltex Living Brain.
+
+## Components
+{components}
+
+## Lobe assignment
+**{lobe}** lobe · tier `{tier}`
+
+## Document types in this hub
+{doc_types}
+
+## GraphRAG
+All documents with `hub: {hub_slug}` form a traversable cluster.
+Synapses and pathways connect this hub to other neural clusters.
+"""
 
 DOMAIN_README = """# {name} Domain
 
@@ -100,42 +178,86 @@ to surface related knowledge across domain boundaries.
 
 
 def _ensure_structure() -> dict[str, Path]:
-    """Create living-brain folder tree."""
+    """Create advanced living-brain folder tree (Hypercortex v2)."""
+    cfg = load_architecture()
     dirs: dict[str, Path] = {
         "root": LIVING_ROOT,
         "domains": LIVING_ROOT / "domains",
         "hubs": LIVING_ROOT / "hubs",
         "synapses": LIVING_ROOT / "synapses",
+        "pathways": LIVING_ROOT / "pathways",
         "cortex": LIVING_ROOT / "cortex",
         "memory": LIVING_ROOT / "memory",
         "reflexes": LIVING_ROOT / "reflexes",
+        "lobes": LIVING_ROOT / "lobes",
+        "hippocampus": LIVING_ROOT / "hippocampus",
+        "cerebellum": LIVING_ROOT / "cerebellum",
+        "brainstem": LIVING_ROOT / "brainstem",
+        "thalamus": LIVING_ROOT / "thalamus",
+        "amygdala": LIVING_ROOT / "amygdala",
     }
-    for key, path in dirs.items():
+    for key, path in list(dirs.items()):
+        if key in ("root",):
+            continue
         path.mkdir(parents=True, exist_ok=True)
 
-    # Domain folders from priority categories
-    priority = [
-        "rag", "graphrag", "agentic", "vector_stores", "embeddings", "retrieval",
-        "python", "java", "javascript", "typescript", "go", "rust", "sql",
-        "postgresql", "mongodb", "redis", "docker", "kubernetes",
-        "aws", "azure", "gcp", "microservices", "security", "architecture",
-        "api_design", "ci_cd", "testing", "observability", "performance",
-        "fine_tuning", "data_quality", "incidents", "mlops",
-    ]
+    # Cortical layers L1–L6
+    for layer in cortex_layers(cfg):
+        layer_path = LIVING_ROOT / layer.path
+        layer_path.mkdir(parents=True, exist_ok=True)
+        readme = layer_path / "README.md"
+        if not readme.exists():
+            readme.write_text(
+                f"# Cortex {layer.slug}\n\n**Role:** {layer.role}\n\n**Latency target:** {layer.latency_ms}ms\n",
+                encoding="utf-8",
+            )
+
+    # Brain lobes
+    lobe_paths: dict[str, Path] = {}
+    for lobe in brain_lobes(cfg):
+        lp = LIVING_ROOT / lobe.path
+        lp.mkdir(parents=True, exist_ok=True)
+        lobe_paths[lobe.slug] = lp
+        readme = lp / "README.md"
+        if not readme.exists():
+            domains = ", ".join(lobe.domains) or "cross-domain"
+            readme.write_text(
+                f"# {lobe.slug.title()} Lobe\n\n**Role:** {lobe.role}\n\n**Domains:** {domains}\n",
+                encoding="utf-8",
+            )
+
+    # Memory tiers
+    for tier in memory_tiers(cfg):
+        mp = LIVING_ROOT / tier.path
+        mp.mkdir(parents=True, exist_ok=True)
+        readme = mp / "README.md"
+        if not readme.exists():
+            cap = tier.capacity_docs or "unlimited"
+            readme.write_text(
+                f"# Memory: {tier.slug}\n\n**Role:** {tier.role}\n\n**Capacity:** {cap} docs\n",
+                encoding="utf-8",
+            )
+
+    # Domain folders — all categories + lobe-mapped domains
+    d2l = domain_to_lobe(cfg)
+    all_domains = sorted(set(list(d2l.keys()) + list(CATEGORIES)))
     domain_paths: dict[str, Path] = {}
-    for cat in priority:
+    for cat in all_domains:
         d = dirs["domains"] / cat
         d.mkdir(parents=True, exist_ok=True)
         readme = d / "README.md"
+        lobe = d2l.get(cat, "general")
         if not readme.exists():
             readme.write_text(
-                DOMAIN_README.format(name=cat.replace("_", " ").title(), category=cat),
+                DOMAIN_README.format(name=cat.replace("_", " ").title(), category=cat)
+                + f"\n\n**Lobe:** `{lobe}`\n",
                 encoding="utf-8",
             )
         domain_paths[cat] = d
 
     # Hub folders
     hub_paths: dict[str, Path] = {}
+    registry = {e.slug: e for e in hub_registry(cfg)}
     for hub in KNOWLEDGE_HUBS:
         h = dirs["hubs"] / hub.slug
         h.mkdir(parents=True, exist_ok=True)
@@ -143,61 +265,69 @@ def _ensure_structure() -> dict[str, Path]:
         if not readme.exists():
             components = "\n".join(f"- {c}" for c in hub.components)
             doc_types = ", ".join(hub.doc_types)
+            entry = registry.get(hub.slug)
+            lobe_info = f"\n\n**Lobe:** `{entry.lobe}` · **Tier:** `{entry.tier}`" if entry else ""
             readme.write_text(
                 HUB_README.format(
                     title=hub.title,
                     slug=hub.slug,
                     components=components,
                     doc_types=doc_types,
-                ),
+                )
+                + lobe_info,
                 encoding="utf-8",
             )
         hub_paths[hub.slug] = h
 
-    # Cortex manifest (brain identity)
-    cortex_manifest = dirs["cortex"] / "BRAIN_IDENTITY.md"
+    cortex_manifest = dirs["cortex"] / "L6-meta" / "BRAIN_IDENTITY.md"
+    cortex_manifest.parent.mkdir(parents=True, exist_ok=True)
     if not cortex_manifest.exists():
-        cortex_manifest.write_text(
-            _cortex_identity(),
-            encoding="utf-8",
-        )
+        cortex_manifest.write_text(_cortex_identity(), encoding="utf-8")
 
     root_readme = LIVING_ROOT / "README.md"
-    if not root_readme.exists():
-        root_readme.write_text(_living_brain_readme(), encoding="utf-8")
+    root_readme.write_text(_living_brain_readme(), encoding="utf-8")
 
     dirs["domain_paths"] = domain_paths  # type: ignore
     dirs["hub_paths"] = hub_paths  # type: ignore
+    dirs["lobe_paths"] = lobe_paths  # type: ignore
     return dirs
 
 
 def _cortex_identity() -> str:
     return """---
 id: CORTEX-00001
-title: Coltex Living Brain Identity
+title: Coltex Hypercortex — Living Brain Identity
 doc_type: deep_dive
 category: rag
 hub: coltex_living_brain
-tags: [cortex, identity, living-brain]
+lobe: frontal
+tags: [cortex, identity, living-brain, hypercortex]
 ---
 
-# Coltex Living Brain
+# Coltex Hypercortex v2
 
-The cortex is the meta-layer of Coltex — it defines what this brain *is*.
+The cortex is the meta-layer of Coltex — a **multi-tier neural architecture** for the world's largest connected RAG knowledge brain.
 
-## Purpose
-Coltex is a **living knowledge brain**: documents, synapses, hubs, and domains
-that grow procedurally and connect via typed graph edges.
+## Architecture tiers
+| Tier | Regions |
+|------|---------|
+| Sensory (L1) | Raw ingestion, chunk signals |
+| Association (L2-L4) | Domain linking, hub assignment, GraphRAG |
+| Executive (L5-L6) | Context assembly, meta-reasoning |
+| Autonomic | Reflexes, brainstem, always-on runbooks |
 
-## Anatomy
-| Region | Path | Role |
-|--------|------|------|
-| Domains | `domains/` | Category-organized knowledge (RAG, K8s, Python…) |
-| Hubs | `hubs/` | Service-level clusters (auth, indexing, GraphRAG…) |
-| Synapses | `synapses/` | Cross-hub neural links |
-| Cortex | `cortex/` | Meta-reasoning and brain identity |
-| Memory | `memory/` | Long-horizon episodic knowledge |
-| Reflexes | `reflexes/` | Fast-path FAQs and runbooks |
+## Brain lobes
+| Lobe | Role |
+|------|------|
+| Frontal | ADRs, agentic, architecture |
+| Temporal | RAG, embeddings, LLM |
+| Parietal | SQL, vectors, indexing |
+| Occipital | Observability, MLOps |
+| Limbic | Security, memory, incidents |
+| Cerebellum | CI/CD, automation |
+| Hippocampus | Long-term memory consolidation |
+| Thalamus | Query routing, GraphRAG relay |
+| Amygdala | Priority alerts, SLA breaches |
 
 ## Pulse
 ```bash
@@ -208,33 +338,40 @@ make living-brain-pulse
 
 
 def _living_brain_readme() -> str:
-    return """# Coltex Living Brain
+    return """# Coltex Hypercortex — Living Brain v2
 
-The largest connected RAG knowledge brain — domains, hubs, synapses, and graph-linked documents.
+The most advanced connected RAG knowledge architecture: **6 cortical layers**, **10 brain lobes**, **4 memory tiers**, **18 neural hubs**, and **millions of graph edges**.
 
-## Grow the brain
+## Architecture
+```
+living-brain/
+├── cortex/L1-sensory … L6-meta    # 6 cortical layers
+├── lobes/frontal, temporal, …     # 10 functional lobes
+├── domains/                       # 62+ technology domains
+├── hubs/                          # 18 neural clusters
+├── synapses/                      # Hub-to-hub links
+├── pathways/                      # Lobe-to-lobe routes
+├── memory/working|episodic|…      # 4 memory tiers
+├── hippocampus/                   # Long-term consolidation
+├── cerebellum/                    # CI/CD motor coordination
+├── brainstem/                     # Autonomic ops
+├── thalamus/                      # Query relay
+├── amygdala/                      # Priority routing
+└── reflexes/                      # Instant-recall FAQs
+```
+
+## Grow
 ```bash
-make living-brain              # scaffold folders + synapses + neural map
-make living-brain-grow COUNT=500   # add 500 domain documents
-make living-brain-mega         # 10,000 documents across all domains
+make living-brain-advanced         # Full Hypercortex bootstrap
+make living-brain-grow COUNT=1000  # Add domain documents
+make living-brain-mega             # 10,000 documents
 ```
 
 ## Query
 ```bash
 make index
-python3 -m brain retrieve "How does GraphRAG traverse synapses?" --context
 python3 -m brain pulse
-```
-
-## Structure
-```
-living-brain/
-├── domains/     # 30+ technology domains
-├── hubs/        # Neural clusters (auth, GraphRAG, indexing…)
-├── synapses/    # Cross-domain graph links
-├── cortex/      # Brain meta-layer
-├── memory/      # Episodic knowledge
-└── reflexes/    # Fast-path operational docs
+python3 -m brain retrieve "Explain Hypercortex pathway routing" --context
 ```
 """
 
@@ -362,6 +499,165 @@ Reflexes are fast-recall nodes — optimized for common queries during brain pul
     return {"reflexes_written": written, "dry_run": dry_run}
 
 
+def wire_pathways(dry_run: bool = False) -> dict:
+    """Create inter-lobe neural pathway documents."""
+    structure = _ensure_structure()
+    pathway_dir: Path = structure["pathways"]
+    lobes = brain_lobes()
+    written = 0
+
+    for i, source in enumerate(lobes):
+        for j, target in enumerate(lobes):
+            if source.slug == target.slug:
+                continue
+            pathway_type = PATHWAY_TYPES[(i + j) % len(PATHWAY_TYPES)]
+            pid = f"{i:02d}{j:02d}"
+            source_anchor = f"LOBE-{source.slug.upper()}"
+            target_anchor = f"LOBE-{target.slug.upper()}"
+            content = PATHWAY_TEMPLATE.format(
+                pathway_id=pid,
+                source_lobe=source.slug,
+                target_lobe=target.slug,
+                pathway_type=pathway_type,
+                source_anchor=source_anchor,
+                target_anchor=target_anchor,
+            )
+            path = pathway_dir / f"PATHWAY-{pid}-{source.slug}-to-{target.slug}.md"
+            if not dry_run:
+                path.write_text(content, encoding="utf-8")
+            written += 1
+
+    return {"pathways_written": written, "dry_run": dry_run}
+
+
+def seed_hub_anchors(dry_run: bool = False) -> dict:
+    """Anchor document per neural hub."""
+    structure = _ensure_structure()
+    registry = {e.slug: e for e in hub_registry()}
+    written = 0
+
+    for hub in KNOWLEDGE_HUBS:
+        entry = registry.get(hub.slug)
+        lobe = entry.lobe if entry else "frontal"
+        tier = entry.tier if entry else "association"
+        components = "\n".join(f"- {c}" for c in hub.components)
+        doc_types = ", ".join(hub.doc_types)
+        content = HUB_ANCHOR_TEMPLATE.format(
+            hub_slug_upper=hub.slug.upper().replace("-", "_"),
+            hub_title=hub.title,
+            hub_slug=hub.slug,
+            category=hub.category,
+            lobe=lobe,
+            tier=tier,
+            components=components,
+            doc_types=doc_types,
+        )
+        path = structure["hub_paths"][hub.slug] / f"HUB-ANCHOR-{hub.slug}.md"  # type: ignore
+        if not dry_run:
+            path.write_text(content, encoding="utf-8")
+        written += 1
+
+    return {"hub_anchors_written": written, "dry_run": dry_run}
+
+
+def seed_cortex_layers(dry_run: bool = False) -> dict:
+    """One architecture blueprint per cortical layer."""
+    cfg = load_architecture()
+    written = 0
+    for i, layer in enumerate(cortex_layers(cfg)):
+        content = f"""---
+id: CORTEX-L{i + 1}
+title: "Cortical Layer {layer.slug}"
+doc_type: architecture_decision
+category: rag
+hub: coltex_living_brain
+tags: [cortex, {layer.slug}, hypercortex]
+---
+
+# Cortical Layer: {layer.slug}
+
+**Role:** {layer.role}
+
+## Processing latency target
+{layer.latency_ms}ms
+
+## Path
+`{layer.path}`
+
+## Integration
+Layer {layer.slug} feeds forward into the next cortical layer during retrieval pipeline execution.
+Documents stored here carry elevated GraphRAG boost during neural routing.
+"""
+        layer_path = LIVING_ROOT / layer.path / f"CORTEX-LAYER-{layer.slug}.md"
+        if not dry_run:
+            layer_path.write_text(content, encoding="utf-8")
+        written += 1
+    return {"cortex_layers_written": written, "dry_run": dry_run}
+
+
+def seed_memory_samples(dry_run: bool = False) -> dict:
+    """Seed sample documents in each memory tier."""
+    written = 0
+    samples = [
+        ("working", "Active query context buffer", "working memory for current retrieval session"),
+        ("episodic", "Incident timeline 2026-07-07", "episodic record of indexing pipeline degradation"),
+        ("semantic", "GraphRAG edge type taxonomy", "stable semantic fact about relationship types"),
+        ("procedural", "Index rebuild runbook", "procedural steps for full brain reindex"),
+    ]
+    for tier_slug, title, body in samples:
+        for tier in memory_tiers():
+            if tier.slug != tier_slug:
+                continue
+            content = f"""---
+id: MEMORY-{tier_slug.upper()}
+title: "{title}"
+doc_type: guide
+category: memory
+hub: coltex_living_brain
+memory_tier: {tier_slug}
+tags: [memory, {tier_slug}]
+---
+
+# {title}
+
+{body}
+
+## Memory tier: {tier_slug}
+**Role:** {tier.role}
+"""
+            path = LIVING_ROOT / tier.path / f"MEMORY-{tier_slug}-sample.md"
+            if not dry_run:
+                path.write_text(content, encoding="utf-8")
+            written += 1
+    return {"memory_samples_written": written, "dry_run": dry_run}
+
+
+def build_architecture_manifest() -> dict:
+    """Write architecture-manifest.json alongside neural-map."""
+    cfg = load_architecture()
+    arch = cfg.get("architecture", {})
+    manifest = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "codename": arch.get("codename", "hypercortex"),
+        "version": arch.get("version", "2.0"),
+        "cortex_layers": len(cortex_layers(cfg)),
+        "lobes": len(brain_lobes(cfg)),
+        "memory_tiers": len(memory_tiers(cfg)),
+        "hubs": len(KNOWLEDGE_HUBS),
+        "pathway_types": len(PATHWAY_TYPES),
+        "relationship_types": len(cfg.get("relationship_types", {}).get("core", []))
+        + len(cfg.get("relationship_types", {}).get("advanced", [])),
+        "scale_targets": cfg.get("scale", {}),
+        "lobe_registry": [
+            {"slug": l.slug, "domains": list(l.domains), "role": l.role}
+            for l in brain_lobes(cfg)
+        ],
+    }
+    ARCHITECTURE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ARCHITECTURE_PATH.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return manifest
+
+
 def build_neural_map() -> dict:
     """Scan entire knowledge base and write neural-map.json manifest."""
     kb_root = ROOT / "knowledge-base"
@@ -371,16 +667,35 @@ def build_neural_map() -> dict:
     total = 0
     synapses = 0
     reflexes = 0
+    pathways = 0
+    lobes: dict[str, int] = {}
+    cortex_layer_counts: dict[str, int] = {}
+    memory_counts: dict[str, int] = {}
 
     for path in kb_root.rglob("*.md"):
         if "_excluded" in path.parts or "_seed" in path.parts:
             continue
         total += 1
-        if "synapses" in path.parts:
+        parts = path.parts
+        if "synapses" in parts:
             synapses += 1
-        if "reflexes" in path.parts:
+        if "reflexes" in parts:
             reflexes += 1
-        if "domains" in path.parts:
+        if "pathways" in parts:
+            pathways += 1
+        if "lobes" in parts:
+            idx = parts.index("lobes") if "lobes" in parts else -1
+            if idx >= 0 and idx + 1 < len(parts):
+                lobes[parts[idx + 1]] = lobes.get(parts[idx + 1], 0) + 1
+        if "cortex" in parts:
+            for p in parts:
+                if p.startswith("L") and "-" in p:
+                    cortex_layer_counts[p] = cortex_layer_counts.get(p, 0) + 1
+        if "memory" in parts:
+            idx = list(parts).index("memory") if "memory" in parts else -1
+            if idx >= 0 and idx + 1 < len(parts):
+                memory_counts[parts[idx + 1]] = memory_counts.get(parts[idx + 1], 0) + 1
+        if "domains" in parts:
             parts = path.parts
             idx = parts.index("domains")
             if idx + 1 < len(parts):
@@ -405,43 +720,59 @@ def build_neural_map() -> dict:
 
     manifest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "brain": "coltex-living-brain",
+        "brain": "coltex-hypercortex",
+        "architecture_version": "2.0",
+        "codename": "hypercortex",
         "total_documents": total,
         "domains": domains,
         "domain_count": len(domains),
         "hubs": hubs,
         "hub_count": len(hubs),
+        "lobes": lobes,
+        "lobe_count": len(lobes),
+        "cortex_layers": cortex_layer_counts,
+        "memory_tiers": memory_counts,
         "doc_types": doc_types,
         "synapses": synapses,
+        "pathways": pathways,
         "reflexes": reflexes,
         "categories_available": len(CATEGORIES),
         "topics_available": len(TOPICS),
+        "hubs_registered": len(KNOWLEDGE_HUBS),
     }
 
     NEURAL_MAP_PATH.parent.mkdir(parents=True, exist_ok=True)
     NEURAL_MAP_PATH.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    build_architecture_manifest()
     return manifest
+
+
+def bootstrap_advanced(grow: int = 500, dry_run: bool = False) -> dict:
+    """Hypercortex v2 full bootstrap."""
+    _ensure_structure()
+    grow_stats = grow_domains(grow, dry_run=dry_run) if grow > 0 else {}
+    return {
+        "bootstrap": "hypercortex-v2",
+        "structure": True,
+        "grow": grow_stats,
+        "synapses": wire_synapses(dry_run=dry_run),
+        "pathways": wire_pathways(dry_run=dry_run),
+        "hub_anchors": seed_hub_anchors(dry_run=dry_run),
+        "cortex_layers": seed_cortex_layers(dry_run=dry_run),
+        "memory": seed_memory_samples(dry_run=dry_run),
+        "reflexes": seed_reflexes(dry_run=dry_run),
+        "neural_map": {
+            "total_documents": build_neural_map().get("total_documents") if not dry_run else 0,
+            "path": str(NEURAL_MAP_PATH),
+            "architecture_manifest": str(ARCHITECTURE_PATH),
+        },
+        "dry_run": dry_run,
+    }
 
 
 def bootstrap(grow: int = 300, dry_run: bool = False) -> dict:
     """Full living brain bootstrap: structure + grow + synapses + reflexes + map."""
-    _ensure_structure()
-    grow_stats = grow_domains(grow, dry_run=dry_run) if grow > 0 else {}
-    synapse_stats = wire_synapses(dry_run=dry_run)
-    reflex_stats = seed_reflexes(dry_run=dry_run)
-    neural_map = build_neural_map() if not dry_run else {}
-    return {
-        "bootstrap": True,
-        "grow": grow_stats,
-        "synapses": synapse_stats,
-        "reflexes": reflex_stats,
-        "neural_map": {
-            "total_documents": neural_map.get("total_documents"),
-            "domain_count": neural_map.get("domain_count"),
-            "path": str(NEURAL_MAP_PATH),
-        },
-        "dry_run": dry_run,
-    }
+    return bootstrap_advanced(grow=grow, dry_run=dry_run)
 
 
 def main() -> None:
@@ -461,10 +792,21 @@ def main() -> None:
     sub.add_parser("reflexes", help="Seed reflex FAQs")
     sub.add_parser("map", help="Rebuild neural-map.json")
 
+    sub.add_parser("pathways", help="Wire inter-lobe neural pathways")
+    sub.add_parser("hubs", help="Seed hub anchor documents")
+    sub.add_parser("cortex", help="Seed cortical layer blueprints")
+    sub.add_parser("memory", help="Seed memory tier samples")
+
+    p_adv = sub.add_parser("advanced", help="Full Hypercortex v2 bootstrap")
+    p_adv.add_argument("--grow", type=int, default=500)
+    p_adv.add_argument("--dry-run", action="store_true")
+
     args = parser.parse_args()
 
     if args.command == "bootstrap":
         result = bootstrap(grow=args.grow, dry_run=args.dry_run)
+    elif args.command == "advanced":
+        result = bootstrap_advanced(grow=args.grow, dry_run=args.dry_run)
     elif args.command == "grow":
         _ensure_structure()
         result = grow_domains(args.count, dry_run=args.dry_run)
@@ -480,6 +822,18 @@ def main() -> None:
         result["neural_map"] = build_neural_map()
     elif args.command == "map":
         result = build_neural_map()
+    elif args.command == "pathways":
+        result = wire_pathways()
+        result["neural_map"] = build_neural_map()
+    elif args.command == "hubs":
+        result = seed_hub_anchors()
+        result["neural_map"] = build_neural_map()
+    elif args.command == "cortex":
+        result = seed_cortex_layers()
+        result["neural_map"] = build_neural_map()
+    elif args.command == "memory":
+        result = seed_memory_samples()
+        result["neural_map"] = build_neural_map()
     else:
         result = {"error": "unknown command"}
 

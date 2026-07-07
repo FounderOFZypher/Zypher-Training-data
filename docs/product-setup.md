@@ -12,9 +12,9 @@ pip install -r requirements.txt
 ## Bootstrap the living brain
 
 ```bash
-make living-brain                 # 300 domain docs + synapses + neural map
-make living-brain-grow COUNT=500  # grow further
-make living-brain-mega            # 10,000 documents
+make living-brain-advanced          # Hypercortex v2: 500 docs + pathways + hubs
+make living-brain-grow COUNT=1000   # grow further
+make living-brain-mega              # 10,000 documents
 ```
 
 ## Index and query

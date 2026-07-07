@@ -22,6 +22,16 @@ RELATIONSHIP_FIELDS = (
     "fixes",
     "replaces",
     "see_also",
+    "extends",
+    "validates",
+    "contradicts",
+    "synthesizes",
+    "triggers",
+    "inhibits",
+    "supersedes",
+    "derived_from",
+    "tested_by",
+    "deployed_via",
 )
 
 SUPPORTED_DOC_TYPES = frozenset({

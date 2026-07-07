@@ -1,42 +1,53 @@
 # Coltex
 
-**The Living Brain** — the largest connected RAG knowledge dataset with hybrid retrieval, graph-linked domains, neural hubs, and procedural growth to unlimited scale.
+**Hypercortex v2 — The Living Brain** — the most advanced connected RAG knowledge architecture on earth. Six cortical layers, ten brain lobes, eighteen neural hubs, four memory tiers, and procedural growth to unlimited scale.
 
-Coltex is not a SaaS platform. It is a **living knowledge brain**: hundreds of domain folders, thousands of graph-linked documents, synapses between neural hubs, and an export pipeline that packages the entire corpus for commercial distribution.
+Coltex is a **living knowledge brain**: 62+ domain folders, thousands of graph-linked documents, inter-lobe pathways, synapses, and a premium export pipeline for commercial distribution.
 
 ---
 
-## What Is the Living Brain?
+## Hypercortex Architecture
 
 ```
-                    ┌─────────────────────────────────┐
-                    │         COLTEX CORTEX           │
-                    │    (meta-reasoning layer)       │
-                    └───────────────┬─────────────────┘
-                                    │
-        ┌───────────────────────────┼───────────────────────────┐
-        ▼                           ▼                           ▼
-  ┌───────────┐              ┌───────────┐              ┌───────────┐
-  │  DOMAINS  │◄──synapse──►│   HUBS    │◄──synapse──►│  REFLEXES │
-  │ 30+ tech  │              │  neural   │              │ fast FAQ  │
-  │ categories│              │ clusters  │              │           │
-  └─────┬─────┘              └─────┬─────┘              └───────────┘
-        │                          │
-        └──────────┬───────────────┘
-                   ▼
-         Vector Index + GraphRAG + Metadata
-                   ▼
-              brain retrieve / pulse
+                         ┌─── L6 Meta (Brain Identity) ───┐
+                         │   L5 Executive (Reranking)     │
+                         │   L4 Reasoning (GraphRAG)      │
+                         │   L3 Integration (Hubs)        │
+                         │   L2 Association (Metadata)    │
+                         │   L1 Sensory (Ingestion)       │
+                         └───────────────┬────────────────┘
+                                         │
+     ┌───────────┬───────────┬───────────┼───────────┬───────────┐
+     ▼           ▼           ▼           ▼           ▼           ▼
+  Frontal    Temporal    Parietal   Occipital    Limbic    Cerebellum
+     │           │           │           │           │           │
+     └───────────┴───────────┴─────► Thalamus ◄──────┴───────────┘
+                                   Amygdala
+                                         │
+              ┌──────────────────────────┼──────────────────────────┐
+              ▼                          ▼                          ▼
+         62+ Domains              18 Neural Hubs            4 Memory Tiers
+              │                          │                          │
+              └──────────► Synapses + Pathways ◄───────────────────┘
+                                   │
+                    Vector + Metadata + NeuralRouter GraphRAG
+                                   │
+                          brain retrieve / pulse
 ```
 
 | Region | Path | Purpose |
 |--------|------|---------|
-| **Domains** | `knowledge-base/living-brain/domains/` | Category-organized docs (RAG, K8s, Python, security…) |
-| **Hubs** | `living-brain/hubs/` | Service clusters (auth, GraphRAG, indexing…) |
-| **Synapses** | `living-brain/synapses/` | Cross-hub neural graph links |
-| **Cortex** | `living-brain/cortex/` | Brain identity and meta-layer |
-| **Memory** | `living-brain/memory/` | Long-horizon episodic knowledge |
+| **Cortex L1–L6** | `living-brain/cortex/` | Six-layer processing stack |
+| **Lobes** | `living-brain/lobes/` | Frontal, temporal, parietal, occipital, limbic |
+| **Domains** | `living-brain/domains/` | 62+ technology categories |
+| **Hubs** | `living-brain/hubs/` | 18 neural service clusters |
+| **Synapses** | `living-brain/synapses/` | Hub-to-hub graph links |
+| **Pathways** | `living-brain/pathways/` | Inter-lobe neural routes |
+| **Memory** | `living-brain/memory/` | Working, episodic, semantic, procedural |
+| **Hippocampus** | `living-brain/hippocampus/` | Long-term consolidation |
 | **Reflexes** | `living-brain/reflexes/` | Instant-recall FAQs |
+
+Full reference: [docs/architecture/hypercortex-v2.md](docs/architecture/hypercortex-v2.md)
 
 ---
 
@@ -46,12 +57,11 @@ Coltex is not a SaaS platform. It is a **living knowledge brain**: hundreds of d
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# Bootstrap the living brain (folders + 300 domain docs + synapses)
-make living-brain
+# Bootstrap Hypercortex v2 (500 docs + pathways + hub anchors + cortex layers)
+make living-brain-advanced
 
-# Index and query
 make index
-python3 -m brain retrieve "What is GraphRAG?" --context
+python3 -m brain retrieve "Explain Hypercortex pathway routing" --context
 python3 -m brain pulse
 ```
 
@@ -61,115 +71,68 @@ python3 -m brain pulse
 
 | Command | Output |
 |---------|--------|
-| `make living-brain` | Scaffold + 300 domain docs + synapses + neural map |
-| `make living-brain-grow COUNT=500` | Add 500 docs across all domains |
-| `make living-brain-mega` | **10,000** documents across 30+ domains |
-| `make expand-curated-kb COUNT=200` | High-quality CHUNK docs at KB root |
+| `make living-brain-advanced` | Full Hypercortex: 500 docs + pathways + 18 hub anchors |
+| `make living-brain-grow COUNT=1000` | Add 1,000 domain documents |
+| `make living-brain-mega` | **10,000** documents |
 | `make generate-mega` | 100,000 procedural documents |
 | `make generate-ultra` | 1,000,000 documents |
-| `make generate-hyper` | Uncapped streaming (604T+ combinations) |
+| `make generate-hyper` | Uncapped (604T+ combinations) |
 
-```bash
-# Check brain vitals anytime
-make living-brain-pulse
-python3 -m brain pulse
-```
-
-Neural map manifest: `data/brain/neural-map.json`
+Manifests: `data/brain/neural-map.json` · `data/brain/architecture-manifest.json`
 
 ---
 
-## Retrieval Engine
+## Advanced Retrieval
 
-Hybrid RAG pipeline in `brain/`:
+Hypercortex enables **NeuralRouter** — region-aware GraphRAG with:
 
-1. Query embedding (MiniLM)
-2. Vector search (ChromaDB)
-3. Metadata filtering (doc_type, category, hub)
-4. GraphRAG expansion (synapses, `depends_on`, `see_also`)
-5. Source-weighted reranking
-6. Context assembly
+- **4-hop** graph traversal (up from 2)
+- **20 relationship types** (extends, validates, synthesizes, triggers…)
+- **Region boost** for synapses (+15%), pathways (+12%), cortex L4/L5 (+10%)
+- **16 max** graph-expanded documents per query
 
-```bash
-python3 -m brain index --reindex
-python3 -m brain retrieve "<query>" --context
-python3 -m brain stats
-python3 -m brain pulse
+```yaml
+# config/brain.yaml
+graph:
+  advanced_routing: true
+  max_hops: 4
+  max_extra_chunks: 16
 ```
-
----
-
-## Premium Dataset Export
-
-Package the entire brain for commercial sale:
-
-```bash
-make product-premium-smoke   # 25,000 documents
-make product-premium         # Full premium pipeline
-make evaluate                # recall@8 benchmark evidence
-make audit-distribution      # Compliance audit
-```
-
-| Artifact | Description |
-|----------|-------------|
-| `chunks.jsonl` | Vector-ready segments |
-| `embeddings.jsonl` | Pre-computed vectors |
-| `edges.jsonl` | Graph relationship export |
-| `catalog.jsonl` | Document provenance index |
-| `manifest.json` | SHA-256 checksums |
 
 ---
 
 ## Scale
 
-| Tier | Documents | Command |
-|------|-----------|---------|
-| Curated seed | 500+ | Included in repo |
-| Living brain bootstrap | 300+ per run | `make living-brain` |
-| Premium smoke | 25,000 | `make product-premium-smoke` |
-| Mega | 100,000 | `make generate-mega` |
-| Ultra | 1,000,000 | `make generate-ultra` |
-| Hyper | Uncapped | `make generate-hyper` |
-
-Procedural expansion enables **604+ trillion** unique document combinations via streaming generation.
+| Metric | Current | Target |
+|--------|---------|--------|
+| Neural hubs | 18 | 18 |
+| Brain lobes | 10 | 10 |
+| Cortex layers | 6 | 6 |
+| Domains | 62+ | 62 |
+| Documents | 3,000+ | 250,000 |
+| Graph edges | 50,000+ | 1,000,000 |
 
 ---
 
-## Repository Structure
+## Premium Dataset Export
 
-```
-.
-├── brain/                      # Living brain retrieval engine + CLI
-├── knowledge-base/
-│   ├── CHUNK-*.md              # Curated seed documents
-│   └── living-brain/           # Domain folders, hubs, synapses, cortex
-│       ├── domains/            # 30+ technology domains
-│       ├── hubs/               # Neural clusters
-│       ├── synapses/           # Cross-hub graph links
-│       ├── cortex/             # Brain meta-layer
-│       ├── memory/             # Episodic knowledge
-│       └── reflexes/           # Fast-path FAQs
-├── scripts/
-│   ├── living_brain.py         # Grow, wire, and map the brain
-│   ├── generate_corpus.py      # Hyper-scale procedural generation
-│   └── product/                # Dataset export pipeline
-├── data/brain/neural-map.json  # Brain manifest (auto-generated)
-├── benchmarks/                 # Evaluation datasets
-└── docs/                       # Setup, quality, evaluation guides
+```bash
+make product-premium-smoke   # 25,000 documents
+make product-premium         # Full pipeline
+make evaluate                # recall@8 benchmarks
 ```
 
 ---
 
 ## Documentation
 
+- [Hypercortex v2 Architecture](docs/architecture/hypercortex-v2.md)
 - [Product setup](docs/product-setup.md)
 - [Quality standards](docs/product-quality.md)
 - [Evaluation guide](docs/product-evaluation.md)
-- [Licensing](docs/product-licensing.md)
-- [Content provenance](knowledge-base/PROVENANCE.md)
 
 ---
 
 ## License
 
-Licensed under the [End User License Agreement](EULA). Third-party dependencies are listed in [NOTICE](NOTICE).
+Licensed under the [End User License Agreement](EULA). Third-party dependencies in [NOTICE](NOTICE).

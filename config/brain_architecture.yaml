@@ -1,0 +1,199 @@
+# Coltex Advanced Living Brain Architecture
+# Multi-layer neural knowledge system — lobes, pathways, memory tiers, cortex layers
+
+architecture:
+  version: "2.0"
+  codename: hypercortex
+  tiers:
+    - sensory       # L1 ingestion & raw signal
+    - association   # L2-L4 domain linking
+    - executive     # L5-L6 reasoning & meta
+    - autonomic     # reflexes, brainstem
+
+# ─── Cortical layers (L1–L6) ───────────────────────────────────────────────
+cortex_layers:
+  L1_sensory:
+    path: cortex/L1-sensory
+    role: Raw document ingestion signals, chunk boundaries, embedding triggers
+    latency_ms: 5
+  L2_association:
+    path: cortex/L2-association
+    role: Domain tagging, metadata extraction, initial graph edges
+    latency_ms: 15
+  L3_integration:
+    path: cortex/L3-integration
+    role: Cross-domain pattern matching, hub assignment
+    latency_ms: 30
+  L4_reasoning:
+    path: cortex/L4-reasoning
+    role: Multi-hop GraphRAG, synapse traversal, ADR chains
+    latency_ms: 80
+  L5_executive:
+    path: cortex/L5-executive
+    role: Context assembly, reranking, faithfulness checks
+    latency_ms: 120
+  L6_meta:
+    path: cortex/L6-meta
+    role: Brain identity, architecture docs, pulse orchestration
+    latency_ms: 200
+
+# ─── Brain lobes (functional regions) ──────────────────────────────────────
+lobes:
+  frontal:
+    path: lobes/frontal
+    role: Planning, ADRs, architecture decisions, agentic workflows
+    domains: [architecture, agentic, api_design, microservices, clean_architecture, domain_driven_design]
+  temporal:
+    path: lobes/temporal
+    role: Language models, embeddings, NLP, prompt engineering
+    domains: [rag, embeddings, prompt_engineering, fine_tuning, chunking, retrieval]
+  parietal:
+    path: lobes/parietal
+    role: Data structures, SQL, vector math, indexing
+    domains: [sql, postgresql, mongodb, redis, vector_stores, vector_search, indexing]
+  occipital:
+    path: lobes/occipital
+    role: Observability signals, dashboards, tracing patterns
+    domains: [observability, performance, debugging, mlops]
+  limbic:
+    path: lobes/limbic
+    role: Memory, incidents, security emotional weight (priority)
+    domains: [security, incidents, memory, data_quality]
+  cerebellum:
+    path: cerebellum
+    role: Motor coordination — CI/CD, automation, reflex execution
+    domains: [ci_cd, docker, kubernetes, github_actions, gitlab_ci, terraform]
+  brainstem:
+    path: brainstem
+    role: Autonomic ops — always-on runbooks, health checks
+    domains: [runbook, incidents, linux, nginx]
+  hippocampus:
+    path: hippocampus
+    role: Long-term memory consolidation, episodic recall
+    memory_tiers: [episodic, semantic, procedural]
+  thalamus:
+    path: thalamus
+    role: Sensory relay — routes queries to correct lobe/domain
+    domains: [graphrag, retrieval, vector_search]
+  amygdala:
+    path: amygdala
+    role: Priority & alert routing — security, incidents, SLA breaches
+    domains: [security, incidents, performance]
+
+# ─── Memory tiers ──────────────────────────────────────────────────────────
+memory:
+  working:
+    path: memory/working
+    capacity_docs: 1000
+    ttl_hours: 24
+    role: Active session context, recent queries
+  episodic:
+    path: memory/episodic
+    capacity_docs: 50000
+    role: Incident timelines, meeting notes, release events
+  semantic:
+    path: memory/semantic
+    capacity_docs: 500000
+    role: Stable facts, ADRs, API contracts, schemas
+  procedural:
+    path: memory/procedural
+    capacity_docs: 100000
+    role: Runbooks, tutorials, how-to guides
+
+# ─── Neural pathways (inter-lobe routes) ───────────────────────────────────
+pathway_types:
+  - excitatory      # strengthens retrieval weight
+  - inhibitory      # suppresses conflicting docs
+  - modulatory      # adjusts rerank score
+  - associative     # default cross-link
+  - commissural     # lobe-to-lobe bridge
+
+# ─── Advanced relationship types (GraphRAG edges) ─────────────────────────
+relationship_types:
+  core:
+    - related
+    - depends_on
+    - uses
+    - implements
+    - calls
+    - see_also
+  advanced:
+    - extends
+    - validates
+    - contradicts
+    - synthesizes
+    - triggers
+    - inhibits
+    - supersedes
+    - derived_from
+    - tested_by
+    - deployed_via
+
+# ─── Knowledge hub registry (expanded) ─────────────────────────────────────
+hub_registry:
+  - slug: auth_service
+    lobe: limbic
+    tier: executive
+  - slug: indexing_pipeline
+    lobe: parietal
+    tier: association
+  - slug: graphrag_engine
+    lobe: thalamus
+    tier: executive
+  - slug: payment_service
+    lobe: frontal
+    tier: executive
+  - slug: ci_cd_platform
+    lobe: cerebellum
+    tier: autonomic
+  - slug: coltex_living_brain
+    lobe: frontal
+    tier: meta
+  - slug: vector_store_cluster
+    lobe: parietal
+    tier: association
+  - slug: embedding_service
+    lobe: temporal
+    tier: sensory
+  - slug: agent_orchestrator
+    lobe: frontal
+    tier: executive
+  - slug: observability_stack
+    lobe: occipital
+    tier: association
+  - slug: rag_retrieval_core
+    lobe: temporal
+    tier: executive
+  - slug: security_operations
+    lobe: amygdala
+    tier: autonomic
+  - slug: data_pipeline
+    lobe: parietal
+    tier: association
+  - slug: llm_inference_gateway
+    lobe: temporal
+    tier: executive
+  - slug: knowledge_graph_store
+    lobe: thalamus
+    tier: association
+  - slug: incident_command
+    lobe: amygdala
+    tier: autonomic
+  - slug: ml_training_pipeline
+    lobe: occipital
+    tier: association
+  - slug: api_gateway
+    lobe: frontal
+    tier: executive
+
+# ─── Scale targets ─────────────────────────────────────────────────────────
+scale:
+  domains: 62
+  hubs: 18
+  lobes: 10
+  cortex_layers: 6
+  memory_tiers: 4
+  pathway_types: 5
+  relationship_types: 16
+  target_documents: 250000
+  target_graph_edges: 1000000
