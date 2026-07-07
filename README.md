@@ -1,23 +1,33 @@
-# Coltex
+# Coltex Enterprise RAG Vector Dataset
 
-**Enterprise RAG Vector Dataset** — production-grade, graph-linked, vector-ready knowledge corpus for commercial AI deployment.
+Production-grade, graph-linked knowledge corpus for retrieval-augmented generation (RAG), AI agents, and domain-specific copilots. Coltex delivers pre-chunked vector exports, typed relationship graphs, optional embeddings, benchmark evidence, and a full compliance audit trail — ready for commercial deployment.
 
 [![Personal: $79](https://img.shields.io/badge/Personal-%2479-blue.svg)](PERSONAL-LICENSE.md)
 [![Professional: $399](https://img.shields.io/badge/Professional-%24399-orange.svg)](PROFESSIONAL-LICENSE.md)
 [![Enterprise: Custom Quote](https://img.shields.io/badge/Enterprise-Custom%20Quote-red.svg)](ENTERPRISE-LICENSE.md)
-[![Dataset](https://img.shields.io/badge/documents-13k%2B-green.svg)](docs/commercial/datasheet.md)
-[![Chunks](https://img.shields.io/badge/chunks-83k%2B-orange.svg)](docs/commercial/datasheet.md)
-[![Graph edges](https://img.shields.io/badge/edges-57k%2B-purple.svg)](docs/commercial/datasheet.md)
-[![Domains](https://img.shields.io/badge/domains-63-blue.svg)](docs/commercial/datasheet.md)
-[![Compliance](https://img.shields.io/badge/audit-passing-brightgreen.svg)](docs/product-licensing.md)
-
-Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowledge hubs, typed graph edges, pre-chunked JSONL exports, optional pre-computed embeddings, and benchmark evidence — ready to load into any vector database.
-
-**Licensing:** [Personal ($79)](PERSONAL-LICENSE.md) · [Professional ($399)](PROFESSIONAL-LICENSE.md) · [Enterprise (custom quote)](ENTERPRISE-LICENSE.md) · [Dataset EULA](EULA.md) · [Product licensing](docs/product-licensing.md)
+[![Documents: 13k+](https://img.shields.io/badge/documents-13k%2B-green.svg)](docs/commercial/datasheet.md)
+[![Chunks: 83k+](https://img.shields.io/badge/chunks-83k%2B-orange.svg)](docs/commercial/datasheet.md)
+[![Graph edges: 52k+](https://img.shields.io/badge/edges-52k%2B-purple.svg)](docs/commercial/datasheet.md)
+[![Domains: 63](https://img.shields.io/badge/domains-63-blue.svg)](docs/commercial/datasheet.md)
+[![Audit: Passing](https://img.shields.io/badge/audit-passing-brightgreen.svg)](docs/product-licensing.md)
 
 ---
 
-## Dataset at a glance
+## Overview
+
+Coltex is a structured knowledge dataset designed for teams that require auditable provenance, consistent metadata, and graph-aware retrieval — not ad-hoc document dumps. Each document carries typed classification, domain assignment, hub clustering, and cross-reference edges suitable for GraphRAG and hybrid search pipelines.
+
+**Primary applications**
+
+- Enterprise RAG copilots with pre-built coverage across cloud, security, data, and platform engineering
+- Agent toolchains requiring multi-hop reasoning over runbooks, ADRs, and API references
+- Vector database seeding (Pinecone, Weaviate, Chroma, pgvector, and others)
+- Benchmark baselines for retrieval recall, metadata accuracy, and buyer due diligence
+- Fine-tuning and domain adaptation from structured Q&A and retrieval gold pairs
+
+---
+
+## Specifications
 
 | Metric | Value |
 |--------|-------|
@@ -25,27 +35,30 @@ Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowled
 | Vector chunks | **83,612** |
 | Graph edges | **52,490** |
 | Benchmark FAQ pairs | **1,100+** |
-| Premium stream capacity | **25,000+** smoke · **uncapped** hyper |
 | Technology domains | **63** |
 | Knowledge hubs | **18** |
-| Graph links | **306** hub-to-hub edges |
-| Domain routes | **90** inter-cluster routes |
+| Graph links (hub-to-hub) | **306** |
+| Domain routes (inter-cluster) | **90** |
 | Document types | **22** typed classifications |
 | Graph edge types | **20** relationship types |
-| Embedding model | `all-MiniLM-L6-v2` (384-dim) |
-| License | **Personal $79** · **Professional $399** · **Enterprise (custom quote)** · **Dataset EULA** |
+| Embedding model | `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions) |
+| Premium stream capacity | 25,000+ (validation) · uncapped (production) |
+
+Full technical specifications: [Technical datasheet](docs/commercial/datasheet.md)
 
 ---
 
 ## Architecture
 
+Coltex organizes content through six processing layers (L1 ingestion through L6 governance), ten functional clusters, and four memory tiers. Documents flow from intake through metadata enrichment, cluster assignment, graph linking, and context assembly before export.
+
 ```
                     ┌─── L6 Governance (Catalog & policy) ───┐
                     │   L5 Assembly (Context assembly)       │
                     │   L4 Graph (GraphRAG)                  │
-                    │   L3 Integration (Cluster assignment)    │
-                    │   L2 Metadata (Tagging & linking)      │
-                    │   L1 Ingestion (Document intake)       │
+                    │   L3 Integration (Cluster assignment)  │
+                    │   L2 Metadata (Tagging & linking)    │
+                    │   L1 Ingestion (Document intake)     │
                     └─────────────────┬──────────────────────┘
                                       │
               ┌───────────────────────┼───────────────────────┐
@@ -56,7 +69,7 @@ Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowled
                                    │
                     Vector + Metadata + GraphRouter
                                    │
-                        brain retrieve / report
+                          Retrieval & evaluation
 ```
 
 | Region | Path | Purpose |
@@ -70,69 +83,35 @@ Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowled
 | Memory tiers | `knowledge-corpus/memory/` | Working, episodic, semantic, procedural |
 | Quick reference | `knowledge-corpus/quick-reference/` | FAQ index |
 
+Detailed architecture: [Knowledge architecture](docs/architecture/knowledge-architecture.md)
+
 ---
 
-## Quick start — build the commercial package
+## Getting started
+
+### Prerequisites
+
+- Python 3.10+
+- 8 GB RAM recommended for full enterprise build
+
+### Build the enterprise dataset package
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# Expand corpus + build enterprise vector dataset
 make corpus-mega
 make product-enterprise
 
-# Inspect deliverables
 python3 examples/load_dataset.py
 make audit-distribution
 ```
 
----
+Additional build targets and configuration options: [Product setup](docs/product-setup.md)
 
-## License tiers
+### Query the retrieval engine
 
-| Tier | Price | Use case | Document |
-|------|-------|----------|----------|
-| **Personal** | **$79** one-time | Students, hobbyists, researchers — non-commercial | [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md) |
-| **Professional** | **$399** one-time | Freelancers, startups, commercial developers — one entity | [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md) |
-| **Enterprise** | **Custom quote** | Organization-wide deployment, multi-team, on-prem / private cloud | [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md) |
-
-Enterprise RAG vector dataset packages also require the [Dataset EULA](EULA.md).
-
-**Commercial documentation:** [Product overview](docs/commercial/product-overview.md) · [Datasheet](docs/commercial/datasheet.md) · [SKU matrix](docs/commercial/sku-matrix.md)
-
----
-
-## Commercial tiers (dataset packages)
-
-| Tier | Command | Documents | Best for |
-|------|---------|-----------|----------|
-| **Personal** | `make product-personal` | Full corpus | Non-commercial learning & research |
-| **Professional** | `make product-professional` | Full corpus | Commercial apps — one company |
-| **Enterprise Curated** | `make product-enterprise` | 12,993 | Production RAG deployment |
-| **Premium Smoke** | `make product-premium-smoke` | 25,000 | Buyer validation / demos |
-| **Premium Hyper** | `make product-hyper` | Uncapped | Maximum scale (cluster) |
-
-Full comparison: [SKU matrix](docs/commercial/sku-matrix.md)
-
----
-
-## Deliverables (`data/product/`)
-
-| Artifact | Format | Description |
-|----------|--------|-------------|
-| `chunks/chunks.jsonl` | JSONL | Vector-index-ready text chunks |
-| `embeddings/embeddings.jsonl` | JSONL | Pre-computed 384-dim vectors |
-| `catalog.jsonl` | JSONL | Full document metadata |
-| `graph/edges.jsonl` | JSONL | Typed relationship graph |
-| `manifest.json` | JSON | SHA-256 checksums + build provenance |
-| `benchmarks/` | JSONL | FAQ, retrieval gold, RAG eval |
-
----
-
-## Retrieval engine
-
-Hybrid RAG pipeline with **GraphRouter** (region-aware graph expansion):
+Hybrid RAG pipeline with region-aware **GraphRouter** expansion:
 
 ```bash
 make index
@@ -142,16 +121,61 @@ python3 -m brain report
 
 ---
 
-## Expand the corpus
+## Deliverables
+
+Commercial builds output to `data/product/`:
+
+| Artifact | Format | Description |
+|----------|--------|-------------|
+| `chunks/chunks.jsonl` | JSONL | Vector-index-ready text chunks |
+| `embeddings/embeddings.jsonl` | JSONL | Pre-computed 384-dimensional vectors |
+| `catalog.jsonl` | JSONL | Full document metadata catalog |
+| `graph/edges.jsonl` | JSONL | Typed relationship graph |
+| `manifest.json` | JSON | SHA-256 checksums and build provenance |
+| `benchmarks/` | JSONL | FAQ, retrieval gold, and RAG evaluation sets |
+
+Compliance artifacts include license documents, `NOTICE`, `PROVENANCE.md`, and `distribution_audit.json`.
+
+---
+
+## Licensing
+
+Coltex is offered under four license tiers. Select the tier that matches your deployment scope and use case.
+
+| Tier | Price | Scope | License |
+|------|-------|-------|---------|
+| **Personal** | $79 USD (one-time) | Non-commercial, individual use | [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md) |
+| **Professional** | $399 USD (one-time) | Commercial use — one legal entity | [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md) |
+| **Enterprise** | Custom quote | Organization-wide deployment, multi-team, on-premises / private cloud | [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md) |
+| **Dataset EULA** | Per agreement | Supplemental terms for enterprise dataset packages | [EULA.md](EULA.md) |
+
+Full tier comparison: [Product licensing](docs/product-licensing.md) · [SKU matrix](docs/commercial/sku-matrix.md)
+
+---
+
+## Package tiers
+
+| Package | Build command | Documents | Intended use |
+|---------|---------------|-----------|--------------|
+| Personal | `make product-personal` | Full corpus | Non-commercial learning and research |
+| Professional | `make product-professional` | Full corpus | Commercial applications — single entity |
+| Enterprise Curated | `make product-enterprise` | 12,993 | Production RAG deployment |
+| Premium Standard | `make product-premium-smoke` | 25,000 | Validation and evaluation |
+| Premium Hyper | `make product-hyper` | Uncapped | Maximum-scale production |
+
+---
+
+## Corpus expansion
 
 | Command | Output |
 |---------|--------|
-| `make corpus-advanced` | Architecture bootstrap (500 docs + routes + hubs) |
-| `make corpus-mega` | **10,000** domain documents |
+| `make corpus-advanced` | Architecture bootstrap (500 documents, routes, hubs) |
+| `make corpus-mega` | 10,000 domain documents |
 | `make corpus-grow COUNT=5000` | Incremental expansion |
-| `make expand-curated-kb COUNT=500` | Curated KB growth |
+| `make expand-curated-kb COUNT=500` | Curated knowledge base growth |
 
-Catalog index: `data/brain/catalog-index.json` · Architecture manifest: `data/brain/architecture-manifest.json`
+Catalog index: `data/brain/catalog-index.json`  
+Architecture manifest: `data/brain/architecture-manifest.json`
 
 ---
 
@@ -159,15 +183,18 @@ Catalog index: `data/brain/catalog-index.json` · Architecture manifest: `data/b
 
 | Document | Description |
 |----------|-------------|
-| [Product overview](docs/commercial/product-overview.md) | Commercial positioning |
-| [Technical datasheet](docs/commercial/datasheet.md) | Specifications |
-| [SKU matrix](docs/commercial/sku-matrix.md) | Tier comparison |
-| [Knowledge architecture](docs/architecture/knowledge-architecture.md) | Corpus structure |
-| [Product licensing](docs/product-licensing.md) | License tiers and terms |
-| [Product setup](docs/product-setup.md) | Build instructions |
+| [Product overview](docs/commercial/product-overview.md) | Commercial positioning and use cases |
+| [Technical datasheet](docs/commercial/datasheet.md) | Dataset specifications |
+| [SKU matrix](docs/commercial/sku-matrix.md) | Package and license comparison |
+| [Knowledge architecture](docs/architecture/knowledge-architecture.md) | Corpus structure and design |
+| [Product licensing](docs/product-licensing.md) | License terms and build commands |
+| [Product setup](docs/product-setup.md) | Build and deployment instructions |
+| [Provenance](knowledge-base/PROVENANCE.md) | Content origin and compliance |
 
 ---
 
-## License
+## Copyright
 
-**Personal ($79)**, **Professional ($399)**, or **Enterprise (custom quote)** depending on your use case. See [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md), [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md), [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md), [EULA.md](EULA.md), and [PROVENANCE.md](knowledge-base/PROVENANCE.md).
+Copyright © 2026 Coltex / FOUNDEROF-AIRIES-AGENT. All rights reserved.
+
+Use of this dataset is governed by the applicable license agreement: [Personal](PERSONAL-LICENSE.md), [Professional](PROFESSIONAL-LICENSE.md), [Enterprise](ENTERPRISE-LICENSE.md), or [Dataset EULA](EULA.md).
