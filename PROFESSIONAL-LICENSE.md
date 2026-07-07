@@ -53,7 +53,7 @@ This license is **non-transferable** except with written consent from the Licens
 
 **Priority email support** may be included if offered by Coltex.
 
-By purchasing or using Coltex under this license, you agree to these terms. For non-commercial personal use only, see the [Coltex Personal License](PERSONAL-LICENSE.md) ($79 USD). For enterprise-scale dataset packages, see the [Coltex End User License Agreement (EULA)](EULA.md).
+By purchasing or using Coltex under this license, you agree to these terms. For non-commercial personal use only, see the [Coltex Personal License](PERSONAL-LICENSE.md) ($79 USD). For organization-wide deployment, multiple teams, and enterprise services, see the [Coltex Enterprise License](ENTERPRISE-LICENSE.md) (custom quote). Enterprise RAG vector dataset packages may include supplemental terms under the [Coltex End User License Agreement (EULA)](EULA.md).
 
 ---
 

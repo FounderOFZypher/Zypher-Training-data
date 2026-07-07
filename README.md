@@ -4,7 +4,7 @@
 
 [![Personal: $79](https://img.shields.io/badge/Personal-%2479-blue.svg)](PERSONAL-LICENSE.md)
 [![Professional: $399](https://img.shields.io/badge/Professional-%24399-orange.svg)](PROFESSIONAL-LICENSE.md)
-[![Enterprise: EULA](https://img.shields.io/badge/Enterprise-EULA-red.svg)](EULA.md)
+[![Enterprise: Custom Quote](https://img.shields.io/badge/Enterprise-Custom%20Quote-red.svg)](ENTERPRISE-LICENSE.md)
 [![Dataset](https://img.shields.io/badge/documents-13k%2B-green.svg)](docs/commercial/datasheet.md)
 [![Chunks](https://img.shields.io/badge/chunks-83k%2B-orange.svg)](docs/commercial/datasheet.md)
 [![Graph edges](https://img.shields.io/badge/edges-57k%2B-purple.svg)](docs/commercial/datasheet.md)
@@ -13,7 +13,7 @@
 
 Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowledge hubs, typed graph edges, pre-chunked JSONL exports, optional pre-computed embeddings, and benchmark evidence — ready to load into any vector database.
 
-**Licensing:** [Personal ($79)](PERSONAL-LICENSE.md) · [Professional ($399)](PROFESSIONAL-LICENSE.md) · [Enterprise EULA](EULA.md) · [Product licensing](docs/product-licensing.md)
+**Licensing:** [Personal ($79)](PERSONAL-LICENSE.md) · [Professional ($399)](PROFESSIONAL-LICENSE.md) · [Enterprise (custom quote)](ENTERPRISE-LICENSE.md) · [Dataset EULA](EULA.md) · [Product licensing](docs/product-licensing.md)
 
 ---
 
@@ -33,7 +33,7 @@ Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowled
 | Document types | **22** typed classifications |
 | Graph edge types | **20** relationship types |
 | Embedding model | `all-MiniLM-L6-v2` (384-dim) |
-| License | **Personal $79** · **Professional $399** · **Enterprise EULA** |
+| License | **Personal $79** · **Professional $399** · **Enterprise (custom quote)** · **Dataset EULA** |
 
 ---
 
@@ -95,7 +95,9 @@ make audit-distribution
 |------|-------|----------|----------|
 | **Personal** | **$79** one-time | Students, hobbyists, researchers — non-commercial | [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md) |
 | **Professional** | **$399** one-time | Freelancers, startups, commercial developers — one entity | [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md) |
-| **Enterprise** | Contact / $1,000+ | Enterprise dataset packages | [EULA.md](EULA.md) |
+| **Enterprise** | **Custom quote** | Organization-wide deployment, multi-team, on-prem / private cloud | [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md) |
+
+Enterprise RAG vector dataset packages also require the [Dataset EULA](EULA.md).
 
 **Commercial documentation:** [Product overview](docs/commercial/product-overview.md) · [Datasheet](docs/commercial/datasheet.md) · [SKU matrix](docs/commercial/sku-matrix.md)
 
@@ -161,11 +163,11 @@ Catalog index: `data/brain/catalog-index.json` · Architecture manifest: `data/b
 | [Technical datasheet](docs/commercial/datasheet.md) | Specifications |
 | [SKU matrix](docs/commercial/sku-matrix.md) | Tier comparison |
 | [Knowledge architecture](docs/architecture/knowledge-architecture.md) | Corpus structure |
-| [Product licensing](docs/product-licensing.md) | Coltex EULA |
+| [Product licensing](docs/product-licensing.md) | License tiers and terms |
 | [Product setup](docs/product-setup.md) | Build instructions |
 
 ---
 
 ## License
 
-**Personal ($79)**, **Professional ($399)**, or **Enterprise EULA** depending on your use case. See [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md), [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md), [EULA.md](EULA.md), and [PROVENANCE.md](knowledge-base/PROVENANCE.md).
+**Personal ($79)**, **Professional ($399)**, or **Enterprise (custom quote)** depending on your use case. See [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md), [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md), [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md), [EULA.md](EULA.md), and [PROVENANCE.md](knowledge-base/PROVENANCE.md).

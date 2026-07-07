@@ -12,7 +12,7 @@ Coltex is a fully auditable, graph-linked, vector-ready knowledge dataset design
 |------|-------|---------|
 | **Personal** | $79 USD (one-time) | [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md) |
 | **Professional** | $399 USD (one-time) | [PROFESSIONAL-LICENSE.md](../../PROFESSIONAL-LICENSE.md) |
-| **Enterprise** | Contact / $1,000+ | [EULA.md](../../EULA.md) |
+| **Enterprise** | Custom quote | [ENTERPRISE-LICENSE.md](../../ENTERPRISE-LICENSE.md) |
 
 ---
 
@@ -24,7 +24,7 @@ Coltex is a fully auditable, graph-linked, vector-ready knowledge dataset design
 | **Structure** | 63 technology domains · 18 knowledge hubs · 306 graph links · 90 domain routes |
 | **Vector-ready** | Pre-chunked JSONL · optional pre-computed embeddings (MiniLM-L6-v2) |
 | **GraphRAG** | Typed relationship edges · hub clustering · region-aware GraphRouter |
-| **Compliance** | Personal or Commercial EULA · full provenance · audit pipeline |
+| **Compliance** | Personal, Professional, Enterprise, or Dataset EULA · full provenance · audit pipeline |
 | **Benchmarks** | FAQ pairs · retrieval gold · RAG evaluation datasets included |
 
 ---
@@ -65,7 +65,7 @@ Six processing layers (L1 ingestion through L6 governance), ten functional clust
 | `manifest.json` | JSON | SHA-256 checksums and build provenance |
 | `benchmarks/` | JSONL | FAQ, retrieval gold, RAG eval sets |
 
-Compliance files: `PERSONAL-LICENSE.md`, `PROFESSIONAL-LICENSE.md`, or `EULA.md`, plus `NOTICE`, `PROVENANCE.md`, `distribution_audit.json`
+Compliance files: `PERSONAL-LICENSE.md`, `PROFESSIONAL-LICENSE.md`, `ENTERPRISE-LICENSE.md`, `EULA.md`, plus `NOTICE`, `PROVENANCE.md`, `distribution_audit.json`
 
 ---
 
@@ -90,4 +90,4 @@ See [SKU matrix](sku-matrix.md) for tier comparison and [datasheet](datasheet.md
 
 ## License
 
-**Personal ($79)**, **Professional ($399)**, or **Enterprise EULA**. See [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md), [PROFESSIONAL-LICENSE.md](../../PROFESSIONAL-LICENSE.md), and [product licensing](../product-licensing.md).
+**Personal ($79)**, **Professional ($399)**, **Enterprise (custom quote)**, or **Dataset EULA**. See [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md), [PROFESSIONAL-LICENSE.md](../../PROFESSIONAL-LICENSE.md), [ENTERPRISE-LICENSE.md](../../ENTERPRISE-LICENSE.md), and [product licensing](../product-licensing.md).

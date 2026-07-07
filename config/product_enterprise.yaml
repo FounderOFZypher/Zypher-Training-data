@@ -1,12 +1,14 @@
-# Coltex Enterprise RAG Vector Dataset — Curated tier
+# Coltex Enterprise RAG Vector Dataset — Enterprise tier
 # Full knowledge-corpus architecture · graph-linked · vector-ready · compliance-audited
 
 name: Coltex Enterprise RAG Vector Dataset
 version: 3.0.0
 tier: enterprise
 price_usd: null
-license: Coltex-EULA
-eula: EULA.md
+pricing: custom_quote
+license: Coltex-Enterprise
+license_path: ENTERPRISE-LICENSE.md
+dataset_agreement: EULA.md
 updated: 2026-07-07
 
 # Full curated knowledge base including architecture corpus
@@ -20,6 +22,7 @@ knowledge_base:
     - "**/_excluded_from_distribution/**"
 
 distribution:
+  require_enterprise_license: true
   require_eula: true
   require_provenance: true
   require_notice: true

@@ -2,13 +2,14 @@
 
 ## License tiers
 
-Coltex offers three license tiers depending on your use case:
+Coltex offers four license tiers depending on your use case:
 
 | Tier | Price | License | Best for |
 |------|-------|---------|----------|
 | **Personal** | **$79 USD** (one-time) | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | Students, hobbyists, researchers — non-commercial |
 | **Professional** | **$399 USD** (one-time) | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) | Freelancers, startups, commercial developers — one entity |
-| **Enterprise** | Contact / $1,000+ | [EULA.md](../EULA.md) | Large-scale dataset packages, enterprise deployment |
+| **Enterprise** | **Custom quote** | [ENTERPRISE-LICENSE.md](../ENTERPRISE-LICENSE.md) | Organization-wide deployment, multiple teams, on-prem / private cloud |
+| **Dataset EULA** | Per agreement | [EULA.md](../EULA.md) | Supplemental terms for enterprise RAG vector dataset packages |
 
 Choose the tier that matches your intended use.
 
@@ -46,13 +47,52 @@ Full terms: [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) · Summary: [k
 
 ---
 
-## Enterprise License (EULA)
+## Enterprise License — Custom Quote
 
-The Coltex **Enterprise RAG Vector Dataset** for large-scale commercial deployment is licensed under the **Coltex End User License Agreement (EULA)**.
+**Intended users:** Medium and large businesses, government organizations, educational institutions, and enterprises.
+
+**Includes everything in the Professional License, plus:**
+
+### Enterprise rights
+
+- Organization-wide deployment
+- Multiple users and teams
+- Private cloud deployment
+- Customer-owned cloud deployment (AWS, Azure, GCP, VPS, Kubernetes, etc.)
+- On-premises deployment
+- Internal production use across multiple departments
+
+### Enterprise services (per agreement)
+
+- Deployment assistance
+- Administrator onboarding
+- Technical training sessions
+- Architecture consultation
+- Priority support
+- Custom licensing agreements
+- Volume licensing
+- Optional support and maintenance agreements
+- Optional custom integrations and professional services
+
+### Restrictions
+
+The Enterprise License does not permit redistribution, resale, sublicensing, or public distribution of the Coltex software unless explicitly authorized in writing.
+
+Each Enterprise agreement may include custom terms based on deployment size, support requirements, and organizational needs.
+
+Enterprise customers receive a dedicated commercial license agreement that supersedes standard license terms where applicable.
+
+Full terms: [ENTERPRISE-LICENSE.md](../ENTERPRISE-LICENSE.md) · Summary: [knowledge-base/ENTERPRISE-LICENSE.md](../knowledge-base/ENTERPRISE-LICENSE.md)
+
+---
+
+## Dataset EULA (Enterprise packages)
+
+Enterprise RAG vector dataset packages are governed by the **Coltex End User License Agreement (EULA)** in addition to the Enterprise License. The EULA covers dataset content, vector chunks, embeddings, graph edges, metadata, benchmarks, and product artifacts.
 
 | Document | Purpose |
 |----------|---------|
-| [EULA.md](../EULA.md) | Full enterprise End User License Agreement |
+| [EULA.md](../EULA.md) | Full End User License Agreement for dataset delivery |
 | [knowledge-base/EULA.md](../knowledge-base/EULA.md) | Dataset scope summary |
 | [PROVENANCE.md](../knowledge-base/PROVENANCE.md) | Content origin and compliance |
 | [NOTICE](../NOTICE) | Third-party open-source dependencies (engine tooling only) |
@@ -70,7 +110,7 @@ make product-personal
 # Professional ($399 — commercial, one entity)
 make product-professional
 
-# Enterprise (commercial dataset packages)
+# Enterprise (organization-wide + dataset packages)
 make product-enterprise
 make product-premium-smoke
 
@@ -84,4 +124,4 @@ make audit-distribution
 
 This document summarizes the licensing approach. It is not legal advice. Consult qualified counsel before commercial use.
 
-For enterprise agreements, additional seats, or tier upgrades: contact the repository maintainer.
+For enterprise agreements, custom quotes, volume licensing, or tier upgrades: contact the repository maintainer.

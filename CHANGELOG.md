@@ -2,6 +2,15 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.3.4] - 2026-07-07
+
+### Added — Coltex Enterprise License (Custom Quote)
+
+- Added [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md) for organization-wide enterprise deployment
+- Includes Professional License rights plus multi-team deployment, private/on-prem cloud, and enterprise services
+- Updated `config/product_enterprise.yaml` with `require_enterprise_license` and `license_path: ENTERPRISE-LICENSE.md`
+- Four-tier licensing: Personal ($79) → Professional ($399) → Enterprise (custom quote) → Dataset EULA
+
 ## [4.3.3] - 2026-07-07
 
 ### Added — Coltex Professional License ($399)

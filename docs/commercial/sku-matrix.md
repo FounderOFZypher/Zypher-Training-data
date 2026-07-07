@@ -6,13 +6,13 @@ License tiers and commercial packages for the Coltex RAG Vector Dataset.
 
 ## License tiers
 
-| | **Personal** | **Professional** | **Enterprise (EULA)** |
-|---|--------------|------------------|------------------------|
+| | **Personal** | **Professional** | **Enterprise** |
+|---|---|--------------|------------------|
 | **SKU** | `coltex-personal-v1` | `coltex-professional-v1` | `coltex-enterprise-v3` / premium |
-| **Price** | **$79** one-time | **$399** one-time | Contact / $1,000+ |
-| **License** | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) | [EULA.md](../EULA.md) |
-| **Use case** | Non-commercial | Commercial — one entity | Enterprise dataset packages |
-| **Intended users** | Students, hobbyists, researchers | Freelancers, startups, dev shops | Teams, enterprises, vendors |
+| **Price** | **$79** one-time | **$399** one-time | **Custom quote** |
+| **License** | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) | [ENTERPRISE-LICENSE.md](../ENTERPRISE-LICENSE.md) |
+| **Use case** | Non-commercial | Commercial — one entity | Organization-wide deployment |
+| **Intended users** | Students, hobbyists, researchers | Freelancers, startups, dev shops | Businesses, government, education, enterprises |
 | **Build command** | `make product-personal` | `make product-professional` | `make product-enterprise` |
 
 ### Personal — $79
@@ -25,9 +25,11 @@ Everything in Personal, **plus** commercial rights: revenue-generating apps, cus
 
 See [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) for full terms.
 
-### Enterprise — Contact / $1,000+
+### Enterprise — Custom Quote
 
-Full enterprise RAG vector dataset packages under the EULA. See commercial tiers below.
+Everything in Professional, **plus** organization-wide deployment, multiple users and teams, private/customer cloud (AWS, Azure, GCP, Kubernetes), on-premises deployment, and enterprise services (deployment assistance, training, priority support, volume licensing).
+
+Enterprise RAG vector dataset packages include supplemental terms under the [EULA](../EULA.md). See commercial dataset tiers below.
 
 ---
 

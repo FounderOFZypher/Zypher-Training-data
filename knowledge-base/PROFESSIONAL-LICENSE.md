@@ -28,6 +28,6 @@ Priority email support may be included if offered.
 |------|-------|-----|
 | [Personal](PERSONAL-LICENSE.md) | $79 | Non-commercial, individual |
 | **Professional** | **$399** | Commercial, one entity |
-| [Commercial EULA](EULA.md) | Contact / $1,000+ | Enterprise dataset packages |
+| [Enterprise](ENTERPRISE-LICENSE.md) | Custom quote | Organization-wide deployment |
 
 See [PROVENANCE.md](PROVENANCE.md) for content origin.

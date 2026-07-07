@@ -26,6 +26,7 @@ def check_required_files(dist_cfg: dict) -> dict:
     require_eula = dist_cfg.get("require_eula", dist_cfg.get("require_kb_license", False))
     require_personal = dist_cfg.get("require_personal_license", False)
     require_professional = dist_cfg.get("require_professional_license", False)
+    require_enterprise = dist_cfg.get("require_enterprise_license", False)
     if require_eula:
         required.append(("EULA.md", ROOT / "EULA.md"))
         required.append(("knowledge-base/EULA.md", ROOT / "knowledge-base" / "EULA.md"))
@@ -35,7 +36,10 @@ def check_required_files(dist_cfg: dict) -> dict:
     if require_professional:
         required.append(("PROFESSIONAL-LICENSE.md", ROOT / "PROFESSIONAL-LICENSE.md"))
         required.append(("knowledge-base/PROFESSIONAL-LICENSE.md", ROOT / "knowledge-base" / "PROFESSIONAL-LICENSE.md"))
-    if not require_eula and not require_personal and not require_professional:
+    if require_enterprise:
+        required.append(("ENTERPRISE-LICENSE.md", ROOT / "ENTERPRISE-LICENSE.md"))
+        required.append(("knowledge-base/ENTERPRISE-LICENSE.md", ROOT / "knowledge-base" / "ENTERPRISE-LICENSE.md"))
+    if not require_eula and not require_personal and not require_professional and not require_enterprise:
         required.append(("PERSONAL-LICENSE.md", ROOT / "PERSONAL-LICENSE.md"))
         required.append(("PROFESSIONAL-LICENSE.md", ROOT / "PROFESSIONAL-LICENSE.md"))
         required.append(("EULA.md", ROOT / "EULA.md"))

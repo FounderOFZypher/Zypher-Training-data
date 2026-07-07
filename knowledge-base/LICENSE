@@ -2,13 +2,14 @@
 
 Copyright 2026 Coltex / FOUNDEROF-AIRIES-AGENT
 
-Coltex is offered under three license tiers:
+Coltex is offered under four license tiers:
 
 | Tier | Price | Document |
 |------|-------|----------|
 | **Personal** (non-commercial) | $79 USD one-time | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) |
 | **Professional** (commercial) | $399 USD one-time | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) |
-| **Enterprise** | Contact / $1,000+ | [EULA.md](../EULA.md) |
+| **Enterprise** (organization-wide) | Custom quote | [ENTERPRISE-LICENSE.md](../ENTERPRISE-LICENSE.md) |
+| **Dataset EULA** (enterprise packages) | Per agreement | [EULA.md](../EULA.md) |
 
 ## Personal License ($79)
 
@@ -18,9 +19,13 @@ For students, hobbyists, and researchers. Non-commercial use only.
 
 For freelancers, startups, and commercial developers. Includes Personal rights plus commercial use for one company or legal entity.
 
-## Enterprise License (EULA)
+## Enterprise License (custom quote)
 
-For enterprise-scale dataset packages and large commercial deployment.
+For medium and large businesses, government, education, and enterprises. Includes Professional rights plus organization-wide deployment, multiple teams, private/on-prem cloud, and enterprise services per agreement.
+
+## Dataset EULA
+
+Supplemental terms for enterprise RAG vector dataset packages (chunks, embeddings, graph edges, benchmarks).
 
 ## Excluded paths
 
