@@ -6,27 +6,32 @@ License tiers and commercial packages for the Coltex RAG Vector Dataset.
 
 ## License tiers
 
-| | **Personal** | **Commercial (EULA)** |
-|---|--------------|------------------------|
-| **SKU** | `coltex-personal-v1` | `coltex-enterprise-v3` / premium tiers |
-| **Price** | **$79 USD** (one-time) | Contact / $1,000+ |
-| **License** | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | [EULA.md](../EULA.md) |
-| **Use case** | Non-commercial, personal | Business & production |
-| **Intended users** | Students, hobbyists, researchers | Teams, enterprises, vendors |
-| **Build command** | `make product-personal` | `make product-enterprise` |
+| | **Personal** | **Professional** | **Enterprise (EULA)** |
+|---|--------------|------------------|------------------------|
+| **SKU** | `coltex-personal-v1` | `coltex-professional-v1` | `coltex-enterprise-v3` / premium |
+| **Price** | **$79** one-time | **$399** one-time | Contact / $1,000+ |
+| **License** | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) | [EULA.md](../EULA.md) |
+| **Use case** | Non-commercial | Commercial — one entity | Enterprise dataset packages |
+| **Intended users** | Students, hobbyists, researchers | Freelancers, startups, dev shops | Teams, enterprises, vendors |
+| **Build command** | `make product-personal` | `make product-professional` | `make product-enterprise` |
 
-### Personal License — $79
+### Personal — $79
 
-- Install on personal devices or servers
-- Personal learning, experimentation, research
-- Private AI projects
-- **Not** for commercial use, SaaS, resale, or redistribution
+Non-commercial personal use. Learning, research, private projects.
 
-See [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) for full terms.
+### Professional — $399
+
+Everything in Personal, **plus** commercial rights: revenue-generating apps, customer-facing integrations, business deployment. One company or legal entity.
+
+See [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) for full terms.
+
+### Enterprise — Contact / $1,000+
+
+Full enterprise RAG vector dataset packages under the EULA. See commercial tiers below.
 
 ---
 
-## Commercial dataset tiers
+## Enterprise dataset tiers
 
 | | **Enterprise Curated** | **Premium Standard** | **Premium Hyper** |
 |---|------------------------|----------------------|-------------------|
@@ -40,17 +45,6 @@ See [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) for full terms.
 | **Audit report** | ✅ | ✅ | ✅ |
 | **Build command** | `make product-enterprise` | `make product-premium-smoke` | `make product-hyper` |
 | **Best for** | Production RAG | Buyer validation | Maximum scale |
-
----
-
-## What's included (commercial tiers)
-
-- Coltex EULA with full provenance documentation
-- `manifest.json` with SHA-256 checksums
-- `distribution_audit.json` compliance report
-- Typed metadata on every document
-- Quality gate validation
-- Benchmark datasets
 
 ---
 

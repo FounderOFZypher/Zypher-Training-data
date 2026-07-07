@@ -2,26 +2,27 @@
 
 Copyright 2026 Coltex / FOUNDEROF-AIRIES-AGENT
 
-Coltex is offered under two license tiers:
+Coltex is offered under three license tiers:
 
 | Tier | Price | Document |
 |------|-------|----------|
 | **Personal** (non-commercial) | $79 USD one-time | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) |
-| **Commercial** | Contact / $1,000+ | [EULA.md](../EULA.md) |
+| **Professional** (commercial) | $399 USD one-time | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) |
+| **Enterprise** | Contact / $1,000+ | [EULA.md](../EULA.md) |
 
 ## Personal License ($79)
 
 For students, hobbyists, and researchers. Non-commercial use only.
 
-See [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) and [knowledge-base/PERSONAL-LICENSE.md](PERSONAL-LICENSE.md).
+## Professional License ($399)
 
-## Commercial License (EULA)
+For freelancers, startups, and commercial developers. Includes Personal rights plus commercial use for one company or legal entity.
 
-For business, production, and revenue-generating use.
+## Enterprise License (EULA)
 
-See [EULA.md](../EULA.md) and [knowledge-base/EULA.md](EULA.md).
+For enterprise-scale dataset packages and large commercial deployment.
 
 ## Excluded paths
 
 Files under `knowledge-base/_excluded_from_distribution/` and
-`knowledge-base/generated/` are not part of any commercial or personal product package.
+`knowledge-base/generated/` are not part of any product package.

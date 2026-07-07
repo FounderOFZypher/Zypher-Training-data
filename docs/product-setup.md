@@ -24,7 +24,10 @@ make corpus-report                # Rebuild catalog index
 # Personal tier ($79 — non-commercial)
 make product-personal
 
-# Enterprise tier (commercial)
+# Professional tier ($399 — commercial, one entity)
+make product-professional
+
+# Enterprise tier (commercial dataset packages)
 make product-enterprise
 
 # Fast build without embeddings (validation)

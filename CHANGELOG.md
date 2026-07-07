@@ -2,6 +2,15 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.3.3] - 2026-07-07
+
+### Added — Coltex Professional License ($399)
+
+- Added [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md) for commercial use by one entity
+- Includes Personal License rights plus commercial product/revenue rights
+- Added `config/product_professional.yaml` and `make product-professional` build target
+- Updated three-tier licensing: Personal ($79) → Professional ($399) → Enterprise EULA
+
 ## [4.3.2] - 2026-07-07
 
 ### Added — Coltex Personal License ($79)

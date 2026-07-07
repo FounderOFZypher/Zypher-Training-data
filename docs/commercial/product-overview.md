@@ -11,7 +11,8 @@ Coltex is a fully auditable, graph-linked, vector-ready knowledge dataset design
 | Tier | Price | License |
 |------|-------|---------|
 | **Personal** | $79 USD (one-time) | [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md) |
-| **Commercial** | Contact / $1,000+ | [EULA.md](../../EULA.md) |
+| **Professional** | $399 USD (one-time) | [PROFESSIONAL-LICENSE.md](../../PROFESSIONAL-LICENSE.md) |
+| **Enterprise** | Contact / $1,000+ | [EULA.md](../../EULA.md) |
 
 ---
 
@@ -64,7 +65,7 @@ Six processing layers (L1 ingestion through L6 governance), ten functional clust
 | `manifest.json` | JSON | SHA-256 checksums and build provenance |
 | `benchmarks/` | JSONL | FAQ, retrieval gold, RAG eval sets |
 
-Compliance files: `PERSONAL-LICENSE.md` or `EULA.md`, `NOTICE`, `PROVENANCE.md`, `distribution_audit.json`
+Compliance files: `PERSONAL-LICENSE.md`, `PROFESSIONAL-LICENSE.md`, or `EULA.md`, plus `NOTICE`, `PROVENANCE.md`, `distribution_audit.json`
 
 ---
 
@@ -89,4 +90,4 @@ See [SKU matrix](sku-matrix.md) for tier comparison and [datasheet](datasheet.md
 
 ## License
 
-**Personal License ($79)** for non-commercial use, or **Commercial EULA** for business. See [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md) and [product licensing](../product-licensing.md).
+**Personal ($79)**, **Professional ($399)**, or **Enterprise EULA**. See [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md), [PROFESSIONAL-LICENSE.md](../../PROFESSIONAL-LICENSE.md), and [product licensing](../product-licensing.md).

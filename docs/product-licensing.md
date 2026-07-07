@@ -2,14 +2,15 @@
 
 ## License tiers
 
-Coltex offers two license tiers depending on your use case:
+Coltex offers three license tiers depending on your use case:
 
 | Tier | Price | License | Best for |
 |------|-------|---------|----------|
-| **Personal** | **$79 USD** (one-time) | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | Students, hobbyists, researchers — non-commercial use |
-| **Commercial** | Contact / $1,000+ | [EULA.md](../EULA.md) | Businesses, production RAG, revenue-generating products |
+| **Personal** | **$79 USD** (one-time) | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | Students, hobbyists, researchers — non-commercial |
+| **Professional** | **$399 USD** (one-time) | [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) | Freelancers, startups, commercial developers — one entity |
+| **Enterprise** | Contact / $1,000+ | [EULA.md](../EULA.md) | Large-scale dataset packages, enterprise deployment |
 
-Choose the tier that matches your intended use. Commercial activity requires the EULA, not the Personal License.
+Choose the tier that matches your intended use.
 
 ---
 
@@ -19,66 +20,57 @@ Choose the tier that matches your intended use. Commercial activity requires the
 
 **You may:** Install on personal devices, learn and experiment, create private AI projects, modify for personal use, receive updates (if offered).
 
-**You may not:** Commercial use, sell services, offer SaaS/hosted Coltex, redistribute or resell, share license keys, remove copyright notices, reverse engineer to compete commercially.
+**You may not:** Commercial use, sell services, offer SaaS/hosted Coltex, redistribute or resell, share license keys, remove copyright notices.
 
-Full terms: [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) · Summary: [knowledge-base/PERSONAL-LICENSE.md](../knowledge-base/PERSONAL-LICENSE.md)
+Full terms: [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md)
 
 ---
 
-## Commercial License (EULA)
+## Professional License — $399 USD
 
-The Coltex **Dataset** for commercial use (knowledge base, vector chunks, embeddings, graph edges, benchmarks, product artifacts) is licensed under the **Coltex End User License Agreement (EULA)**.
+**Intended users:** Freelancers, consultants, startups, software companies, and commercial developers.
+
+**Includes everything in the Personal License, plus:**
+
+- Use Coltex in commercial products
+- Build AI applications and generate revenue
+- Deploy Coltex within your business
+- Fine-tune AI models using Coltex-processed data (where applicable)
+- Integrate Coltex into customer-facing software
+
+**Restrictions:** No reselling original Coltex software, no competing hosted service without permission, no selling copies, no sharing across organizations, no removing notices.
+
+**Scope:** One company or one legal entity (additional seats available). Priority email support may be included if offered.
+
+Full terms: [PROFESSIONAL-LICENSE.md](../PROFESSIONAL-LICENSE.md) · Summary: [knowledge-base/PROFESSIONAL-LICENSE.md](../knowledge-base/PROFESSIONAL-LICENSE.md)
+
+---
+
+## Enterprise License (EULA)
+
+The Coltex **Enterprise RAG Vector Dataset** for large-scale commercial deployment is licensed under the **Coltex End User License Agreement (EULA)**.
 
 | Document | Purpose |
 |----------|---------|
-| [EULA.md](../EULA.md) | Full commercial End User License Agreement |
+| [EULA.md](../EULA.md) | Full enterprise End User License Agreement |
 | [knowledge-base/EULA.md](../knowledge-base/EULA.md) | Dataset scope summary |
-| [knowledge-base/LICENSE](../knowledge-base/LICENSE) | Purchaser rights summary |
 | [PROVENANCE.md](../knowledge-base/PROVENANCE.md) | Content origin and compliance |
 | [NOTICE](../NOTICE) | Third-party open-source dependencies (engine tooling only) |
 
-### What the EULA covers
-
-| Content | License | Included in product? |
-|---------|---------|---------------------|
-| Distributable `CHUNK-*.md` files | Coltex EULA | Yes (commercial tier) |
-| Product artifacts (`data/product/`) | Coltex EULA | Yes |
-| Benchmark datasets (`benchmarks/`) | Coltex EULA | Yes |
-| `knowledge-base/_excluded_from_distribution/` | — | **No** |
-| `knowledge-base/generated/` | — | **No** |
-
-### Commercial permitted use (summary)
-
-- Internal and production RAG / AI development
-- Build and sell commercial software powered by the Dataset
-- Load chunks and embeddings into your vector databases
-- Create derivative products (no raw Dataset redistribution)
-
-### Commercial restrictions (summary)
-
-- No reselling raw Dataset as a standalone product
-- No public redistribution to repos or model hubs
-- No removing provenance or EULA notices
-
 See [EULA.md](../EULA.md) for complete terms. SKU details: [commercial/sku-matrix.md](commercial/sku-matrix.md).
-
----
-
-## Third-party dependencies (runtime)
-
-The Coltex **engine** uses open-source libraries listed in [NOTICE](../NOTICE). Those components remain under their respective licenses (Apache-2.0, MIT, BSD, etc.).
-
-Runtime dependencies are **not bundled** in the Dataset package. You are responsible for their license compliance when used.
 
 ---
 
 ## Build commands by tier
 
 ```bash
-# Personal tier ($79 — non-commercial)
+# Personal ($79 — non-commercial)
 make product-personal
 
-# Commercial tiers
+# Professional ($399 — commercial, one entity)
+make product-professional
+
+# Enterprise (commercial dataset packages)
 make product-enterprise
 make product-premium-smoke
 
@@ -92,4 +84,4 @@ make audit-distribution
 
 This document summarizes the licensing approach. It is not legal advice. Consult qualified counsel before commercial use.
 
-For enterprise agreements or tier upgrades: contact the repository maintainer.
+For enterprise agreements, additional seats, or tier upgrades: contact the repository maintainer.

@@ -71,6 +71,7 @@ def validate_license_files(cfg: dict) -> dict:
 
     require_eula = dist_cfg.get("require_eula", dist_cfg.get("require_kb_license", False))
     require_personal = dist_cfg.get("require_personal_license", False)
+    require_professional = dist_cfg.get("require_professional_license", False)
     if require_eula:
         if not (ROOT / "EULA.md").exists():
             issues.append("Missing EULA.md")
@@ -81,9 +82,18 @@ def validate_license_files(cfg: dict) -> dict:
             issues.append("Missing PERSONAL-LICENSE.md")
         if not (ROOT / "knowledge-base" / "PERSONAL-LICENSE.md").exists():
             issues.append("Missing knowledge-base/PERSONAL-LICENSE.md")
-    if not require_eula and not require_personal:
-        if not (ROOT / "EULA.md").exists() and not (ROOT / "PERSONAL-LICENSE.md").exists():
-            issues.append("Missing EULA.md or PERSONAL-LICENSE.md")
+    if require_professional:
+        if not (ROOT / "PROFESSIONAL-LICENSE.md").exists():
+            issues.append("Missing PROFESSIONAL-LICENSE.md")
+        if not (ROOT / "knowledge-base" / "PROFESSIONAL-LICENSE.md").exists():
+            issues.append("Missing knowledge-base/PROFESSIONAL-LICENSE.md")
+    if not require_eula and not require_personal and not require_professional:
+        if not (ROOT / "PERSONAL-LICENSE.md").exists():
+            issues.append("Missing PERSONAL-LICENSE.md")
+        if not (ROOT / "PROFESSIONAL-LICENSE.md").exists():
+            issues.append("Missing PROFESSIONAL-LICENSE.md")
+        if not (ROOT / "EULA.md").exists():
+            issues.append("Missing EULA.md")
     if dist_cfg.get("require_provenance", True):
         if not (ROOT / "knowledge-base" / "PROVENANCE.md").exists() and not (ROOT / "knowledge-base" / "PROVENANCE").exists():
             issues.append("Missing knowledge-base/PROVENANCE.md")

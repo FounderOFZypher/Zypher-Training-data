@@ -18,7 +18,7 @@ The Coltex Personal License governs individual, non-commercial use of Coltex by 
 
 ## Commercial use
 
-For business, production, or revenue-generating use, purchase a **Commercial License** under the [EULA](EULA.md).
+For business, production, or revenue-generating use, purchase a **Professional License** ($399) or **Enterprise EULA**.
 
 ## Scope
 

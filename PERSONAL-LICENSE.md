@@ -39,7 +39,7 @@ Students, hobbyists, researchers, and individuals using Coltex for **non-commerc
 
 This license is **non-transferable** and intended for **one individual**.
 
-By downloading, installing, or using Coltex under this license, you agree to these terms. If you need commercial use rights, see the [Coltex End User License Agreement (EULA)](EULA.md) or contact the Licensor for enterprise licensing.
+By downloading, installing, or using Coltex under this license, you agree to these terms. For commercial use by one company, see the [Coltex Professional License](PROFESSIONAL-LICENSE.md) ($399 USD). For enterprise-scale dataset packages, see the [Coltex End User License Agreement (EULA)](EULA.md).
 
 ---
 
