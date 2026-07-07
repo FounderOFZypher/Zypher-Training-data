@@ -1,83 +1,56 @@
 # Coltex SKU Matrix
 
-Commercial tiers for the Coltex Enterprise RAG Vector Dataset.
+License tiers and commercial packages for the Coltex RAG Vector Dataset.
 
 ---
 
-## Tier comparison
+## License tiers
+
+| | **Personal** | **Commercial (EULA)** |
+|---|--------------|------------------------|
+| **SKU** | `coltex-personal-v1` | `coltex-enterprise-v3` / premium tiers |
+| **Price** | **$79 USD** (one-time) | Contact / $1,000+ |
+| **License** | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | [EULA.md](../EULA.md) |
+| **Use case** | Non-commercial, personal | Business & production |
+| **Intended users** | Students, hobbyists, researchers | Teams, enterprises, vendors |
+| **Build command** | `make product-personal` | `make product-enterprise` |
+
+### Personal License — $79
+
+- Install on personal devices or servers
+- Personal learning, experimentation, research
+- Private AI projects
+- **Not** for commercial use, SaaS, resale, or redistribution
+
+See [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) for full terms.
+
+---
+
+## Commercial dataset tiers
 
 | | **Enterprise Curated** | **Premium Standard** | **Premium Hyper** |
 |---|------------------------|----------------------|-------------------|
 | **SKU** | `coltex-enterprise-v3` | `coltex-premium-v2.1` | `coltex-premium-hyper-v2.1` |
-| **Price guidance** | Contact | $1,000+ | $1,000+ (volume) |
-| **Documents** | 12,993 curated CHUNK docs | 25,000 streamed | Uncapped (100B× procedural) |
-| **Domains** | 63 full domains | 27 categories | 27+ categories |
-| **Graph architecture** | Full (hubs, links, routes) | Streamed graph edges | Streamed graph edges |
-| **Embeddings** | Optional (included in build) | Pre-computed (500k cap local) | Cluster-scale export |
+| **Price** | Contact | $1,000+ | $1,000+ (volume) |
+| **Documents** | 12,993 curated | 25,000 streamed | Uncapped |
+| **Domains** | 63 | 27 categories | 27+ categories |
+| **Graph architecture** | Full (hubs, links, routes) | Streamed edges | Streamed edges |
+| **Embeddings** | Optional | Pre-computed (500k cap) | Cluster-scale |
 | **Benchmarks** | 200+ pairs | 500+ pairs | 500+ pairs |
 | **Audit report** | ✅ | ✅ | ✅ |
 | **Build command** | `make product-enterprise` | `make product-premium-smoke` | `make product-hyper` |
-| **Best for** | Production RAG pilots | Buyer validation / demos | Maximum scale deployment |
+| **Best for** | Production RAG | Buyer validation | Maximum scale |
 
 ---
 
-## What's in every tier
+## What's included (commercial tiers)
 
 - Coltex EULA with full provenance documentation
 - `manifest.json` with SHA-256 checksums
 - `distribution_audit.json` compliance report
 - Typed metadata on every document
-- Quality gate validation (dedup, substance, license checks)
-- Benchmark datasets for due diligence
-
----
-
-## Enterprise Curated — recommended starting point
-
-The **Enterprise Curated** tier combines the full knowledge-corpus architecture (63 domains, 18 hubs, graph links, domain routes, processing layers) with the standard product pipeline. This is the most polished, graph-rich deliverable.
-
-```bash
-make corpus-mega              # Expand to 10,000+ domain documents
-make product-enterprise       # Chunk → embed → benchmark → manifest → audit
-```
-
-**Deliverables:** `data/product/` + `benchmarks/` + compliance files
-
----
-
-## Premium Standard — validation & demos
-
-25,000 procedurally streamed documents with audit samples on disk. Ideal for smoke-testing buyer pipelines before a hyper-scale run.
-
-```bash
-make product-premium-smoke
-make audit-distribution
-```
-
-**Sample files:** `knowledge-base/distributable/_samples/` (1,000 audit markdown files)
-
----
-
-## Premium Hyper — maximum scale
-
-100-billion× procedural multiplier. Intended for cluster deployment (Vast.ai, cloud GPU). Uncapped document generation.
-
-```bash
-make product-hyper            # Requires cluster resources
-```
-
-Estimated procedural capacity: 600+ trillion unique document combinations.
-
----
-
-## Add-ons (available on request)
-
-| Add-on | Description |
-|--------|-------------|
-| Custom domain pack | Additional technology verticals |
-| Re-embedding | Alternative embedding models (e.g. bge-small) |
-| Evaluation report | Full recall@k report on buyer queries |
-| White-label manifest | Buyer-branded `manifest.json` |
+- Quality gate validation
+- Benchmark datasets
 
 ---
 
@@ -89,4 +62,4 @@ Estimated procedural capacity: 600+ trillion unique document combinations.
 | Cloud storage | S3 / GCS signed URL |
 | Hugging Face Dataset | Parquet or JSONL |
 
-Contact: see repository maintainer for licensing and delivery options.
+Contact: repository maintainer for licensing and delivery.

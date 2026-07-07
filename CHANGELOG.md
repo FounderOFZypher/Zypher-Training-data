@@ -2,6 +2,14 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.3.2] - 2026-07-07
+
+### Added — Coltex Personal License ($79)
+
+- Added [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md) for non-commercial personal use
+- Added `config/product_personal.yaml` and `make product-personal` build target
+- Updated SKU matrix, product-licensing docs, and README with Personal vs Commercial tiers
+
 ## [4.3.1] - 2026-07-07
 
 ### Changed — Commercial EULA

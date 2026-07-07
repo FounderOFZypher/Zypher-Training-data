@@ -23,10 +23,17 @@ def check_required_files(dist_cfg: dict) -> dict:
     issues: list[str] = []
     required: list[tuple[str, Path]] = []
 
-    require_eula = dist_cfg.get("require_eula", dist_cfg.get("require_kb_license", True))
+    require_eula = dist_cfg.get("require_eula", dist_cfg.get("require_kb_license", False))
+    require_personal = dist_cfg.get("require_personal_license", False)
     if require_eula:
         required.append(("EULA.md", ROOT / "EULA.md"))
         required.append(("knowledge-base/EULA.md", ROOT / "knowledge-base" / "EULA.md"))
+    if require_personal:
+        required.append(("PERSONAL-LICENSE.md", ROOT / "PERSONAL-LICENSE.md"))
+        required.append(("knowledge-base/PERSONAL-LICENSE.md", ROOT / "knowledge-base" / "PERSONAL-LICENSE.md"))
+    if not require_eula and not require_personal:
+        required.append(("EULA.md", ROOT / "EULA.md"))
+        required.append(("PERSONAL-LICENSE.md", ROOT / "PERSONAL-LICENSE.md"))
     if dist_cfg.get("require_provenance", True):
         required.append(("knowledge-base/PROVENANCE.md", ROOT / "knowledge-base" / "PROVENANCE.md"))
     if dist_cfg.get("require_notice", True):

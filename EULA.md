@@ -10,7 +10,7 @@
 
 This End User License Agreement ("Agreement") is a legal contract between you ("Licensee", "you") and the Licensor governing your access to and use of the Coltex Enterprise RAG Vector Dataset, including all associated knowledge base content, vector chunks, embeddings, graph edges, metadata, benchmark datasets, manifests, and documentation (collectively, the "Dataset").
 
-By downloading, accessing, installing, copying, or using the Dataset, you agree to be bound by this Agreement. If you do not agree, do not access or use the Dataset.
+By downloading, accessing, installing, copying, or using the Dataset under a **commercial license**, you agree to be bound by this Agreement. For **non-commercial personal use**, see the [Coltex Personal License](PERSONAL-LICENSE.md) ($79 USD one-time).
 
 ---
 

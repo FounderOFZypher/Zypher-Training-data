@@ -2,7 +2,8 @@
 
 **Enterprise RAG Vector Dataset** — production-grade, graph-linked, vector-ready knowledge corpus for commercial AI deployment.
 
-[![License: EULA](https://img.shields.io/badge/License-Coltex%20EULA-red.svg)](EULA.md)
+[![Personal: $79](https://img.shields.io/badge/Personal-%2479-blue.svg)](PERSONAL-LICENSE.md)
+[![Commercial: EULA](https://img.shields.io/badge/Commercial-EULA-red.svg)](EULA.md)
 [![Dataset](https://img.shields.io/badge/documents-13k%2B-green.svg)](docs/commercial/datasheet.md)
 [![Chunks](https://img.shields.io/badge/chunks-83k%2B-orange.svg)](docs/commercial/datasheet.md)
 [![Graph edges](https://img.shields.io/badge/edges-57k%2B-purple.svg)](docs/commercial/datasheet.md)
@@ -11,7 +12,7 @@
 
 Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowledge hubs, typed graph edges, pre-chunked JSONL exports, optional pre-computed embeddings, and benchmark evidence — ready to load into any vector database.
 
-**Commercial documentation:** [Product overview](docs/commercial/product-overview.md) · [Datasheet](docs/commercial/datasheet.md) · [SKU matrix](docs/commercial/sku-matrix.md)
+**Licensing:** [Personal License ($79)](PERSONAL-LICENSE.md) · [Commercial EULA](EULA.md) · [Product licensing](docs/product-licensing.md)
 
 ---
 
@@ -31,7 +32,7 @@ Coltex delivers a fully auditable RAG dataset: 63 technology domains, 18 knowled
 | Document types | **22** typed classifications |
 | Graph edge types | **20** relationship types |
 | Embedding model | `all-MiniLM-L6-v2` (384-dim) |
-| License | **Coltex EULA** with full provenance |
+| License | **Personal $79** or **Commercial EULA** |
 
 ---
 
@@ -87,10 +88,22 @@ make audit-distribution
 
 ---
 
-## Commercial tiers
+## License tiers
+
+| Tier | Price | Use case | Document |
+|------|-------|----------|----------|
+| **Personal** | **$79** one-time | Students, hobbyists, researchers — non-commercial | [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md) |
+| **Commercial** | Contact / $1,000+ | Business, production, revenue-generating | [EULA.md](EULA.md) |
+
+**Commercial documentation:** [Product overview](docs/commercial/product-overview.md) · [Datasheet](docs/commercial/datasheet.md) · [SKU matrix](docs/commercial/sku-matrix.md)
+
+---
+
+## Commercial tiers (dataset packages)
 
 | Tier | Command | Documents | Best for |
 |------|---------|-----------|----------|
+| **Personal** | `make product-personal` | Full corpus | Non-commercial learning & research |
 | **Enterprise Curated** | `make product-enterprise` | 12,993 | Production RAG deployment |
 | **Premium Smoke** | `make product-premium-smoke` | 25,000 | Buyer validation / demos |
 | **Premium Hyper** | `make product-hyper` | Uncapped | Maximum scale (cluster) |
@@ -152,4 +165,4 @@ Catalog index: `data/brain/catalog-index.json` · Architecture manifest: `data/b
 
 ## License
 
-**Coltex End User License Agreement (EULA).** Original synthetic content with full provenance. See [EULA.md](EULA.md) and [PROVENANCE.md](knowledge-base/PROVENANCE.md).
+**Coltex Personal License ($79)** for non-commercial use, or **Commercial EULA** for business use. See [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md), [EULA.md](EULA.md), and [PROVENANCE.md](knowledge-base/PROVENANCE.md).

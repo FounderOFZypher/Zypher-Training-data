@@ -69,12 +69,21 @@ def validate_license_files(cfg: dict) -> dict:
     dist_cfg = cfg.get("distribution", {})
     issues: list[str] = []
 
-    require_eula = dist_cfg.get("require_eula", dist_cfg.get("require_kb_license", True))
+    require_eula = dist_cfg.get("require_eula", dist_cfg.get("require_kb_license", False))
+    require_personal = dist_cfg.get("require_personal_license", False)
     if require_eula:
         if not (ROOT / "EULA.md").exists():
             issues.append("Missing EULA.md")
         if not (ROOT / "knowledge-base" / "EULA.md").exists():
             issues.append("Missing knowledge-base/EULA.md")
+    if require_personal:
+        if not (ROOT / "PERSONAL-LICENSE.md").exists():
+            issues.append("Missing PERSONAL-LICENSE.md")
+        if not (ROOT / "knowledge-base" / "PERSONAL-LICENSE.md").exists():
+            issues.append("Missing knowledge-base/PERSONAL-LICENSE.md")
+    if not require_eula and not require_personal:
+        if not (ROOT / "EULA.md").exists() and not (ROOT / "PERSONAL-LICENSE.md").exists():
+            issues.append("Missing EULA.md or PERSONAL-LICENSE.md")
     if dist_cfg.get("require_provenance", True):
         if not (ROOT / "knowledge-base" / "PROVENANCE.md").exists() and not (ROOT / "knowledge-base" / "PROVENANCE").exists():
             issues.append("Missing knowledge-base/PROVENANCE.md")

@@ -1,57 +1,66 @@
 # Coltex Product Licensing
 
-## License model
+## License tiers
 
-The Coltex **Dataset** (knowledge base content, vector chunks, embeddings, graph edges, benchmarks, and product artifacts) is licensed under the **Coltex End User License Agreement (EULA)** — a commercial license, not an open-source license.
+Coltex offers two license tiers depending on your use case:
+
+| Tier | Price | License | Best for |
+|------|-------|---------|----------|
+| **Personal** | **$79 USD** (one-time) | [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) | Students, hobbyists, researchers — non-commercial use |
+| **Commercial** | Contact / $1,000+ | [EULA.md](../EULA.md) | Businesses, production RAG, revenue-generating products |
+
+Choose the tier that matches your intended use. Commercial activity requires the EULA, not the Personal License.
+
+---
+
+## Personal License — $79 USD
+
+**Intended users:** Students, hobbyists, researchers, and individuals using Coltex for non-commercial purposes.
+
+**You may:** Install on personal devices, learn and experiment, create private AI projects, modify for personal use, receive updates (if offered).
+
+**You may not:** Commercial use, sell services, offer SaaS/hosted Coltex, redistribute or resell, share license keys, remove copyright notices, reverse engineer to compete commercially.
+
+Full terms: [PERSONAL-LICENSE.md](../PERSONAL-LICENSE.md) · Summary: [knowledge-base/PERSONAL-LICENSE.md](../knowledge-base/PERSONAL-LICENSE.md)
+
+---
+
+## Commercial License (EULA)
+
+The Coltex **Dataset** for commercial use (knowledge base, vector chunks, embeddings, graph edges, benchmarks, product artifacts) is licensed under the **Coltex End User License Agreement (EULA)**.
 
 | Document | Purpose |
 |----------|---------|
-| [EULA.md](../EULA.md) | Full End User License Agreement |
+| [EULA.md](../EULA.md) | Full commercial End User License Agreement |
 | [knowledge-base/EULA.md](../knowledge-base/EULA.md) | Dataset scope summary |
 | [knowledge-base/LICENSE](../knowledge-base/LICENSE) | Purchaser rights summary |
 | [PROVENANCE.md](../knowledge-base/PROVENANCE.md) | Content origin and compliance |
 | [NOTICE](../NOTICE) | Third-party open-source dependencies (engine tooling only) |
 
----
-
-## What the EULA covers
+### What the EULA covers
 
 | Content | License | Included in product? |
 |---------|---------|---------------------|
-| Distributable `CHUNK-*.md` files | Coltex EULA | Yes |
+| Distributable `CHUNK-*.md` files | Coltex EULA | Yes (commercial tier) |
 | Product artifacts (`data/product/`) | Coltex EULA | Yes |
 | Benchmark datasets (`benchmarks/`) | Coltex EULA | Yes |
-| `knowledge-base/_excluded_from_distribution/` | — | **No** — quarantined stubs |
-| `knowledge-base/generated/` | — | **No** — stress-test corpus only |
+| `knowledge-base/_excluded_from_distribution/` | — | **No** |
+| `knowledge-base/generated/` | — | **No** |
 
-All distributible content is **original synthetic documentation** authored for Coltex. It was not copied from third-party documentation, web scraping, or proprietary sources.
+### Commercial permitted use (summary)
 
-See `knowledge-base/PROVENANCE.md` for full content origin documentation.
+- Internal and production RAG / AI development
+- Build and sell commercial software powered by the Dataset
+- Load chunks and embeddings into your vector databases
+- Create derivative products (no raw Dataset redistribution)
 
----
+### Commercial restrictions (summary)
 
-## Permitted use (summary)
+- No reselling raw Dataset as a standalone product
+- No public redistribution to repos or model hubs
+- No removing provenance or EULA notices
 
-Under the EULA you may:
-
-- Use the Dataset internally for RAG systems, AI agents, and related applications
-- Build and sell commercial software and services powered by the Dataset
-- Load chunks and embeddings into vector databases you operate
-- Create derivative products that do not redistribute raw Dataset content
-- Make backup copies for disaster recovery
-
----
-
-## Restrictions (summary)
-
-You may **not** (without written consent):
-
-- Resell, sublicense, or redistribute the Dataset as a standalone data product
-- Publish substantial portions to public repos, model hubs, or file-sharing sites
-- Remove provenance metadata, EULA notices, or manifest checksums
-- Exceed your purchased tier scope (Enterprise, Premium, Hyper)
-
-See [EULA.md](../EULA.md) for complete terms.
+See [EULA.md](../EULA.md) for complete terms. SKU details: [commercial/sku-matrix.md](commercial/sku-matrix.md).
 
 ---
 
@@ -59,34 +68,23 @@ See [EULA.md](../EULA.md) for complete terms.
 
 The Coltex **engine** uses open-source libraries listed in [NOTICE](../NOTICE). Those components remain under their respective licenses (Apache-2.0, MIT, BSD, etc.).
 
-| Dependency | License | Notes |
-|------------|---------|-------|
-| sentence-transformers | Apache-2.0 | Embedding library |
-| `all-MiniLM-L6-v2` model | Apache-2.0 | Downloaded from Hugging Face |
-| chromadb | Apache-2.0 | Vector store |
-| PyTorch | BSD-style | ML framework |
-
 Runtime dependencies are **not bundled** in the Dataset package. You are responsible for their license compliance when used.
-
-This package is a **RAG dataset** — no LLM weights are included.
 
 ---
 
-## Commercial distribution checklist
-
-Before deploying or offering services built on the Dataset:
+## Build commands by tier
 
 ```bash
-make product-enterprise       # Build with compliance gates
-make audit-distribution       # Verify EULA + provenance compliance
+# Personal tier ($79 — non-commercial)
+make product-personal
+
+# Commercial tiers
+make product-enterprise
+make product-premium-smoke
+
+# Compliance audit
+make audit-distribution
 ```
-
-The audit checks for:
-
-- Required `EULA.md`, `NOTICE`, and `PROVENANCE.md` files
-- No excluded paths in product artifacts
-- No forbidden third-party source patterns in content
-- No placeholder boilerplate in distributable documents
 
 ---
 
@@ -94,4 +92,4 @@ The audit checks for:
 
 This document summarizes the licensing approach. It is not legal advice. Consult qualified counsel before commercial use.
 
-For enterprise agreements, custom tiers, or redistribution consent: contact the repository maintainer.
+For enterprise agreements or tier upgrades: contact the repository maintainer.
