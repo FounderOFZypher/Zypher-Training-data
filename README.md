@@ -1,30 +1,32 @@
 # Coltex
 
-Enterprise-grade retrieval-augmented generation (RAG) dataset and indexing engine. Coltex delivers curated knowledge artifacts—vector-ready chunks, embeddings, graph relationships, metadata, benchmarks, and compliance tooling—designed for production RAG pipelines.
+**The Living Brain** — the largest connected RAG knowledge dataset with hybrid retrieval, graph-linked domains, neural hubs, and procedural growth to unlimited scale.
 
-This repository contains the **knowledge layer only**: document corpus, export pipeline, and retrieval engine. It does not include chat interfaces, model hosting, fine-tuning workflows, or API servers.
+Coltex is not a SaaS platform. It is a **living knowledge brain**: hundreds of domain folders, thousands of graph-linked documents, synapses between neural hubs, and an export pipeline that packages the entire corpus for commercial distribution.
 
 ---
 
-## Overview
-
-Coltex is a modular RAG database composed of:
-
-| Layer | Description |
-|-------|-------------|
-| **Knowledge base** | Original synthetic documents with typed metadata and graph links |
-| **Export pipeline** | Chunking, deduplication, embedding generation, and manifest signing |
-| **Retrieval engine** | Vector search, metadata filtering, graph traversal, and re-ranking |
-| **Quality assurance** | Benchmark datasets, evaluation reports, and distribution audits |
+## What Is the Living Brain?
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│                            COLTEX                                │
-│                                                                  │
-│   Knowledge Base  →  Chunks  →  Embeddings  →  Vector Index      │
-│        │              │            │              │              │
-│        └──────── Graph Relationships · Metadata · Catalog ──────┘
-└──────────────────────────────────────────────────────────────────┘
+                    ┌─────────────────────────────────┐
+                    │         COLTEX CORTEX           │
+                    │    (meta-reasoning layer)       │
+                    └───────────────┬─────────────────┘
+                                    │
+        ┌───────────────────────────┼───────────────────────────┐
+        ▼                           ▼                           ▼
+  ┌───────────┐              ┌───────────┐              ┌───────────┐
+  │  DOMAINS  │◄──synapse──►│   HUBS    │◄──synapse──►│  REFLEXES │
+  │ 30+ tech  │              │  neural   │              │ fast FAQ  │
+  │ categories│              │ clusters  │              │           │
+  └─────┬─────┘              └─────┬─────┘              └───────────┘
+        │                          │
+        └──────────┬───────────────┘
+                   ▼
+         Vector Index + GraphRAG + Metadata
+                   ▼
+              brain retrieve / pulse
 ```
 
 ---
@@ -47,138 +49,98 @@ All distributable content is original synthetic material. Purchasers receive a p
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.10+
-- 4 GB RAM minimum (embedding generation benefits from additional memory)
-
-### Installation
+## Quick Start
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-```
 
-### Build a dataset (smoke test)
+# Bootstrap the living brain (folders + 300 domain docs + synapses)
+make living-brain
 
-```bash
-make product-premium-smoke
-```
-
-This generates 25,000 premium documents with full pipeline validation. Artifacts are written to `data/product/`.
-
-### Index and query
-
-```bash
+# Index and query
 make index
-python3 -m brain retrieve "What is retrieval-augmented generation for code?" --context
+python3 -m brain retrieve "What is GraphRAG?" --context
+python3 -m brain pulse
 ```
 
 ---
 
-## Product Tiers
+## Grow the Brain
 
-Coltex supports three build tiers for the premium RAG dataset. Configuration is defined in `config/product_hyper.yaml`.
-
-| Tier | Command | Scope |
-|------|---------|-------|
-| Smoke | `make product-premium-smoke` | 25,000 documents — local validation |
-| Premium | `make product-premium` | Full premium pipeline per configuration |
-| Hyper | `make product-hyper` | Uncapped streaming generation for cluster deployment |
-
-The hyper tier uses a `mega_multiplier` of 100,000,000,000, enabling procedural expansion to hundreds of trillions of unique document combinations via streaming generation. Hyper builds are intended for distributed execution (e.g., Vast.ai or equivalent compute clusters).
+| Command | Output |
+|---------|--------|
+| `make living-brain` | Scaffold + 300 domain docs + synapses + neural map |
+| `make living-brain-grow COUNT=500` | Add 500 docs across all domains |
+| `make living-brain-mega` | **10,000** documents across 30+ domains |
+| `make expand-curated-kb COUNT=200` | High-quality CHUNK docs at KB root |
+| `make generate-mega` | 100,000 procedural documents |
+| `make generate-ultra` | 1,000,000 documents |
+| `make generate-hyper` | Uncapped streaming (604T+ combinations) |
 
 ```bash
-# Cluster deployment
-make product-hyper
+# Check brain vitals anytime
+make living-brain-pulse
+python3 -m brain pulse
 ```
+
+Neural map manifest: `data/brain/neural-map.json`
 
 ---
 
 ## Retrieval Engine
 
-The `brain/` package implements the full retrieval stack:
+Hybrid RAG pipeline in `brain/`:
 
-```
-brain/
-├── brain.py           # Orchestrator and public API
-├── ingestion/         # Markdown document loading and parsing
-├── embeddings/        # Sentence-transformer encoding
-├── indexing/          # ChromaDB persistent vector store
-├── metadata/          # doc_type, category, and tag filtering
-├── graph/             # Multi-hop relationship traversal
-├── reranking/         # Source-weighted result merging
-└── retrieval/         # End-to-end retrieval pipeline
-```
-
-### CLI reference
+1. Query embedding (MiniLM)
+2. Vector search (ChromaDB)
+3. Metadata filtering (doc_type, category, hub)
+4. GraphRAG expansion (synapses, `depends_on`, `see_also`)
+5. Source-weighted reranking
+6. Context assembly
 
 ```bash
-python3 -m brain index --reindex     # Rebuild the vector index
-python3 -m brain stats                 # Report document and index counts
-python3 -m brain retrieve "<query>"   # Retrieve ranked documents
-python3 -m brain retrieve "<query>" --context   # Include assembled context window
+python3 -m brain index --reindex
+python3 -m brain retrieve "<query>" --context
+python3 -m brain stats
+python3 -m brain pulse
 ```
 
-### Retrieval pipeline
-
-1. Encode the query embedding
-2. Search the vector index
-3. Apply metadata filters
-4. Expand results via graph relationships
-5. Merge and re-rank by source weight
-6. Assemble the context window for downstream consumption
-
 ---
 
-## Corpus Generation
+## Premium Dataset Export
 
-Raw markdown corpus expansion is available for seed document generation prior to product export:
-
-| Command | Approximate output |
-|---------|-------------------|
-| `make generate-smoke` | 2,000 documents |
-| `make generate-mega` | 100,000 documents |
-| `make generate-ultra` | 1,000,000 documents |
-| `make generate-hyper` | Uncapped (streaming) |
-
-Generated markdown under `knowledge-base/generated/` is excluded from commercial distribution builds.
-
----
-
-## Quality and Compliance
-
-The product pipeline enforces quality gates and distribution audits on every build:
+Package the entire brain for commercial sale:
 
 ```bash
-make validate-product      # Metadata, chunk size, and duplication checks
-make audit-distribution    # License files, provenance, and content compliance
-make evaluate              # Retrieval recall@k and benchmark evidence report
+make product-premium-smoke   # 25,000 documents
+make product-premium         # Full premium pipeline
+make evaluate                # recall@8 benchmark evidence
+make audit-distribution      # Compliance audit
 ```
 
-| Gate | Threshold |
-|------|-----------|
-| Maximum duplicate chunk ratio | ≤ 5% |
-| Metadata accuracy | ≥ 90% |
-| Retrieval recall@8 | ≥ 45–50% (tier-dependent) |
-| Third-party content | None (`third_party_docs_copied: false`) |
-
-Reports are written to `benchmarks/evaluation_report.json` and `benchmarks/distribution_audit.json`.
+| Artifact | Description |
+|----------|-------------|
+| `chunks.jsonl` | Vector-ready segments |
+| `embeddings.jsonl` | Pre-computed vectors |
+| `edges.jsonl` | Graph relationship export |
+| `catalog.jsonl` | Document provenance index |
+| `manifest.json` | SHA-256 checksums |
 
 ---
 
-## Configuration
+## Scale
 
-| File | Purpose |
-|------|---------|
-| `config/product_hyper.yaml` | Premium hyper-tier dataset build |
-| `config/product_hyper_smoke.yaml` | Local smoke-test configuration |
-| `config/product.yaml` | Seed corpus product build |
-| `config/brain.yaml` | Vector index and retrieval settings |
-| `config/corpus_mega.yaml` | Mega-scale corpus generation |
+| Tier | Documents | Command |
+|------|-----------|---------|
+| Curated seed | 500+ | Included in repo |
+| Living brain bootstrap | 300+ per run | `make living-brain` |
+| Premium smoke | 25,000 | `make product-premium-smoke` |
+| Mega | 100,000 | `make generate-mega` |
+| Ultra | 1,000,000 | `make generate-ultra` |
+| Hyper | Uncapped | `make generate-hyper` |
+
+Procedural expansion enables **604+ trillion** unique document combinations via streaming generation.
 
 ---
 
@@ -186,16 +148,23 @@ Reports are written to `benchmarks/evaluation_report.json` and `benchmarks/distr
 
 ```
 .
-├── brain/                  # Retrieval engine and CLI
-├── knowledge-base/         # Source documents and audit samples
-├── data/product/           # Exported dataset artifacts (build output)
-├── benchmarks/             # Evaluation and compliance reports
+├── brain/                      # Living brain retrieval engine + CLI
+├── knowledge-base/
+│   ├── CHUNK-*.md              # Curated seed documents
+│   └── living-brain/           # Domain folders, hubs, synapses, cortex
+│       ├── domains/            # 30+ technology domains
+│       ├── hubs/               # Neural clusters
+│       ├── synapses/           # Cross-hub graph links
+│       ├── cortex/             # Brain meta-layer
+│       ├── memory/             # Episodic knowledge
+│       └── reflexes/           # Fast-path FAQs
 ├── scripts/
-│   ├── product/            # Dataset build, audit, and export pipeline
-│   ├── generate_corpus.py  # Markdown corpus generator
-│   └── mega_scale.py       # Hyper-scale procedural topic expansion
-├── docs/                   # Setup, quality, evaluation, and licensing guides
-└── examples/               # Retrieval usage examples
+│   ├── living_brain.py         # Grow, wire, and map the brain
+│   ├── generate_corpus.py      # Hyper-scale procedural generation
+│   └── product/                # Dataset export pipeline
+├── data/brain/neural-map.json  # Brain manifest (auto-generated)
+├── benchmarks/                 # Evaluation datasets
+└── docs/                       # Setup, quality, evaluation guides
 ```
 
 ---

@@ -1,8 +1,9 @@
-# Coltex configuration
+# Coltex configuration — Living Brain
 
 knowledge_base:
   paths:
     - knowledge-base
+    - knowledge-base/living-brain
     - knowledge-base/distributable/_samples
   glob: "**/*.md"
   exclude:
@@ -19,18 +20,18 @@ vector_store:
 
 graph:
   enabled: true
-  max_hops: 2
-  max_extra_chunks: 8
+  max_hops: 3
+  max_extra_chunks: 12
 
 retrieval:
-  vector_top_k: 10
-  metadata_top_k: 8
-  final_top_k: 8
-  max_context_chars: 14000
+  vector_top_k: 12
+  metadata_top_k: 10
+  final_top_k: 10
+  max_context_chars: 16000
   source_weights:
     vector: 1.0
     metadata: 0.85
-    graph: 0.65
+    graph: 0.70
 
 document_types:
   - documentation
@@ -51,6 +52,9 @@ document_types:
   - benchmark
   - evaluation
   - best_practices
+  - deep_dive
+  - anti_patterns
+  - case_study
 
 relationship_types:
   - depends_on
@@ -69,3 +73,4 @@ knowledge_hubs:
   - graphrag_engine
   - payment_service
   - ci_cd_platform
+  - coltex_living_brain

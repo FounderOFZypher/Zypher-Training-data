@@ -2,6 +2,28 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.1.0] - 2026-07-07
+
+### Added — Coltex Living Brain
+
+- **`knowledge-base/living-brain/`** — Domain-organized folder tree (30+ domains, hubs, synapses, cortex, memory, reflexes)
+- **`scripts/living_brain.py`** — Bootstrap, grow, wire synapses, build neural-map manifest
+- **`python3 -m brain pulse`** — Living brain vitals (domains, hubs, synapses, graph edges)
+- **`config/living_brain.yaml`** — Living brain region and domain configuration
+- **`data/brain/neural-map.json`** — Auto-generated brain manifest
+- Makefile targets: `living-brain`, `living-brain-grow`, `living-brain-mega`, `living-brain-pulse`
+
+### Changed
+
+- README repositioned as **Living Brain** mega-dataset (not RAG-as-a-Service)
+- `config/brain.yaml` indexes `living-brain/` paths, increased graph hops to 3
+- Product setup guide updated for living brain workflow
+
+### Removed
+
+- `coltex_platform/` RAG-as-a-Service API (out of scope)
+- Docker/Kubernetes platform deployment, sales/API docs, platform tests
+
 ## [2.1.0] - 2026-07-07
 
 ### Added
