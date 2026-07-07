@@ -1,6 +1,5 @@
-.PHONY: install clean index retrieve stats \
-        platform platform-dev docker-build docker-up \
-        test \
+.PHONY: install clean index retrieve stats pulse \
+        living-brain living-brain-grow living-brain-mega living-brain-pulse \
         generate generate-smoke generate-mega generate-ultra generate-hyper \
         expand-curated-kb \
         product product-premium product-premium-smoke product-hyper stream-premium \
@@ -10,27 +9,31 @@
 install:
 	pip install -r requirements.txt
 
-# Coltex Platform — RAG-as-a-Service API
-platform:
-	python3 -m coltex_platform
-
-platform-dev:
-	python3 -m coltex_platform --reload
-
-docker-build:
-	docker compose build
-
-docker-up:
-	docker compose up -d
-
-test:
-	pytest tests/ -v --tb=short
-
 clean:
 	rm -rf data/brain data/vector_store knowledge-base/generated data/product \
 		__pycache__ scripts/__pycache__ brain/__pycache__ scripts/product/__pycache__
 
-# Coltex — index and query the RAG database
+# Coltex Living Brain — grow and wire the knowledge corpus
+living-brain:
+	python3 scripts/living_brain.py bootstrap --grow 300
+
+living-brain-grow:
+	python3 scripts/living_brain.py grow --count $(or $(COUNT),200)
+
+living-brain-mega:
+	python3 scripts/living_brain.py bootstrap --grow 10000
+
+living-brain-pulse:
+	python3 scripts/living_brain.py map
+	python3 -m brain pulse
+
+living-brain-structure:
+	python3 scripts/living_brain.py structure
+
+living-brain-synapses:
+	python3 scripts/living_brain.py synapses
+
+# Coltex — index and query the living brain
 index:
 	python3 -m brain index --reindex
 
@@ -39,6 +42,9 @@ retrieve:
 
 stats:
 	python3 -m brain stats
+
+pulse:
+	python3 -m brain pulse
 
 # Corpus generation (raw markdown expansion)
 generate:

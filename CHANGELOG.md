@@ -2,27 +2,27 @@
 
 All notable changes to the Coltex product package are documented here.
 
-## [4.0.0] - 2026-07-07
+## [4.1.0] - 2026-07-07
 
-### Added — Coltex RAG-as-a-Service Platform
+### Added — Coltex Living Brain
 
-- **`coltex_platform/`** — Full multi-tenant FastAPI platform restored and rebranded
-  - Tenant registration, API key authentication, usage metering
-  - Workspaces, collections, document ingestion (text, URL, file upload)
-  - Async indexing jobs with background worker
-  - Hybrid retrieval API and RAG chat completions (mock + OpenAI providers)
-- **Docker & Kubernetes** — `Dockerfile`, `docker-compose.yml`, `deploy/kubernetes/coltex-platform.yaml`
-- **Sales & commercial docs** — `docs/sales/` (overview, pricing, feature matrix)
-- **API & architecture docs** — `docs/api/`, `docs/architecture/`, `docs/deployment/`
-- **Enterprise knowledge base** — CHUNK-00500+ platform overview, API reference, deployment guide
-- **Platform tests** — `tests/test_platform.py`
-- **Examples** — `examples/platform_client.py`
-- Makefile targets: `make platform`, `make platform-dev`, `make docker-up`, `make test`
+- **`knowledge-base/living-brain/`** — Domain-organized folder tree (30+ domains, hubs, synapses, cortex, memory, reflexes)
+- **`scripts/living_brain.py`** — Bootstrap, grow, wire synapses, build neural-map manifest
+- **`python3 -m brain pulse`** — Living brain vitals (domains, hubs, synapses, graph edges)
+- **`config/living_brain.yaml`** — Living brain region and domain configuration
+- **`data/brain/neural-map.json`** — Auto-generated brain manifest
+- Makefile targets: `living-brain`, `living-brain-grow`, `living-brain-mega`, `living-brain-pulse`
 
 ### Changed
 
-- README repositioned as **enterprise RAG-as-a-Service** (platform + brain + dataset)
-- `requirements.txt` expanded with FastAPI, uvicorn, httpx, pydantic, pytest
+- README repositioned as **Living Brain** mega-dataset (not RAG-as-a-Service)
+- `config/brain.yaml` indexes `living-brain/` paths, increased graph hops to 3
+- Product setup guide updated for living brain workflow
+
+### Removed
+
+- `coltex_platform/` RAG-as-a-Service API (out of scope)
+- Docker/Kubernetes platform deployment, sales/API docs, platform tests
 
 ## [2.1.0] - 2026-07-07
 

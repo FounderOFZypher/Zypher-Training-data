@@ -1,0 +1,52 @@
+# Coltex Living Brain configuration
+
+living_brain:
+  root: knowledge-base/living-brain
+  neural_map: data/brain/neural-map.json
+
+  regions:
+    domains: domains      # category-organized knowledge
+    hubs: hubs            # service-level neural clusters
+    synapses: synapses    # cross-hub graph links
+    cortex: cortex        # meta-reasoning layer
+    memory: memory        # episodic long-horizon knowledge
+    reflexes: reflexes    # fast-path FAQs
+
+  bootstrap:
+    default_grow: 300
+    mega_grow: 10000
+
+  priority_domains:
+    - rag
+    - graphrag
+    - agentic
+    - vector_stores
+    - embeddings
+    - retrieval
+    - python
+    - java
+    - javascript
+    - typescript
+    - go
+    - rust
+    - sql
+    - postgresql
+    - mongodb
+    - redis
+    - docker
+    - kubernetes
+    - aws
+    - azure
+    - gcp
+    - microservices
+    - security
+    - architecture
+    - api_design
+    - ci_cd
+    - testing
+    - observability
+    - performance
+    - fine_tuning
+    - data_quality
+    - incidents
+    - mlops

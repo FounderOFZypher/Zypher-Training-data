@@ -115,3 +115,55 @@ class Coltex:
             "indexed_vectors": indexed,
             "vector_store": str(self.vector_index.persist_dir),
         }
+
+    def pulse(self) -> dict[str, Any]:
+        """Living brain vitals — document counts, graph density, neural map."""
+        base = self.stats()
+        domains: dict[str, int] = {}
+        hubs: dict[str, int] = {}
+        synapses = 0
+        reflexes = 0
+        edges = 0
+
+        for doc in self.kb.documents:
+            path = doc.path.replace("\\", "/")
+            if "/domains/" in path:
+                parts = path.split("/domains/")
+                if len(parts) > 1:
+                    cat = parts[1].split("/")[0]
+                    domains[cat] = domains.get(cat, 0) + 1
+            if "/synapses/" in path:
+                synapses += 1
+            if "/reflexes/" in path:
+                reflexes += 1
+            if doc.hub:
+                hubs[doc.hub] = hubs.get(doc.hub, 0) + 1
+            edges += len(doc.related) + sum(len(v) for v in doc.relationships.values())
+
+        neural_map_path = Path("data/brain/neural-map.json")
+        neural_map = {}
+        if neural_map_path.exists():
+            import json
+            try:
+                neural_map = json.loads(neural_map_path.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError):
+                pass
+
+        return {
+            **base,
+            "living_brain": {
+                "status": "alive" if base["documents"] > 0 else "dormant",
+                "domains": domains,
+                "domain_count": len(domains),
+                "hubs": hubs,
+                "hub_count": len(hubs),
+                "synapses": synapses,
+                "reflexes": reflexes,
+                "graph_edges": edges,
+                "neural_map": neural_map_path.exists(),
+                "neural_map_summary": {
+                    "total_documents": neural_map.get("total_documents"),
+                    "domain_count": neural_map.get("domain_count"),
+                } if neural_map else None,
+            },
+        }
