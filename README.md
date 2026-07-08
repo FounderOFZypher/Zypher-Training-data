@@ -21,12 +21,10 @@ Knowledge Studio is available to devices on your network at **http://\<your-serv
 
 | Profile | Bind | Port | Use case |
 |---------|------|------|----------|
-| `local` | 127.0.0.1 | 8787 | Single-machine development |
 | `lan` | 0.0.0.0 | 8080 | **Default** — LAN, home server, NAS, VPS |
 | `production` | 0.0.0.0 | 443 | Domain + HTTPS |
 
 ```bash
-coltex serve --profile local          # loopback only
 coltex serve --profile lan            # network access (default)
 coltex serve --profile production     # HTTPS on port 443
 coltex serve --host 0.0.0.0 --port 8080
@@ -43,7 +41,6 @@ Full guide: [docs/deployment/self-hosted.md](docs/deployment/self-hosted.md)
 
 | Environment | URL |
 |-------------|-----|
-| Local development | `http://127.0.0.1:8787` |
 | Office LAN | `http://192.168.x.x:8080` |
 | Custom domain | `https://knowledge.company.com` |
 | Docker / VPS | `http://your-server-ip:8080` |
@@ -96,7 +93,7 @@ coltex build
 | `COLTEX_PUBLIC_URL` | Full public URL override |
 | `COLTEX_SSL_CERT` | TLS certificate path |
 | `COLTEX_SSL_KEY` | TLS private key path |
-| `COLTEX_DEPLOYMENT_PROFILE` | `local`, `lan`, or `production` |
+| `COLTEX_DEPLOYMENT_PROFILE` | `lan` or `production` |
 
 ---
 

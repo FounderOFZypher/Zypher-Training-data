@@ -8,7 +8,6 @@ services:
       COLTEX_HOST: "0.0.0.0"
       COLTEX_PORT: "8080"
       COLTEX_DEPLOYMENT_PROFILE: lan
-      COLTEX_OPEN_BROWSER: "false"
       # COLTEX_DOMAIN: knowledge.company.com
       # COLTEX_PUBLIC_URL: https://knowledge.company.com
     volumes:

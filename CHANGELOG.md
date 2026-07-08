@@ -2,12 +2,20 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.12.0] - 2026-07-08
+
+### Removed — Localhost-only deployment
+
+- **Removed `local` profile** — no loopback-only mode or port 8787 defaults
+- **Removed browser auto-open** — `open_browser`, `--no-browser`, and `COLTEX_OPEN_BROWSER` removed
+- **Self-hosted only** — default `lan` profile binds `0.0.0.0:8080` for network deployment
+
 ## [4.11.0] - 2026-07-08
 
 ### Changed — Self-hosted deployment platform
 
-- **Repositioned as self-hosted** — "A Self-Hosted AI Knowledge Platform" (localhost is one profile, not the product)
-- **Deployment system** — `config/deployment.yaml` with profiles: local, lan, production
+- **Repositioned as self-hosted** — "A Self-Hosted AI Knowledge Platform"
+- **Deployment system** — `config/deployment.yaml` with profiles: lan, production
 - **Configurable** — host, port, protocol, domain, SSL certs, networking via config or env vars
 - **Commands** — `coltex serve --profile lan`, `coltex deploy`
 - **Docker** — Dockerfile and docker-compose.yml for container deployment

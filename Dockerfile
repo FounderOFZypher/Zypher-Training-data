@@ -16,10 +16,9 @@ RUN pip install --no-cache-dir -e .
 ENV COLTEX_HOST=0.0.0.0
 ENV COLTEX_PORT=8080
 ENV COLTEX_DEPLOYMENT_PROFILE=lan
-ENV COLTEX_OPEN_BROWSER=false
 
 EXPOSE 8080
 
 VOLUME ["/app/workspaces", "/app/data"]
 
-CMD ["coltex", "serve", "--no-browser"]
+CMD ["coltex", "serve"]

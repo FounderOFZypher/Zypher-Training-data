@@ -2,22 +2,11 @@
 
 Coltex is **A Self-Hosted AI Knowledge Platform**. You install and run it on infrastructure you control — Windows servers, Linux, Docker, VPS, home servers, NAS, or cloud VMs. Your data never leaves your environment.
 
-Localhost (`127.0.0.1`) is one deployment option, not the product itself.
-
 ---
 
 ## Deployment profiles
 
 Configure in `config/deployment.yaml` or via environment variables.
-
-### Local (development)
-
-Loopback only — single machine.
-
-```bash
-coltex serve --profile local
-# http://127.0.0.1:8787
-```
 
 ### LAN (default)
 
@@ -132,7 +121,7 @@ Type=simple
 User=coltex
 WorkingDirectory=/opt/coltex
 Environment=COLTEX_DEPLOYMENT_PROFILE=lan
-ExecStart=/opt/coltex/.venv/bin/coltex serve --no-browser
+ExecStart=/opt/coltex/.venv/bin/coltex serve
 Restart=on-failure
 
 [Install]
@@ -202,4 +191,4 @@ Coltex is designed for container deployment. A Helm chart and Kubernetes manifes
 - Ask Knowledge, search, graph, embeddings
 - MIT license — full source ownership
 
-Only the **deployment model** changed: Coltex is infrastructure you host, not a localhost toy.
+Coltex is infrastructure you host — deploy on your network, server, or cloud VM with full data ownership.
