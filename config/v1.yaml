@@ -1,7 +1,7 @@
 # Coltex V1 — CLI Product Configuration
 
 version: "1.0.0"
-tagline: "The AI Knowledge Platform for Modern Organizations"
+tagline: "A Self-Hosted AI Knowledge Platform"
 goal: "Turn scattered business knowledge into AI-ready intelligence in under 10 minutes"
 
 product:

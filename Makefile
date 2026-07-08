@@ -39,7 +39,13 @@ corpus-links:
 
 # Coltex Runtime CLI
 runtime-serve:
-	python3 coltex serve
+	python3 coltex serve --profile lan
+
+runtime-serve-local:
+	python3 coltex serve --profile local
+
+runtime-deploy:
+	python3 coltex deploy
 
 runtime-status:
 	python3 coltex status

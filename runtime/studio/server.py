@@ -1,10 +1,11 @@
-"""Coltex localhost server — web UI for .ctex workspaces."""
+"""Coltex Knowledge Studio server — self-hosted web UI."""
 
 from __future__ import annotations
 
 import json
 import mimetypes
 import re
+import ssl
 import threading
 import urllib.parse
 import webbrowser
@@ -12,8 +13,12 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from runtime.deployment.config import DeploymentConfig, load_deployment
+
 STATIC = Path(__file__).parent / "static"
 ROOT = Path(__file__).resolve().parent.parent.parent
+
+DEPLOYMENT: DeploymentConfig | None = None
 
 
 class StudioState:
@@ -45,7 +50,6 @@ STATE = StudioState()
 
 
 def _parse_multipart(body: bytes, content_type: str) -> dict[str, tuple[str, bytes]]:
-    """Minimal multipart/form-data parser (no cgi — Windows/Python 3.13 safe)."""
     match = re.search(r"boundary=(.+)", content_type)
     if not match:
         return {}
@@ -73,11 +77,19 @@ class StudioHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):  # noqa: A003
         pass
 
+    def _cors_origin(self) -> str:
+        origin = self.headers.get("Origin", "*")
+        if DEPLOYMENT and DEPLOYMENT.cors_origins and "*" not in DEPLOYMENT.cors_origins:
+            if origin in DEPLOYMENT.cors_origins:
+                return origin
+            return DEPLOYMENT.cors_origins[0]
+        return "*"
+
     def _json(self, data: dict, status: int = 200) -> None:
         body = json.dumps(data, default=str).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Origin", self._cors_origin())
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -96,7 +108,7 @@ class StudioHandler(BaseHTTPRequestHandler):
 
     def do_OPTIONS(self):  # noqa: N802
         self.send_response(204)
-        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Origin", self._cors_origin())
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
@@ -118,10 +130,16 @@ class StudioHandler(BaseHTTPRequestHandler):
             return self.send_error(403)
 
         try:
+            if path == "/api/deployment":
+                return self._json(DEPLOYMENT.to_dict() if DEPLOYMENT else {})
+
             if path == "/api/status":
+                payload = DEPLOYMENT.to_dict() if DEPLOYMENT else {}
                 if rt.workspace:
-                    return self._json(rt.workspace_status())
-                return self._json({"workspace": None, "runtime": rt.status()})
+                    payload["workspace"] = rt.workspace_status()
+                else:
+                    payload["runtime"] = rt.status()
+                return self._json(payload)
 
             if path == "/api/dashboard":
                 return self._json(rt.v1.snapshot())
@@ -234,29 +252,84 @@ class StudioHandler(BaseHTTPRequestHandler):
         return self._json(result)
 
 
-def serve(
-    host: str = "127.0.0.1",
-    port: int = 8787,
-    open_browser: bool = True,
-) -> None:
-    """Start Coltex localhost server."""
-    (ROOT / "workspaces").mkdir(exist_ok=True)
-    server = ThreadingHTTPServer((host, port), StudioHandler)
-    url = f"http://{host}:{port}/"
+def _wrap_ssl(server: ThreadingHTTPServer, deployment: DeploymentConfig) -> None:
+    if not deployment.ssl_enabled:
+        return
+    if not deployment.ssl_cert or not deployment.ssl_key:
+        raise FileNotFoundError(
+            "SSL enabled but cert/key not configured. Set ssl.cert_file and ssl.key_file "
+            "in config/deployment.yaml or COLTEX_SSL_CERT / COLTEX_SSL_KEY."
+        )
+    if not deployment.ssl_cert.exists():
+        raise FileNotFoundError(f"SSL certificate not found: {deployment.ssl_cert}")
+    if not deployment.ssl_key.exists():
+        raise FileNotFoundError(f"SSL key not found: {deployment.ssl_key}")
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    context.load_cert_chain(str(deployment.ssl_cert), str(deployment.ssl_key))
+    server.socket = context.wrap_socket(server.socket, server_side=True)
 
+
+def _print_startup(deployment: DeploymentConfig) -> None:
     print("")
-    print("  Coltex — localhost")
-    print("  The AI Knowledge Platform for Modern Organizations")
+    print("  ┌──────────────────────────────────────────────────────────┐")
+    print("  │  Coltex — A Self-Hosted AI Knowledge Platform            │")
+    print("  └──────────────────────────────────────────────────────────┘")
     print("")
-    print(f"  Open {url}")
+    print(f"  Deployment   {deployment.mode} ({deployment.profile} profile)")
+    print(f"  Bind         {deployment.host}:{deployment.port} ({deployment.protocol.upper()})")
+    if deployment.domain:
+        print(f"  Domain       {deployment.domain}")
+    print("")
+    print("  Access Knowledge Studio at:")
+    for item in deployment.access_urls():
+        print(f"    {item['label']:<14} {item['url']}")
+    print("")
     print("  Press Ctrl+C to stop")
     print("")
 
-    if open_browser:
-        threading.Timer(0.8, lambda: webbrowser.open(url)).start()
+
+def serve(
+    deployment: DeploymentConfig | None = None,
+    host: str | None = None,
+    port: int | None = None,
+    open_browser: bool | None = None,
+    profile: str | None = None,
+    config_path: str | Path | None = None,
+) -> None:
+    """Start Coltex self-hosted Knowledge Studio server."""
+    global DEPLOYMENT
+
+    DEPLOYMENT = deployment or load_deployment(
+        config_path=config_path,
+        profile=profile,
+        host=host,
+        port=port,
+        open_browser=open_browser,
+    )
+
+    if DEPLOYMENT.host in ("0.0.0.0", "::") and not DEPLOYMENT.allow_remote:
+        raise ValueError("Remote access disabled in deployment config but host binds to all interfaces.")
+
+    (ROOT / "workspaces").mkdir(exist_ok=True)
+    server = ThreadingHTTPServer(DEPLOYMENT.bind_address, StudioHandler)
+    _wrap_ssl(server, DEPLOYMENT)
+
+    _print_startup(DEPLOYMENT)
+
+    if DEPLOYMENT.open_browser:
+        local_url = next(
+            (u["url"] for u in DEPLOYMENT.access_urls() if u["label"] == "Local"),
+            DEPLOYMENT.base_url + "/",
+        )
+        threading.Timer(0.8, lambda: webbrowser.open(local_url)).start()
 
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         print("\nStopped.")
         server.shutdown()
+
+
+def deployment_info(config_path: str | Path | None = None) -> dict[str, Any]:
+    """Return deployment configuration as dict (for CLI inspect)."""
+    return load_deployment(config_path=config_path).to_dict()

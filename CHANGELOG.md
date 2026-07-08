@@ -2,6 +2,18 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [4.11.0] - 2026-07-08
+
+### Changed — Self-hosted deployment platform
+
+- **Repositioned as self-hosted** — "A Self-Hosted AI Knowledge Platform" (localhost is one profile, not the product)
+- **Deployment system** — `config/deployment.yaml` with profiles: local, lan, production
+- **Configurable** — host, port, protocol, domain, SSL certs, networking via config or env vars
+- **Commands** — `coltex serve --profile lan`, `coltex deploy`
+- **Docker** — Dockerfile and docker-compose.yml for container deployment
+- **Docs** — `docs/deployment/self-hosted.md` for Windows, Linux, TLS, reverse proxy
+- **Knowledge Studio** — Deployment page showing access URLs and configuration
+
 ## [4.10.0] - 2026-07-08
 
 ### Added — Native `.ctex` workspaces

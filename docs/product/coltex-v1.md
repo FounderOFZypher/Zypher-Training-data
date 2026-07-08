@@ -1,95 +1,29 @@
-# Coltex V1 — `.ctex` Workspaces
+# Coltex V1 — Self-Hosted Product
 
-**Tagline:** The AI Knowledge Platform for Modern Organizations
+**Tagline:** A Self-Hosted AI Knowledge Platform
 
-**Goal:** Turn scattered business knowledge into AI-ready intelligence in under 10 minutes.
+**Goal:** Turn scattered business knowledge into AI-ready intelligence in under 10 minutes — on infrastructure you control.
 
-Coltex V1 is a **local CLI**. The primary unit of work is a **Coltex Workspace (`.ctex`)** — the official project file, similar to `.uproject` or `.blend`.
+Deploy on Windows Server, Linux, Docker, VPS, home servers, NAS, or cloud VMs. Localhost is one profile, not the product.
 
 ---
 
-## Create a workspace
+## Start Knowledge Studio
 
 ```bash
-coltex new MyWorkspace
-```
-
-Generates:
-
-```
-MyWorkspace/
-├── MyWorkspace.ctex
-├── knowledge/
-├── documents/
-├── embeddings/
-├── graph/
-├── metadata/
-├── cache/
-├── indexes/
-├── logs/
-├── backups/
-├── settings/
-└── runtime/
+pip install -e .
+coltex serve                  # self-hosted on LAN (default profile)
+coltex serve --profile local  # loopback only
+coltex deploy                 # show access URLs
 ```
 
 ---
 
-## Workspace commands
+## Deployment
 
-| Command | Purpose |
-|---------|---------|
-| `coltex new <name>` | Create workspace |
-| `coltex open <file.ctex>` | Open workspace |
-| `coltex build` | Process, chunk, embed, index, validate |
-| `coltex status` | Workspace stats and health |
-| `coltex validate` | Integrity checks |
-| `coltex export` | Portable archive |
-| `coltex import <archive>` | Restore workspace |
+See [docs/deployment/self-hosted.md](../deployment/self-hosted.md)
 
-Opening a workspace:
-
-```
-Opening Workspace...
-
-Workspace: MyWorkspace
-Coltex Version: 1.0
-Knowledge Health: 97%
-Documents: 482
-Embeddings: 19,304
-Graph Nodes: 52,101
-Last Build: 2 minutes ago
-
-Workspace Ready.
-```
-
----
-
-## `.ctex` manifest
-
-The manifest stores workspace metadata — never large data:
-
-- Workspace name, UUID, Coltex version
-- Created / modified dates
-- Knowledge source locations
-- AI provider, embedding model, retrieval settings
-- Graph and search configuration
-- Statistics and health
-- User settings
-
-Updated automatically on upload, build, sync, and other operations.
-
----
-
-## Knowledge commands
-
-```bash
-coltex upload path/to/document.pdf
-coltex search "authentication"
-coltex ask "How do we handle refunds?"
-coltex sources
-coltex knowledge
-coltex settings
-```
+Config: `config/deployment.yaml`
 
 ---
 

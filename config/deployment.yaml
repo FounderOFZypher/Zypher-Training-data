@@ -1,0 +1,57 @@
+# Coltex Self-Hosted Deployment Configuration
+# Docs: docs/deployment/self-hosted.md
+
+deployment:
+  mode: self-hosted
+  tagline: "A Self-Hosted AI Knowledge Platform"
+
+  # Active profile: local | lan | production | custom
+  profile: lan
+
+  profiles:
+    local:
+      description: "Single-machine development — loopback only"
+      host: "127.0.0.1"
+      port: 8787
+      protocol: http
+      open_browser: true
+    lan:
+      description: "Self-hosted on LAN — accessible to devices on your network"
+      host: "0.0.0.0"
+      port: 8080
+      protocol: http
+      open_browser: false
+    production:
+      description: "Self-hosted with domain and TLS"
+      host: "0.0.0.0"
+      port: 443
+      protocol: https
+      open_browser: false
+
+  # Override profile settings (leave null to use profile defaults)
+  server:
+    host: null
+    port: null
+
+  protocol: null  # http | https
+
+  # Public-facing domain (e.g. knowledge.company.com)
+  domain: ""
+
+  # Full public URL override (e.g. https://knowledge.company.com)
+  public_url: ""
+
+  ssl:
+    enabled: false
+    cert_file: "config/certs/cert.pem"
+    key_file: "config/certs/key.pem"
+
+  networking:
+    allow_remote: true
+    trusted_proxies: []
+    cors_origins:
+      - "*"
+
+  # Knowledge Studio bind name (shown in UI)
+  studio:
+    name: "Knowledge Studio"

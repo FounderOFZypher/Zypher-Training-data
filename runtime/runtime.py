@@ -151,7 +151,7 @@ class ColtexRuntime:
                 "search": "coltex search \"query\"",
             },
             "coltex_v1": {
-                "tagline": "The AI Knowledge Platform for Modern Organizations",
+                "tagline": "A Self-Hosted AI Knowledge Platform",
                 "goal": "AI-ready intelligence in under 10 minutes",
                 "docs": "docs/product/coltex-v1.md",
                 "license": "MIT",

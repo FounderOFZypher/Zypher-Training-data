@@ -25,7 +25,7 @@ class V1Dashboard:
 
         payload = {
             "product": "Coltex V1",
-            "tagline": "The AI Knowledge Platform for Modern Organizations",
+            "tagline": "A Self-Hosted AI Knowledge Platform",
             "dashboard": {
                 "documents": brain.get("documents", 0),
                 "sources": sources,

@@ -167,7 +167,18 @@ def cmd_connector(args: argparse.Namespace) -> None:
 
 def cmd_serve(args: argparse.Namespace) -> None:
     from runtime.studio.server import serve
-    serve(host=args.host, port=args.port, open_browser=not args.no_browser)
+    serve(
+        config_path=args.deployment_config,
+        profile=args.profile,
+        host=args.host,
+        port=args.port,
+        open_browser=not args.no_browser,
+    )
+
+
+def cmd_deploy(args: argparse.Namespace) -> None:
+    from runtime.studio.server import deployment_info
+    print(json.dumps(deployment_info(config_path=args.deployment_config), indent=2))
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -175,9 +186,10 @@ def main(argv: list[str] | None = None) -> None:
         sys.argv.append("serve")
     parser = argparse.ArgumentParser(
         prog="coltex",
-        description="Coltex — local AI knowledge workspaces (.ctex)",
+        description="Coltex — A Self-Hosted AI Knowledge Platform",
     )
     parser.add_argument("--config", default="config/runtime.yaml")
+    parser.add_argument("--deployment-config", default="config/deployment.yaml")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_new = sub.add_parser("new", help="Create a new .ctex workspace")
@@ -253,11 +265,16 @@ def main(argv: list[str] | None = None) -> None:
     p_conn.add_argument("connector_id", choices=["filesystem", "github"])
     p_conn.set_defaults(func=cmd_connector)
 
-    p_serve = sub.add_parser("serve", help="Start localhost web UI (default)")
-    p_serve.add_argument("--host", default="127.0.0.1")
-    p_serve.add_argument("--port", type=int, default=8787)
-    p_serve.add_argument("--no-browser", action="store_true")
+    p_serve = sub.add_parser("serve", help="Start self-hosted Knowledge Studio (default)")
+    p_serve.add_argument("--profile", default=None, choices=["local", "lan", "production"],
+                         help="Deployment profile from config/deployment.yaml")
+    p_serve.add_argument("--host", default=None, help="Bind host (e.g. 0.0.0.0 for network access)")
+    p_serve.add_argument("--port", type=int, default=None, help="Bind port (default 8080 for lan profile)")
+    p_serve.add_argument("--no-browser", action="store_true", help="Do not open browser on start")
     p_serve.set_defaults(func=cmd_serve)
+
+    p_deploy = sub.add_parser("deploy", help="Show self-hosted deployment configuration")
+    p_deploy.set_defaults(func=cmd_deploy)
 
     args = parser.parse_args(argv)
     args.func(args)
