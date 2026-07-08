@@ -4,7 +4,7 @@
 
 **Goal:** Turn scattered business knowledge into AI-ready intelligence in under 10 minutes — on infrastructure you control.
 
-Deploy on Windows Server, Linux, Docker, VPS, home servers, NAS, or cloud VMs. Localhost is one profile, not the product.
+Deploy on Windows Server, Linux, Docker, VPS, home servers, NAS, or cloud VMs.
 
 ---
 
@@ -13,7 +13,6 @@ Deploy on Windows Server, Linux, Docker, VPS, home servers, NAS, or cloud VMs. L
 ```bash
 pip install -e .
 coltex serve                  # self-hosted on LAN (default profile)
-coltex serve --profile local  # loopback only
 coltex deploy                 # show access URLs
 ```
 

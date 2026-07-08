@@ -172,7 +172,6 @@ def cmd_serve(args: argparse.Namespace) -> None:
         profile=args.profile,
         host=args.host,
         port=args.port,
-        open_browser=not args.no_browser,
     )
 
 
@@ -266,11 +265,10 @@ def main(argv: list[str] | None = None) -> None:
     p_conn.set_defaults(func=cmd_connector)
 
     p_serve = sub.add_parser("serve", help="Start self-hosted Knowledge Studio (default)")
-    p_serve.add_argument("--profile", default=None, choices=["local", "lan", "production"],
+    p_serve.add_argument("--profile", default=None, choices=["lan", "production"],
                          help="Deployment profile from config/deployment.yaml")
     p_serve.add_argument("--host", default=None, help="Bind host (e.g. 0.0.0.0 for network access)")
     p_serve.add_argument("--port", type=int, default=None, help="Bind port (default 8080 for lan profile)")
-    p_serve.add_argument("--no-browser", action="store_true", help="Do not open browser on start")
     p_serve.set_defaults(func=cmd_serve)
 
     p_deploy = sub.add_parser("deploy", help="Show self-hosted deployment configuration")

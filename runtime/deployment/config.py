@@ -27,7 +27,6 @@ class DeploymentConfig:
     ssl_enabled: bool = False
     ssl_cert: Path | None = None
     ssl_key: Path | None = None
-    open_browser: bool = False
     allow_remote: bool = True
     cors_origins: list[str] = field(default_factory=lambda: ["*"])
     studio_name: str = "Knowledge Studio"
@@ -65,15 +64,6 @@ class DeploymentConfig:
             urls.append({
                 "label": "Network (LAN)",
                 "url": f"{self.protocol}://{lan}{port_suffix}/",
-            })
-        if self.host in ("127.0.0.1", "localhost", "0.0.0.0", "::"):
-            port_suffix = "" if (
-                (self.protocol == "https" and self.port == 443)
-                or (self.protocol == "http" and self.port == 80)
-            ) else f":{self.port}"
-            urls.append({
-                "label": "Local",
-                "url": f"{self.protocol}://127.0.0.1{port_suffix}/",
             })
         seen = set()
         unique = []
@@ -114,7 +104,7 @@ def get_lan_ip() -> str:
             s.connect(("8.8.8.8", 80))
             return s.getsockname()[0]
     except OSError:
-        return "127.0.0.1"
+        return "0.0.0.0"
 
 
 def _resolve_path(value: str | None) -> Path | None:
@@ -134,7 +124,6 @@ def load_deployment(
     public_url: str | None = None,
     ssl_cert: str | None = None,
     ssl_key: str | None = None,
-    open_browser: bool | None = None,
 ) -> DeploymentConfig:
     cfg_path = Path(config_path or os.environ.get("COLTEX_DEPLOYMENT_CONFIG", DEFAULT_CONFIG))
     if not cfg_path.is_absolute():
@@ -182,13 +171,6 @@ def load_deployment(
         resolved_protocol = "https"
 
     net = dep.get("networking", {})
-    browser = open_browser
-    if browser is None:
-        env_browser = os.environ.get("COLTEX_OPEN_BROWSER")
-        if env_browser is not None:
-            browser = env_browser.lower() in ("1", "true", "yes")
-        else:
-            browser = prof.get("open_browser", False)
 
     return DeploymentConfig(
         mode=dep.get("mode", "self-hosted"),
@@ -202,7 +184,6 @@ def load_deployment(
         ssl_enabled=ssl_enabled,
         ssl_cert=cert_path,
         ssl_key=key_path,
-        open_browser=bool(browser),
         allow_remote=net.get("allow_remote", True),
         cors_origins=list(net.get("cors_origins", ["*"])),
         studio_name=dep.get("studio", {}).get("name", "Knowledge Studio"),

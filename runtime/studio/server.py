@@ -6,9 +6,7 @@ import json
 import mimetypes
 import re
 import ssl
-import threading
 import urllib.parse
-import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
@@ -292,7 +290,6 @@ def serve(
     deployment: DeploymentConfig | None = None,
     host: str | None = None,
     port: int | None = None,
-    open_browser: bool | None = None,
     profile: str | None = None,
     config_path: str | Path | None = None,
 ) -> None:
@@ -304,7 +301,6 @@ def serve(
         profile=profile,
         host=host,
         port=port,
-        open_browser=open_browser,
     )
 
     if DEPLOYMENT.host in ("0.0.0.0", "::") and not DEPLOYMENT.allow_remote:
@@ -315,13 +311,6 @@ def serve(
     _wrap_ssl(server, DEPLOYMENT)
 
     _print_startup(DEPLOYMENT)
-
-    if DEPLOYMENT.open_browser:
-        local_url = next(
-            (u["url"] for u in DEPLOYMENT.access_urls() if u["label"] == "Local"),
-            DEPLOYMENT.base_url + "/",
-        )
-        threading.Timer(0.8, lambda: webbrowser.open(local_url)).start()
 
     try:
         server.serve_forever()

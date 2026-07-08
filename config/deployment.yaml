@@ -5,28 +5,20 @@ deployment:
   mode: self-hosted
   tagline: "A Self-Hosted AI Knowledge Platform"
 
-  # Active profile: local | lan | production | custom
+  # Active profile: lan | production
   profile: lan
 
   profiles:
-    local:
-      description: "Single-machine development — loopback only"
-      host: "127.0.0.1"
-      port: 8787
-      protocol: http
-      open_browser: true
     lan:
       description: "Self-hosted on LAN — accessible to devices on your network"
       host: "0.0.0.0"
       port: 8080
       protocol: http
-      open_browser: false
     production:
       description: "Self-hosted with domain and TLS"
       host: "0.0.0.0"
       port: 443
       protocol: https
-      open_browser: false
 
   # Override profile settings (leave null to use profile defaults)
   server:
