@@ -1,18 +1,20 @@
-# Coltex Mega RAG — Commercial Dataset License (Enterprise)
+# Coltex Mega RAG — Enterprise License
 
 **SKU:** Enterprise · **Price:** Custom quote
 
 ## Grant
 
-Organization-wide commercial deployment across multiple teams and tenants.
-Includes multi-domain shards (typically 10M–50M documents), private delivery,
-and support SLA as defined in the order form.
+An organization-wide commercial license to deploy the **full Coltex Mega RAG
+project** — 100,000,000+ documents, all marketplace shards, catalog, GraphRAG
+edges, benchmarks, and supporting artifacts — across multiple teams, workspaces,
+and tenants.
 
-## Includes Professional rights plus
+## Includes Professional entitlements plus
 
-- Multi-team / multi-workspace deployment
-- Private or on-prem delivery options
-- Priority support and custom domain packs
+- Multi-team and multi-workspace deployment within your organization
+- Private, on-premises, or dedicated cloud delivery options
+- Priority support and defined service-level agreement (SLA)
+- Custom integration and onboarding as specified in your order form
 
 ## Restrictions
 

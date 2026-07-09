@@ -50,7 +50,8 @@ make audit-distribution
 
 ## Compliance
 
-- **Commercial license:** [EULA.md](../../EULA.md) · [MEGA-LICENSE.md](../../MEGA-LICENSE.md)
+- **Commercial license:** [EULA.md](../../EULA.md) · [PROFESSIONAL-LICENSE.md](../../PROFESSIONAL-LICENSE.md) · [ENTERPRISE-LICENSE.md](../../ENTERPRISE-LICENSE.md) · [MEGA-LICENSE.md](../../MEGA-LICENSE.md)
+- **Personal (non-commercial):** [PERSONAL-LICENSE.md](../../PERSONAL-LICENSE.md)
 - **Engine:** MIT — [LICENSE](../../LICENSE)
 - **Provenance:** `knowledge-base/PROVENANCE.md`
 - **Audit:** `benchmarks/distribution_audit.json` (after build)

@@ -1,21 +1,23 @@
-# Coltex Mega RAG — Commercial Dataset License (Professional)
+# Coltex Mega RAG — Professional License
 
 **SKU:** Professional
 
 ## Grant
 
-Commercial use by a single legal entity. Includes selected domain packs
-(typically 1M–10M documents), graph edges, and embedding export rights for
-internal and customer-facing RAG products.
+A commercial license for a single legal entity to deploy the **full Coltex Mega RAG
+project** — 100,000,000+ documents, all marketplace shards, catalog, GraphRAG
+edges, benchmarks, embeddings export, and generation statistics — in production
+RAG and AI systems.
 
-## Includes Personal rights plus
+## Entitlements
 
-- Commercial product and revenue use
+- Full commercial use in revenue-generating products and internal tools
+- Complete project delivery: corpus, chunks, graph, catalog, and benchmarks
 - One production deployment organization
-- Marketplace pack downloads entitled on your order
+- Standard commercial support as defined in your order form
 
 ## Restrictions
 
-- No resale of the raw corpus as a competing dataset
-- No sharing credentials across unrelated entities
-- Subject to [EULA.md](EULA.md)
+- No resale of the raw corpus as a competing dataset product
+- No sharing credentials across unrelated legal entities
+- Subject to [EULA.md](EULA.md) and your Professional order form

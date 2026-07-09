@@ -2,12 +2,16 @@
 
 Commercial packaging for the Coltex Mega RAG corpus (100,000,000+ documents).
 
-| SKU | Documents | License | Includes |
-|-----|-----------|---------|----------|
-| **Personal** | Sample pack (~25k) | Personal + EULA | Sample corpus, benchmark sample, MIT runtime |
-| **Professional** | Domain packs (1M–10M) | Professional + EULA | Selected domain shards, graph, embeddings export |
-| **Enterprise** | Multi-domain (10M–50M) | Enterprise + EULA | Multi-team seats, private delivery, support SLA |
-| **Mega** | **100,000,000+** | Mega + EULA | Full streaming corpus, all shards, catalog, GraphRAG edges |
+All **commercial SKUs** (Professional, Enterprise, Mega) grant access to the
+**full project** — the complete corpus, catalog, GraphRAG edges, benchmarks, and
+delivery artifacts. SKUs differ by deployment scope, support, and delivery options.
+
+| SKU | Corpus access | License | Commercial use | Includes |
+|-----|---------------|---------|----------------|----------|
+| **Personal** | Sample pack (~25k) | Personal + EULA | **Not permitted** | Evaluation sample, benchmark sample, MIT runtime |
+| **Professional** | **Full project** (100M+) | Professional + EULA | Permitted | Single-entity production deployment, full corpus delivery |
+| **Enterprise** | **Full project** (100M+) | Enterprise + EULA | Permitted | Multi-team deployment, private delivery, support SLA |
+| **Mega** | **Full project** (100M+) | Mega + EULA | Permitted | Strategic delivery, partner programs, cluster-scale distribution |
 
 Pricing is defined on the order form or invoice for each SKU.
 
@@ -15,7 +19,8 @@ Pricing is defined on the order form or invoice for each SKU.
 
 ## Marketplace packs
 
-Sold individually or bundled under Professional / Enterprise / Mega:
+Domain packs are included in all commercial SKUs. They may also be referenced
+individually for evaluation or partner bundling — see `config/marketplace.yaml`:
 
 | Pack ID | Focus | Typical scale |
 |---------|-------|---------------|
@@ -24,8 +29,6 @@ Sold individually or bundled under Professional / Enterprise / Mega:
 | `pack-cloud-devops` | AWS, Azure, GCP, Kubernetes, Terraform, CI/CD | Multi-million |
 | `pack-security-sre` | Security, observability, incidents, performance | Multi-million |
 | `pack-architecture` | Microservices, DDD, API design, event-driven | Multi-million |
-
-See `config/marketplace.yaml` for registry categories and publishing rules.
 
 ---
 

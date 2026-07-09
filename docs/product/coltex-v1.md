@@ -42,4 +42,5 @@ See [deployment guide](../deployment/self-hosted.md)
 ## License
 
 - Runtime: MIT
-- Commercial dataset: EULA + Mega license
+- Commercial dataset: EULA + tier license (Professional, Enterprise, or Mega)
+- Personal: non-commercial evaluation only; commercial SKUs grant full project access

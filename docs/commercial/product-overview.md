@@ -4,7 +4,7 @@
 
 Coltex is rebuilt as a **commercial mega-scale RAG product**: a streaming-generated,
 graph-linked, embedding-ready knowledge corpus designed to power production retrieval
-systems — and to be sold as industry packs, shards, and full Mega SKUs.
+systems — and to be licensed under commercial SKUs that grant full project access.
 
 ---
 

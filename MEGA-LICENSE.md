@@ -1,18 +1,19 @@
-# Coltex Mega RAG — Commercial Dataset License (Mega)
+# Coltex Mega RAG — Mega License
 
 **SKU:** Mega · **Price:** Custom quote · **Scale:** 100,000,000+ documents
 
 ## Grant
 
-Full commercial access to the Coltex Mega RAG corpus targeting
-**one hundred million or more** knowledge files, including all marketplace
-shards, catalog, GraphRAG edges, benchmarks, and generation stats.
+Strategic commercial access to the **full Coltex Mega RAG project** — the complete
+100,000,000+ document corpus, all marketplace shards, catalog, GraphRAG edges,
+benchmarks, generation statistics, and cluster delivery artifacts.
 
-## Includes Enterprise rights plus
+## Includes Enterprise entitlements plus
 
-- Uncapped Mega streaming corpus (cluster delivery)
-- All industry / domain packs
-- Shard manifests for marketplace and reseller programs (where contracted)
+- Uncapped Mega streaming corpus with cluster-scale delivery
+- Shard manifests for marketplace and authorized reseller programs (where contracted)
+- Dedicated account management and custom delivery schedules
+- Co-marketing and partner program participation (where contracted)
 
 ## Delivery
 

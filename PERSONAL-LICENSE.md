@@ -1,18 +1,28 @@
-# Coltex Mega RAG — Commercial Dataset License (Personal)
+# Coltex Mega RAG — Personal License
 
 **SKU:** Personal
 
 ## Grant
 
-For non-commercial evaluation, education, and personal projects only.
-Includes access to the Personal sample pack (~25,000 documents) and the MIT-licensed Coltex runtime.
+A limited, non-commercial license for evaluation, education, and personal learning
+projects. Includes access to the Personal sample pack (~25,000 documents) and the
+MIT-licensed Coltex runtime.
+
+## Permitted use
+
+- Individual evaluation and proof-of-concept work
+- Academic coursework and non-profit research
+- Personal skill development and experimentation
 
 ## Restrictions
 
-- No revenue-generating products or services
+- **No commercial use** — revenue-generating products, services, or internal
+  business operations are not permitted
 - No redistribution of raw Dataset files
+- No use on behalf of a commercial organization beyond evaluation
 - Subject to [EULA.md](EULA.md)
 
 ## Upgrade path
 
-Professional → Enterprise → Mega (100M+)
+Commercial licenses (Professional, Enterprise, Mega) grant full project access
+and commercial use rights. Contact sales to upgrade.

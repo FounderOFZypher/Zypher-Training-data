@@ -24,9 +24,16 @@ grants you a non-exclusive, non-transferable (except as permitted below) license
 
 ## 2. Commercial use
 
-Commercial use is permitted under paid SKUs (Professional, Enterprise, Mega).
-You may incorporate Dataset-derived retrieval into revenue-generating products,
-subject to the redistribution limits in Section 3.
+**Commercial use is permitted only under paid commercial SKUs** (Professional,
+Enterprise, Mega). Each commercial SKU grants access to the **full Coltex Mega RAG
+project** — the complete 100,000,000+ document corpus and all deliverable artifacts.
+
+The **Personal** SKU is for non-commercial evaluation and learning only. Personal
+licensees may not use the Dataset in revenue-generating products, services, or
+internal business operations.
+
+Paid commercial licensees may incorporate Dataset-derived retrieval into
+revenue-generating products, subject to the redistribution limits in Section 3.
 
 ## 3. Redistribution limits
 
@@ -43,15 +50,16 @@ Dataset, provided end users cannot extract the bulk corpus.
 
 ## 4. SKU tiers
 
-| SKU | Intended use |
-|-----|----------------|
-| Personal | Non-commercial evaluation and learning |
-| Professional | Single-entity commercial products and internal RAG |
-| Enterprise | Multi-team / multi-tenant deployment with support |
-| Mega (100M+) | Full-scale commercial corpus (100,000,000+ documents) |
+| SKU | Corpus access | Commercial use | Deployment scope |
+|-----|---------------|----------------|------------------|
+| Personal | Sample pack (~25k) | **Not permitted** | Individual evaluation |
+| Professional | **Full project** (100M+) | Permitted | Single legal entity |
+| Enterprise | **Full project** (100M+) | Permitted | Multi-team / organization |
+| Mega | **Full project** (100M+) | Permitted | Strategic / partner programs |
 
-Exact entitlements, seat counts, and shard access are defined in your order form
-or invoice.
+SKU tiers differ by deployment scope, support, and delivery options — not by corpus
+size. Exact entitlements, seat counts, and delivery terms are defined in your order
+form or invoice.
 
 ## 5. Intellectual property
 

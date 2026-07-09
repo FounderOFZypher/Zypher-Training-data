@@ -56,7 +56,7 @@ Additional metadata exported in `data/product/metadata/documents.json`:
 | Required metadata | `doc_id`, `title` | `validate_quality.py` |
 | Metadata accuracy | ≥ 90% | `evaluate_rag.py` |
 | Retrieval recall@8 | config-driven | `evaluate_rag.py` |
-| EULA / provenance | required for Mega SKUs | `audit_distribution.py` |
+| EULA / provenance | required for commercial SKUs | `audit_distribution.py` |
 
 ## What we exclude from product builds
 

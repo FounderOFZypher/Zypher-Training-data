@@ -49,12 +49,15 @@ make product-mega
 
 ## Commercial SKUs
 
-| SKU | Scale | License |
-|-----|-------|---------|
-| Personal | Sample pack (~25k) | Personal + EULA |
-| Professional | Domain packs (1M–10M) | Professional + EULA |
-| Enterprise | Multi-domain (10M–50M) | Enterprise + EULA |
-| **Mega** | **100,000,000+** | Mega + EULA |
+All commercial SKUs (Professional, Enterprise, Mega) grant access to the **full
+project** (100,000,000+ documents). Personal is for non-commercial evaluation only.
+
+| SKU | Corpus access | Commercial use | License |
+|-----|---------------|----------------|---------|
+| Personal | Sample pack (~25k) | Not permitted | Personal + EULA |
+| Professional | **Full project** (100M+) | Permitted | Professional + EULA |
+| Enterprise | **Full project** (100M+) | Permitted | Enterprise + EULA |
+| **Mega** | **Full project** (100M+) | Permitted | Mega + EULA |
 
 Licenses: [EULA.md](EULA.md) · [MEGA-LICENSE.md](MEGA-LICENSE.md) · [PERSONAL-LICENSE.md](PERSONAL-LICENSE.md) · [PROFESSIONAL-LICENSE.md](PROFESSIONAL-LICENSE.md) · [ENTERPRISE-LICENSE.md](ENTERPRISE-LICENSE.md)
 
