@@ -103,6 +103,7 @@ quality:
   require_metadata_fields:
     - doc_id
     - title
+  curated_only: false
   streaming_mode: true
 
 chunking:
