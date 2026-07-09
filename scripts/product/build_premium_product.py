@@ -52,7 +52,7 @@ def main() -> None:
     if not args.skip_eval:
         run_step("evaluate_rag", args.config)
 
-    print("\nColtex Mega RAG commercial build complete (target: 100,000,000+ files).")
+    print("\nColtex Mega RAG commercial build complete (target: 100,000,000+ documents).")
 
 
 if __name__ == "__main__":

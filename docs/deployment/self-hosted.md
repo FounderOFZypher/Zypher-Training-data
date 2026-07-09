@@ -1,6 +1,6 @@
 # Self-Hosted Deployment
 
-Coltex is **A Self-Hosted AI Knowledge Platform**. You install and run it on infrastructure you control — Windows servers, Linux, Docker, VPS, home servers, NAS, or cloud VMs. Your data never leaves your environment.
+Deploy the Coltex Mega RAG runtime on infrastructure you control — Windows servers, Linux, Docker, VPS, NAS, or cloud VMs. Your data stays in your environment.
 
 ---
 
@@ -113,7 +113,7 @@ Run as a systemd service:
 
 ```ini
 [Unit]
-Description=Coltex Self-Hosted Knowledge Platform
+Description=Coltex Mega RAG Runtime
 After=network.target
 
 [Service]
@@ -186,9 +186,9 @@ Coltex is designed for container deployment. A Helm chart and Kubernetes manifes
 ## What stays the same
 
 - `.ctex` workspaces
-- Knowledge Studio UI
+- Coltex Console UI
 - AI processing pipeline
 - Ask Knowledge, search, graph, embeddings
-- MIT license — full source ownership
+- MIT license for runtime source
 
-Coltex is infrastructure you host — deploy on your network, server, or cloud VM with full data ownership.
+Coltex runs on your network, server, or cloud VM with full data ownership.

@@ -32,25 +32,25 @@ systems — and to be sold as industry packs, shards, and full Mega SKUs.
 
 ---
 
-## Target buyers
+## Buyers
 
 | Segment | Use case |
 |---------|----------|
-| AI / ML teams | Bootstrap production RAG with a massive, clean corpus |
-| Platform vendors | Embed Coltex shards into vertical AI products |
-| Enterprises | Private RAG over engineering, cloud, security, and ops knowledge |
-| Data marketplaces | Resell licensed industry packs under Coltex EULA terms |
+| AI / ML teams | Production RAG bootstrap with a large, structured corpus |
+| Platform vendors | Licensed shards in vertical AI products |
+| Enterprises | Private RAG over engineering, cloud, security, and operations knowledge |
+| Data marketplaces | Licensed industry packs under Coltex EULA terms |
 | Researchers | Large-scale retrieval and GraphRAG evaluation |
 
 ---
 
-## Build & inspect
+## Build and inspect
 
 ```bash
-# Smoke build (capped) — validates the Mega pipeline
+# Capped validation build
 make product-mega-smoke
 
-# Full Mega commercial target (cluster / Vast.ai)
+# Full Mega commercial target (cluster)
 make product-mega
 
 # Inspect artifacts

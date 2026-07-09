@@ -1,6 +1,6 @@
 # Coltex Runtime
 
-Local CLI for the Coltex knowledge platform.
+Local CLI for the Coltex Mega RAG runtime.
 
 ## Start here
 
@@ -38,21 +38,15 @@ Coltex Runtime (CLI)
 ├── Search Engine          — hybrid knowledge object search
 ├── Memory Engine          — working → archive memory tiers
 ├── Scheduler              — automated maintenance jobs
-├── Event Bus              — event-driven pipeline
-├── Plugin Manager         — extensibility registry
-├── Processing Pipeline    — upload → parse → chunk → index
-├── Ask Knowledge          — retrieve + answer with sources
-├── Retrieval Engine       — intent-ready retrieval wrapper
-├── Graph Engine           — topology and neighbors
-├── AI Curator             — merge, staleness, regen recommendations
-├── Analytics Engine       — knowledge quality metrics
-└── Security               — access and audit gateway
+├── Event Bus              — ingest cascade
+├── Connectors             — filesystem, GitHub
+└── Console                — web UI (coltex serve)
 ```
-
-Config: [config/runtime.yaml](../../config/runtime.yaml)
 
 ---
 
-## License
+## Related
 
-MIT — see [LICENSE](../../LICENSE).
+- [Platform overview](overview.md)
+- [Commercial product](../commercial/product-overview.md)
+- [Deployment](../deployment/self-hosted.md)

@@ -1,4 +1,4 @@
-"""Coltex self-hosted deployment configuration."""
+"""Coltex deployment configuration."""
 
 from runtime.deployment.config import DeploymentConfig, load_deployment
 

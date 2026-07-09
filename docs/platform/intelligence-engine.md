@@ -72,7 +72,7 @@ When duplicates or overlapping docs are detected:
 
 - Propose canonical document
 - Show diff of unique content to preserve
-- One-click merge with graph rewiring (Knowledge Studio)
+- One-click merge with graph rewiring (Coltex Console)
 
 ### 6. Documentation improvement suggestions
 
@@ -218,6 +218,6 @@ See [config/extensibility.yaml](../../config/extensibility.yaml).
 
 ## Related documents
 
-- [Knowledge OS](knowledge-os.md) — product vision
+- [Knowledge architecture](knowledge-os.md) — product vision
 - [Platform roadmap](roadmap.md) — delivery phases
 - [Extensibility manifest](../../config/extensibility.yaml)

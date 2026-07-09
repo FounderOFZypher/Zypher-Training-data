@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stream premium distributable corpus — hyper-scale, compliance-safe, original synthetic."""
+"""Stream Coltex Mega RAG commercial corpus — compliance-safe, original synthetic."""
 
 from __future__ import annotations
 

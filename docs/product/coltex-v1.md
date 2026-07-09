@@ -1,9 +1,9 @@
 # Coltex Mega RAG — Product Spec
 
-**Tagline:** The largest commercial RAG corpus — 100,000,000+ sellable knowledge files.
+**Commercial RAG corpus — 100,000,000+ documents for production retrieval.**
 
-**Goal:** Ship the most advanced, sellable RAG knowledge product: GraphRAG-native,
-streaming-generated, audit-ready, and packaged as Personal → Professional → Enterprise → Mega SKUs.
+**Goal:** Deliver a GraphRAG-ready commercial knowledge corpus: streaming-generated,
+audit-ready, and packaged as Personal → Professional → Enterprise → Mega SKUs.
 
 ---
 
@@ -27,7 +27,7 @@ Config: `config/product_mega.yaml`
 
 ---
 
-## Self-hosted Studio (bundled)
+## Runtime console
 
 ```bash
 pip install -e .
@@ -35,11 +35,11 @@ coltex serve
 coltex deploy
 ```
 
-See [self-hosted deployment](../deployment/self-hosted.md)
+See [deployment guide](../deployment/self-hosted.md)
 
 ---
 
 ## License
 
-- Engine: MIT
+- Runtime: MIT
 - Commercial dataset: EULA + Mega license

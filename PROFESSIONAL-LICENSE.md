@@ -1,6 +1,6 @@
 # Coltex Mega RAG — Commercial Dataset License (Professional)
 
-**SKU:** Professional · **Price:** $999 USD
+**SKU:** Professional
 
 ## Grant
 

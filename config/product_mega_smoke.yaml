@@ -8,7 +8,7 @@ license: EULA
 license_path: EULA.md
 commercial_license: MEGA-LICENSE.md
 updated: 2026-07-09
-tagline: Mega RAG smoke build — validates 100M+ pipeline at capped scale
+tagline: Commercial RAG corpus — capped validation build
 
 generation:
   mega_multiplier: 100000000

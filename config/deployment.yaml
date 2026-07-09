@@ -1,21 +1,21 @@
-# Coltex Self-Hosted Deployment Configuration
+# Coltex Deployment Configuration
 # Docs: docs/deployment/self-hosted.md
 
 deployment:
   mode: self-hosted
-  tagline: "A Self-Hosted AI Knowledge Platform"
+  tagline: "Commercial RAG corpus — 100,000,000+ documents"
 
   # Active profile: lan | production
   profile: lan
 
   profiles:
     lan:
-      description: "Self-hosted on LAN — accessible to devices on your network"
+      description: "LAN deployment — accessible to devices on your network"
       host: "0.0.0.0"
       port: 8080
       protocol: http
     production:
-      description: "Self-hosted with domain and TLS"
+      description: "Production deployment with domain and TLS"
       host: "0.0.0.0"
       port: 443
       protocol: https
@@ -44,6 +44,6 @@ deployment:
     cors_origins:
       - "*"
 
-  # Knowledge Studio bind name (shown in UI)
+  # Console bind name (shown in UI)
   studio:
-    name: "Knowledge Studio"
+    name: "Coltex Console"

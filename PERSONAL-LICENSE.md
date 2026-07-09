@@ -1,11 +1,11 @@
 # Coltex Mega RAG — Commercial Dataset License (Personal)
 
-**SKU:** Personal · **Price:** $79 USD
+**SKU:** Personal
 
 ## Grant
 
 For non-commercial evaluation, education, and personal projects only.
-Includes access to the Personal sample pack (~25,000 documents) and the MIT-licensed Coltex engine.
+Includes access to the Personal sample pack (~25,000 documents) and the MIT-licensed Coltex runtime.
 
 ## Restrictions
 
@@ -15,4 +15,4 @@ Includes access to the Personal sample pack (~25,000 documents) and the MIT-lice
 
 ## Upgrade path
 
-Professional ($999) → Enterprise (custom) → Mega 100M+ (custom)
+Professional → Enterprise → Mega (100M+)

@@ -2,34 +2,28 @@
 
 All notable changes to the Coltex product package are documented here.
 
-## [5.1.0] - 2026-07-09
+## [5.0.1] - 2026-07-09
 
-### Added — Advanced hybrid retrieval stack
+### Changed — Professional Mega RAG positioning
 
-- **Vector RAG, GraphRAG, Hybrid, BM25, Metadata, SQL, Code, API, Multi-Vector**
-- **Cross-encoder reranking** with lexical fallback
-- **Context compression + context builder** with diversity and attribution
-- **Explainable retrieval** traces across all sources
-- **Incremental indexing** (upsert/delete) across backends
-- **Multi-workspace federated search**
-- **Plugin system** wired into pre/post retrieve + custom search algorithms
-- Extra: query expansion, parent-document retrieval, freshness boost, RRF fusion
-- Docs: `docs/platform/advanced-retrieval.md` · example: `examples/advanced_retrieval.py`
-- CLI: `coltex search --mode …`, `coltex capabilities`, `coltex federated-search`
+- Removed Knowledge Platform / Knowledge Studio / Knowledge OS product framing from active docs and UI
+- Replaced hype taglines ("largest", "most advanced") with precise commercial corpus language
+- Renamed console branding to **Coltex Console**; runtime described as Mega RAG corpus runtime
+- Cleaned deployment, marketplace, provenance, and roadmap copy for commercial tone
 
 ## [5.0.0] - 2026-07-09
 
-### Changed — Coltex Mega RAG (100,000,000+ sellable files)
+### Changed — Coltex Mega RAG (100,000,000+ documents)
 
-- **Repositioned as commercial Mega RAG** — largest advanced RAG corpus product, not a self-hosted-only knowledge app
+- **Repositioned as commercial Mega RAG** — GraphRAG-ready corpus product for production retrieval
 - **100M+ commercial floor** — `mega_plus` tier in `scripts/mega_scale.py`; target `100,000,000` documents
 - **Primary configs** — `config/product_mega.yaml`, `config/product_mega_smoke.yaml`
 - **Build targets** — `make product-mega`, `make product-mega-smoke`, `make marketplace-packs`
-- **Sellable marketplace** — active packs (RAG core, languages, cloud, security, architecture) in `config/marketplace.yaml`
-- **Commercial licensing restored** — `EULA.md`, Personal / Professional / Enterprise / Mega licenses
+- **Commercial marketplace** — packs (RAG core, languages, cloud, security, architecture) in `config/marketplace.yaml`
+- **Commercial licensing** — `EULA.md`, Personal / Professional / Enterprise / Mega licenses
 - **Buyer docs** — `docs/commercial/product-overview.md`, `sku-matrix.md`, `datasheet.md`
 - **Pipeline** — marketplace pack catalog builder; EULA checks in validate/audit; manifest SKU metadata
-- Engine source remains MIT; commercial Dataset SKUs under EULA
+- Runtime source remains MIT; commercial Dataset SKUs under EULA
 
 ## [4.12.0] - 2026-07-08
 

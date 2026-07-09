@@ -1,6 +1,6 @@
 # Distributable Corpus
 
-Streaming-generated original synthetic documents for large-scale knowledge base builds.
+Streaming-generated original synthetic documents for Coltex Mega RAG commercial builds.
 
 | Path | Purpose |
 |------|---------|
@@ -15,13 +15,13 @@ Streaming-generated original synthetic documents for large-scale knowledge base 
 make corpus-mega
 make product
 
-# Hyper smoke validation (25,000 documents)
-make product-hyper-smoke
+# Capped commercial validation
+make product-mega-smoke
 
-# Full hyper tier (uncapped — run on cluster)
-make product-hyper
+# Full Mega SKU (uncapped — cluster build)
+make product-mega
 ```
 
-All content is **original synthetic** · **MIT License** · passes distribution audit.
+All content is **original synthetic**, covered by the commercial [EULA](../../EULA.md), and must pass distribution audit.
 
-See [LICENSE](../../LICENSE).
+Runtime source remains MIT — see [LICENSE](../../LICENSE).

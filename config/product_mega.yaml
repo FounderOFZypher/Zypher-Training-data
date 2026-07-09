@@ -1,5 +1,5 @@
 # Coltex Mega RAG — commercial 100,000,000+ document build
-# Primary sellable SKU configuration
+# Primary commercial SKU configuration
 
 name: Coltex Mega RAG
 version: 5.0.0
@@ -9,14 +9,14 @@ license: EULA
 license_path: EULA.md
 commercial_license: MEGA-LICENSE.md
 updated: 2026-07-09
-tagline: The largest commercial RAG corpus — 100,000,000+ sellable knowledge files
+tagline: Commercial RAG corpus — 100,000,000+ documents
 
 # Mega-scale generation (procedural streaming — memory-safe)
 generation:
   mega_multiplier: 100000000       # mega_plus tier → 100M+ documents
   scale: 10000
   variations_per_doc: 24
-  max_files: 0                     # 0 = uncapped (run on cluster / Vast.ai)
+  max_files: 0                     # 0 = uncapped (cluster build)
   target_documents: 100000000      # commercial floor
   sample_md_files: 10000           # audit samples written to disk
   sample_dir: knowledge-base/distributable/_samples

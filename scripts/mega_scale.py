@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 from corpus_templates import Topic
 
-# Commercial floor for the Mega SKU (100,000,000+ sellable files)
+# Commercial floor for the Mega SKU (100,000,000+ documents)
 COMMERCIAL_MEGA_FLOOR = 100_000_000
 
 SERVICE_PREFIXES = (
@@ -57,16 +57,16 @@ def resolve_mega_tier(mega_multiplier: int) -> MegaTier:
     """
     if mega_multiplier >= 100_000_000_000:
         return MegaTier("hyper", 10_000, 1_000, len(MEGA_ASPECTS), 100,
-                        "Hyper — billions of documents (Vast.ai cluster)",
+                        "Hyper — multi-billion document cluster builds",
                         commercial_floor=COMMERCIAL_MEGA_FLOOR)
     if mega_multiplier >= 1_000_000_000:
         return MegaTier("ultra", 1_000, 500, len(MEGA_ASPECTS), 50,
-                        "Ultra — hundreds of millions to billions",
+                        "Ultra — multi-hundred-million document builds",
                         commercial_floor=COMMERCIAL_MEGA_FLOOR)
     if mega_multiplier >= 100_000_000:
-        # Primary commercial Mega RAG tier — 100,000,000+ sellable files
+        # Primary commercial Mega RAG tier — 100,000,000+ documents
         return MegaTier("mega_plus", 200, 150, len(MEGA_ASPECTS), 32,
-                        "Mega Plus — 100,000,000+ commercial RAG documents",
+                        "Mega — 100,000,000+ commercial RAG documents",
                         commercial_floor=COMMERCIAL_MEGA_FLOOR)
     if mega_multiplier >= 1_000_000:
         return MegaTier("mega", 100, 100, 20, 24, "Mega — tens of millions")

@@ -1,5 +1,5 @@
 """
-Coltex Runtime — local CLI knowledge platform.
+Coltex Runtime — Mega RAG corpus runtime and CLI.
 
 Orchestrates intelligence, search, memory, graph, retrieval, events,
 scheduler, plugins, curator, analytics, and workspace management.
@@ -165,7 +165,7 @@ class ColtexRuntime:
             },
             "coltex_v1": {
                 "tagline": "Commercial RAG corpus — 100,000,000+ documents",
-                "goal": "Advanced hybrid retrieval for production RAG systems",
+                "goal": "AI-ready intelligence in under 10 minutes",
                 "docs": "docs/product/coltex-v1.md",
                 "license": "MIT",
             },

@@ -1,27 +1,29 @@
 # Coltex Mega RAG — SKU Matrix
 
-Commercial packaging for the Coltex Mega RAG corpus (100,000,000+ data files).
+Commercial packaging for the Coltex Mega RAG corpus (100,000,000+ documents).
 
-| SKU | Documents | Price (USD) | License | Includes |
-|-----|-----------|-------------|---------|----------|
-| **Personal** | Sample pack (~25k) | $79 | Personal + EULA | Smoke corpus, benchmarks sample, MIT engine |
-| **Professional** | Domain packs (1M–10M) | $999 | Professional + EULA | Selected domain shards, graph, embeddings export |
-| **Enterprise** | Multi-domain (10M–50M) | Custom quote | Enterprise + EULA | Multi-team seats, private delivery, support SLA |
-| **Mega** | **100,000,000+** | Custom quote | Mega + EULA | Full streaming corpus, all shards, catalog, GraphRAG edges |
+| SKU | Documents | License | Includes |
+|-----|-----------|---------|----------|
+| **Personal** | Sample pack (~25k) | Personal + EULA | Sample corpus, benchmark sample, MIT runtime |
+| **Professional** | Domain packs (1M–10M) | Professional + EULA | Selected domain shards, graph, embeddings export |
+| **Enterprise** | Multi-domain (10M–50M) | Enterprise + EULA | Multi-team seats, private delivery, support SLA |
+| **Mega** | **100,000,000+** | Mega + EULA | Full streaming corpus, all shards, catalog, GraphRAG edges |
+
+Pricing is defined on the order form or invoice for each SKU.
 
 ---
 
-## Add-on marketplace packs
+## Marketplace packs
 
 Sold individually or bundled under Professional / Enterprise / Mega:
 
-| Pack ID | Focus | Typical file count |
-|---------|-------|--------------------|
-| `pack-rag-core` | RAG, GraphRAG, embeddings, retrieval | Millions |
-| `pack-languages` | Python, JS/TS, Go, Rust, Java, C#, SQL | Millions |
-| `pack-cloud-devops` | AWS, Azure, GCP, K8s, Terraform, CI/CD | Millions |
-| `pack-security-sre` | Security, observability, incidents, performance | Millions |
-| `pack-architecture` | Microservices, DDD, API design, event-driven | Millions |
+| Pack ID | Focus | Typical scale |
+|---------|-------|---------------|
+| `pack-rag-core` | RAG, GraphRAG, embeddings, retrieval | Multi-million |
+| `pack-languages` | Python, JS/TS, Go, Rust, Java, C#, SQL | Multi-million |
+| `pack-cloud-devops` | AWS, Azure, GCP, Kubernetes, Terraform, CI/CD | Multi-million |
+| `pack-security-sre` | Security, observability, incidents, performance | Multi-million |
+| `pack-architecture` | Microservices, DDD, API design, event-driven | Multi-million |
 
 See `config/marketplace.yaml` for registry categories and publishing rules.
 
@@ -46,5 +48,4 @@ See `config/marketplace.yaml` for registry categories and publishing rules.
 ```bash
 make product-mega-smoke   # capped commercial validation build
 make product-mega         # full 100M+ Mega SKU build (cluster)
-make product-hyper        # legacy hyper alias → Mega config
 ```

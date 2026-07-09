@@ -1,12 +1,13 @@
 # Coltex Platform Roadmap
 
-Enterprise features that transform Coltex from a dataset product into a **$500+ knowledge infrastructure platform**.
+Enterprise features that extend Coltex Mega RAG from a commercial corpus into
+full knowledge infrastructure.
 
 Status key: **Available** · **In progress** · **Planned**
 
 ---
 
-## 1. Knowledge Studio
+## 1. Coltex Console
 
 **Status:** Planned · **Priority:** P0 · **Impact:** Primary differentiator
 
@@ -27,7 +28,7 @@ The flagship experience. Replace file editing with visual knowledge management.
 
 ### User story
 
-> An engineer opens Knowledge Studio, searches "JWT authentication", clicks the Auth hub node, explores connected API and Database documents, and updates a runbook — without touching a markdown file on disk.
+> An engineer opens Coltex Console, searches "JWT authentication", clicks the Auth hub node, explores connected API and Database documents, and updates a runbook — without touching a markdown file on disk.
 
 ---
 
@@ -35,7 +36,7 @@ The flagship experience. Replace file editing with visual knowledge management.
 
 **Status:** Planned · **Priority:** P0
 
-True connector ecosystem so Coltex becomes a **living knowledge system**, not a manual import tool.
+Connector ecosystem so Coltex stays current automatically, without manual imports.
 
 ### First-party connectors
 
@@ -217,7 +218,7 @@ Authentication  →  JWT  →  Database  →  API  →  Services
 
 - Force-directed and hierarchical layouts
 - Filter by edge type, hub, domain
-- Click-to-open document in Knowledge Studio
+- Click-to-open document in Coltex Console
 - Export subgraph for presentations and audits
 
 ---
@@ -365,7 +366,7 @@ Manifest: [config/extensibility.yaml](../../config/extensibility.yaml)
 | **Phase 1** (current) | Foundation | Dataset, graph, retrieval, audit, licensing, memory tiers |
 | **Phase 2** | Intelligence core | Intelligence Engine, events, health dashboard, reasoning layer |
 | **Phase 3** | Integration | Connectors, sync, scheduler, plugin SDK, extensibility |
-| **Phase 4** | Experience | Knowledge Studio, visual graph, lifecycle UI, governance UI |
+| **Phase 4** | Experience | Coltex Console, visual graph, lifecycle UI, governance UI |
 | **Phase 5** | Scale | Multi-tenancy, enterprise deployment, compliance automation |
 
 ---

@@ -48,13 +48,12 @@ The following are downloaded at runtime and subject to their own licenses:
 ## Premium distributable corpus
 
 Streaming-generated documents in `knowledge-base/distributable/` are **original synthetic**
-content for the Coltex Premium RAG Vector Dataset. Generation uses in-repo templates only.
+content for the Coltex Mega RAG commercial corpus. Generation uses in-repo templates only.
 
 | Tier | Documents | Command |
 |------|-----------|---------|
-| Enterprise Curated | 12,000+ | `make product-enterprise` |
-| Premium Smoke | 25,000 | `make product-premium-smoke` |
-| Premium Hyper | Uncapped | `make product-hyper` |
+| Mega Smoke | Capped validation | `make product-mega-smoke` |
+| Mega | 100,000,000+ | `make product-mega` |
 
-Estimated procedural capacity exceeds 600 trillion unique combinations (premium hyper tier).
+Procedural capacity exceeds the 100,000,000 commercial floor at the Mega tier.
 Run on cluster infrastructure for uncapped generation.

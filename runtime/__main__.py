@@ -214,7 +214,7 @@ def main(argv: list[str] | None = None) -> None:
         sys.argv.append("serve")
     parser = argparse.ArgumentParser(
         prog="coltex",
-        description="Coltex — A Self-Hosted AI Knowledge Platform",
+        description="Coltex Mega RAG — Commercial RAG corpus runtime",
     )
     parser.add_argument("--config", default="config/runtime.yaml")
     parser.add_argument("--deployment-config", default="config/deployment.yaml")
@@ -313,14 +313,14 @@ def main(argv: list[str] | None = None) -> None:
     p_conn.add_argument("connector_id", choices=["filesystem", "github"])
     p_conn.set_defaults(func=cmd_connector)
 
-    p_serve = sub.add_parser("serve", help="Start self-hosted Knowledge Studio (default)")
+    p_serve = sub.add_parser("serve", help="Start Coltex console (default)")
     p_serve.add_argument("--profile", default=None, choices=["lan", "production"],
                          help="Deployment profile from config/deployment.yaml")
     p_serve.add_argument("--host", default=None, help="Bind host (e.g. 0.0.0.0 for network access)")
     p_serve.add_argument("--port", type=int, default=None, help="Bind port (default 8080 for lan profile)")
     p_serve.set_defaults(func=cmd_serve)
 
-    p_deploy = sub.add_parser("deploy", help="Show self-hosted deployment configuration")
+    p_deploy = sub.add_parser("deploy", help="Show deployment configuration")
     p_deploy.set_defaults(func=cmd_deploy)
 
     args = parser.parse_args(argv)

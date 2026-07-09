@@ -1,4 +1,4 @@
-"""Coltex Knowledge Studio server — self-hosted web UI."""
+"""Coltex console server — web UI for Mega RAG runtime."""
 
 from __future__ import annotations
 
@@ -270,7 +270,7 @@ def _wrap_ssl(server: ThreadingHTTPServer, deployment: DeploymentConfig) -> None
 def _print_startup(deployment: DeploymentConfig) -> None:
     print("")
     print("  ┌──────────────────────────────────────────────────────────┐")
-    print("  │  Coltex — A Self-Hosted AI Knowledge Platform            │")
+    print("  │  Coltex Mega RAG — Commercial RAG Corpus                 │")
     print("  └──────────────────────────────────────────────────────────┘")
     print("")
     print(f"  Deployment   {deployment.mode} ({deployment.profile} profile)")
@@ -278,7 +278,7 @@ def _print_startup(deployment: DeploymentConfig) -> None:
     if deployment.domain:
         print(f"  Domain       {deployment.domain}")
     print("")
-    print("  Access Knowledge Studio at:")
+    print("  Access Coltex Console at:")
     for item in deployment.access_urls():
         print(f"    {item['label']:<14} {item['url']}")
     print("")
@@ -293,7 +293,7 @@ def serve(
     profile: str | None = None,
     config_path: str | Path | None = None,
 ) -> None:
-    """Start Coltex self-hosted Knowledge Studio server."""
+    """Start Coltex console server."""
     global DEPLOYMENT
 
     DEPLOYMENT = deployment or load_deployment(

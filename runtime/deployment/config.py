@@ -17,7 +17,7 @@ DEFAULT_CONFIG = ROOT / "config/deployment.yaml"
 @dataclass
 class DeploymentConfig:
     mode: str = "self-hosted"
-    tagline: str = "A Self-Hosted AI Knowledge Platform"
+    tagline: str = "Commercial RAG corpus — 100,000,000+ documents"
     profile: str = "lan"
     host: str = "0.0.0.0"
     port: int = 8080
@@ -29,7 +29,7 @@ class DeploymentConfig:
     ssl_key: Path | None = None
     allow_remote: bool = True
     cors_origins: list[str] = field(default_factory=lambda: ["*"])
-    studio_name: str = "Knowledge Studio"
+    studio_name: str = "Coltex Console"
     config_path: Path = DEFAULT_CONFIG
 
     @property
@@ -174,7 +174,7 @@ def load_deployment(
 
     return DeploymentConfig(
         mode=dep.get("mode", "self-hosted"),
-        tagline=dep.get("tagline", "A Self-Hosted AI Knowledge Platform"),
+        tagline=dep.get("tagline", "Commercial RAG corpus — 100,000,000+ documents"),
         profile=active_profile,
         host=resolved_host,
         port=int(resolved_port),
@@ -186,7 +186,7 @@ def load_deployment(
         ssl_key=key_path,
         allow_remote=net.get("allow_remote", True),
         cors_origins=list(net.get("cors_origins", ["*"])),
-        studio_name=dep.get("studio", {}).get("name", "Knowledge Studio"),
+        studio_name=dep.get("studio", {}).get("name", "Coltex Console"),
         config_path=cfg_path,
     )
 

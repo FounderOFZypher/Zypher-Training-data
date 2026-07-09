@@ -127,7 +127,7 @@ generate-hyper:
 expand-curated-kb:
 	python3 scripts/expand_curated_kb.py --count $(or $(COUNT),120)
 
-# Commercial Mega RAG product (100,000,000+ sellable files)
+# Commercial Mega RAG product (100,000,000+ documents)
 product:
 	python3 scripts/product/build_product.py
 

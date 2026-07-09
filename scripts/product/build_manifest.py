@@ -114,7 +114,7 @@ def main() -> None:
         "version": str(cfg.get("version", "5.0.0")),
         "tier": cfg.get("tier", "mega"),
         "sku": cfg.get("sku", "MEGA-100M"),
-        "tagline": cfg.get("tagline", "The largest commercial RAG corpus — 100,000,000+ sellable knowledge files"),
+        "tagline": cfg.get("tagline", "Commercial RAG corpus — 100,000,000+ documents"),
         "price_usd": cfg.get("price_usd"),
         "license": cfg.get("license", "EULA"),
         "license_path": cfg.get("license_path", cfg.get("distribution", {}).get("license_path", "EULA.md")),

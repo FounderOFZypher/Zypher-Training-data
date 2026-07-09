@@ -1,6 +1,6 @@
 # Coltex Mega RAG — Setup Guide
 
-Build, sell, and query the Coltex Mega RAG commercial corpus (100,000,000+ files).
+Build and query the Coltex Mega RAG commercial corpus (100,000,000+ documents).
 
 ## Install
 
@@ -10,7 +10,7 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-## Validate commercial pipeline (smoke)
+## Validate commercial pipeline
 
 ```bash
 make product-mega-smoke
@@ -20,7 +20,7 @@ make audit-distribution
 
 ## Full Mega build (100M+)
 
-Requires cluster storage/CPU (e.g. Vast.ai):
+Requires cluster storage and CPU:
 
 ```bash
 make product-mega
@@ -43,7 +43,7 @@ make corpus-mega
 make expand-curated-kb COUNT=500
 ```
 
-## Query / Studio
+## Query / console
 
 ```bash
 python3 -m runtime status
@@ -53,5 +53,5 @@ coltex serve
 
 ## License
 
-- Engine: MIT — [LICENSE](../LICENSE)
+- Runtime: MIT — [LICENSE](../LICENSE)
 - Commercial dataset: [EULA.md](../EULA.md)

@@ -12,7 +12,7 @@ parallel_workers: 16
 batch_size: 1000
 
 # Set max_files via CLI: --max-files 100000 (safety cap)
-# Full Mega commercial run on Vast.ai:
+# Full Mega commercial run (cluster):
 #   python3 scripts/generate_corpus.py --config config/corpus_mega.yaml --max-files 0 --skip-wiring
 # Preferred product path:
 #   make product-mega
