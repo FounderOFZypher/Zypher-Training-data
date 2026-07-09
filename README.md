@@ -1,23 +1,57 @@
 # Coltex
 
-**The largest commercial RAG corpus — 100,000,000+ sellable knowledge files.**
+**Commercial RAG corpus — 100,000,000+ documents with advanced hybrid retrieval.**
 
-Coltex Mega RAG is an advanced, GraphRAG-native knowledge product: a streaming-generated,
-embedding-ready corpus designed to power production retrieval systems and to be sold as
-domain packs, industry shards, and the full **Mega (100M+)** SKU.
+Coltex Mega RAG is a GraphRAG-ready knowledge corpus: streaming-generated, embedding-ready,
+and packaged for commercial distribution as domain packs and the full Mega SKU.
 
 ---
 
-## What you get
+## Advanced retrieval
 
-| Deliverable | Description |
-|-------------|-------------|
-| **100M+ documents** | Commercial Mega floor — original synthetic knowledge files |
-| **Vector chunks** | Metadata-rich JSONL for any vector store |
+| Capability | |
+|------------|--|
+| Vector RAG | ✓ |
+| GraphRAG | ✓ |
+| Hybrid Retrieval | ✓ |
+| BM25 Search | ✓ |
+| Metadata Search | ✓ |
+| SQL Retrieval | ✓ |
+| Code Retrieval | ✓ |
+| API Retrieval | ✓ |
+| Multi-Vector Retrieval | ✓ |
+| Cross-Encoder Reranking | ✓ |
+| Context Compression | ✓ |
+| Context Builder | ✓ |
+| Explainable Retrieval | ✓ |
+| Incremental Indexing | ✓ |
+| Multi-workspace | ✓ |
+| Plugin System | ✓ |
+
+Also included: query expansion, parent-document retrieval, freshness boosting, and Reciprocal Rank Fusion.
+
+```bash
+coltex search "JWT auth" --mode hybrid --explain
+coltex search "SELECT join index" --mode sql
+coltex search "GET /v1/payments" --mode api
+coltex capabilities
+python3 examples/advanced_retrieval.py
+```
+
+Docs: [docs/platform/advanced-retrieval.md](docs/platform/advanced-retrieval.md)
+
+---
+
+## Deliverables
+
+| Artifact | Description |
+|----------|-------------|
+| **Document corpus** | 100,000,000+ original synthetic knowledge documents |
+| **Vector chunks** | Metadata-rich JSONL for vector stores |
 | **Knowledge graph** | Typed edges for GraphRAG routing |
-| **Marketplace packs** | Sellable domain packs (RAG, languages, cloud, security, architecture) |
-| **Benchmarks** | FAQ, retrieval gold, RAG eval sets |
-| **Audit trail** | Provenance, EULA, distribution compliance |
+| **Marketplace packs** | Domain packs (RAG, languages, cloud, security, architecture) |
+| **Benchmarks** | FAQ pairs, retrieval gold sets, RAG evaluation sets |
+| **Compliance** | Provenance, EULA, distribution audit |
 
 Commercial packaging: [docs/commercial/product-overview.md](docs/commercial/product-overview.md) · [SKU matrix](docs/commercial/sku-matrix.md)
 

@@ -2,6 +2,21 @@
 
 All notable changes to the Coltex product package are documented here.
 
+## [5.1.0] - 2026-07-09
+
+### Added — Advanced hybrid retrieval stack
+
+- **Vector RAG, GraphRAG, Hybrid, BM25, Metadata, SQL, Code, API, Multi-Vector**
+- **Cross-encoder reranking** with lexical fallback
+- **Context compression + context builder** with diversity and attribution
+- **Explainable retrieval** traces across all sources
+- **Incremental indexing** (upsert/delete) across backends
+- **Multi-workspace federated search**
+- **Plugin system** wired into pre/post retrieve + custom search algorithms
+- Extra: query expansion, parent-document retrieval, freshness boost, RRF fusion
+- Docs: `docs/platform/advanced-retrieval.md` · example: `examples/advanced_retrieval.py`
+- CLI: `coltex search --mode …`, `coltex capabilities`, `coltex federated-search`
+
 ## [5.0.0] - 2026-07-09
 
 ### Changed — Coltex Mega RAG (100,000,000+ sellable files)
